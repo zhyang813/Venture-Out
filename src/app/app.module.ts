@@ -6,17 +6,21 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
+import { routing } from "./app.routing";
+import { SearchresultsComponent } from './searchresults/searchresults.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SearchboxComponent
+    SearchboxComponent,
+    SearchresultsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
