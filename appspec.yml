@@ -6,5 +6,5 @@ os: linux
 
 files:
   - source: ./
-    destination: /brewerbucket
+    destination: /home/ubuntu/brewerbucket
 
