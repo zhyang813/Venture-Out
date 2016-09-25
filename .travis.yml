@@ -13,6 +13,10 @@ apt:
     - google-chrome-stable
     - google-chrome-beta
 
+cache:
+  directories:
+    - node_modules
+
 before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
@@ -25,7 +29,7 @@ deploy:
   local_dir: dpl_cd_upload
   skip_cleanup: true
   on: &2
-    repo: rr18-codebrewers/ventureout
+    repo: hrr18-codebrewers/ventureout
   bucket: brewerbucket
   region: us-west-2
 - provider: codedeploy
