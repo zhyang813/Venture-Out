@@ -44,13 +44,11 @@ deploy:
   region: us-west-2
   on: *2
 
-before_deploy:
-- if [ "$UPLOADED" == "false" ]; then zip -r latest *
-- mkdir -p dpl_cd_upload
-- mv latest.zip dpl_cd_upload/latest.zip
-
-script: ng build
-
+script: 
+  - ng build
+  - zip -r latest *
+  - mkdir -p dpl_cd_upload
+  - mv latest.zip dpl_cd_upload/latest.zip
 
 
 
