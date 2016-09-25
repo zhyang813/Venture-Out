@@ -11,7 +11,8 @@
     "build:nodeserver": "ng build && cp server/* dist",
     "build:nodeserver-prod": "ng build -prod && cp server/* dist",
     "serve": "npm run build:nodeserver && cd dist && nodemon server.js",
-    "serve-prod": "npm run build:nodeserver-prod && cd dist && nodemon server.js"
+    "serve-prod": "npm run build:nodeserver-prod && cd dist && nodemon server.js",
+    "build:deployed": "cd brewerbucket && npm install && cd dist && nodemon server.js"
   },
   "private": true,
   "dependencies": {
