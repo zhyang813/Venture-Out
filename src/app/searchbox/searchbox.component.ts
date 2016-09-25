@@ -13,6 +13,7 @@ export class SearchboxComponent {
     console.log(form);
   }
 
-  constructor() { }
+  constructor() {
+  }
 
 }
