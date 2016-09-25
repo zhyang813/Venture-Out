@@ -13,6 +13,9 @@
     "serve": "npm run build:nodeserver && cd dist && nodemon server.js",
     "serve-prod": "npm run build:nodeserver-prod && cd dist && nodemon server.js"
   },
+  "pre-commit":{
+    "lint"
+  },
   "private": true,
   "dependencies": {
     "@angular/common": "2.0.0",
@@ -48,6 +51,7 @@
     "protractor": "4.0.5",
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
-    "typescript": "2.0.2"
+    "typescript": "2.0.2",
+    "pre-commit": "^1.1.3"
   }
 }
