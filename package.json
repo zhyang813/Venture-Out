@@ -13,9 +13,7 @@
     "serve": "npm run build:nodeserver && cd dist && nodemon server.js",
     "serve-prod": "npm run build:nodeserver-prod && cd dist && nodemon server.js"
   },
-  "pre-commit":{
-    "lint"
-  },
+  "pre-commit": "lint",
   "private": true,
   "dependencies": {
     "@angular/common": "2.0.0",
