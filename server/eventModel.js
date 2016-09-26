@@ -2,15 +2,16 @@ var mongoose = require('mongoose');
 
 var EventSchema = new mongoose.Schema({
   name: String,
-  id: String,
+  eventId: String,
   desc: String,
   url: String,
+  imageUrl: String,
   timeZone: String,
-  startDateTime: Date,
-  endDateTime: Date,
+  //accessStartTime: Date,
+  //accessEndTime: Date,
   eventStartTime: Date,
   eventEndTime: Date,
-  imageUrl: String,
+  genre: String,
   address: {
     street: String,
     city: String,
@@ -21,7 +22,8 @@ var EventSchema = new mongoose.Schema({
   location: {
     lon: String,
     lat: String
-  }
+  },
+  price: Number
 },
 {
   timestamps: true

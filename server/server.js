@@ -4,7 +4,8 @@ var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var worker = require('./workers.js')
+var worker = require('./workers');
+var eventHandler = require('./eventHandler')
 
 // start express
 var app = express();
@@ -28,9 +29,18 @@ app.use(cookieParser());
 
 // use express.static to serve client folder
 app.use(express.static(__dirname));
+
+app.get('/api/events', eventHandler.getAllEvents);
+
+
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname,'index.html'));
 });
+
+//Routes
+
+
+
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
