@@ -10,17 +10,33 @@ export class AuthService {
   lock = new Auth0Lock(
     '8wMmKpAssAwUpOfPsS5FDd6sffAFSIyv',
     'calebkaston.auth0.com',
-    {
-    }
+    {}
   );
 
+  userProfile: Object;
+
   constructor() {
-    // Add callback for lock `authenticated` event
+
+    // Set userProfile attribute of already saved profile
+    this.userProfile = JSON.parse(localStorage.getItem('profile'));
+
+    // Add callback for the Lock `authenticated` event
     this.lock.on('authenticated', (authResult) => {
-      console.log('***** Auth Result ****', authResult);
       localStorage.setItem('id_token', authResult.idToken);
+
+      // Fetch profile information
+      this.lock.getProfile(authResult.idToken, (error, profile) => {
+        if (error) {
+          // Handle error
+          alert(error);
+          return;
+        }
+        console.log(profile);
+        localStorage.setItem('profile', JSON.stringify(profile));
+        this.userProfile = profile;
+      });
     });
-  }
+  };
 
   public login() {
     // Call the show method to display the widget.
@@ -34,7 +50,9 @@ export class AuthService {
   };
 
   public logout() {
-    // Remove token from localStorage
+    // Remove token and profile from localStorage
     localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
+    this.userProfile = undefined;
   };
 }
