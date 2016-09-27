@@ -1,7 +1,29 @@
-.panel-heading {
-  text-align: center;
-  color: black;
-  font-size: 120%;
-  background-color: #ADD8E6;
-  font-style: bold;
+.example-fill-remaining-space {
+  position: absolute;
+  right: 0px;
+  width: 190px;
+  border: 0px;
+  padding: 0px;
+}
+
+.app-sidenav {
+  padding: 10px;
+  min-width: 200px;
+}
+
+.app-icon-button {
+  box-shadow: none;
+  user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  filter: none;
+  font-weight: normal;
+  height: auto;
+  line-height: inherit;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
 }

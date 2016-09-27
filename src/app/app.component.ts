@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-// import { HeaderComponent } from './header.component';
-// import { SearchboxComponent } from './searchbox';
-// import { SearchresultsComponent } from './searchresults';
+
+import { SearchboxComponent } from './searchbox';
+import { SearchresultsComponent } from './searchresults'
+
 
 @Component({
   selector: 'app-root',
