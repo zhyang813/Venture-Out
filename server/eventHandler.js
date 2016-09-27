@@ -5,7 +5,7 @@ module.exports = {
 
   addEvent: function(event){
     var newEvent = event;
-    console.log('addEvent', event);
+    //console.log('addEvent', event);
 
     Event.create(newEvent, function(err, event){
       if (err) {
@@ -25,16 +25,14 @@ module.exports = {
       //console.log('event found?', event);
       if (err) {
         console.log("mongo findOne event err: ", err);
-      } else {
-        if (!event) {
+      } else if (!event) {
           callback();
-        }
       }
     });
   },
 
   getAllEvents: function(req, res){
-    console.log('get all events');
+    //console.log('get all events');
     Event.find({}, function(err, events) {
       console.log('events', events);
       if (err) {
@@ -43,7 +41,7 @@ module.exports = {
       } else {
         res.json(events);
       }
-    })
+    });
   }
 
 
