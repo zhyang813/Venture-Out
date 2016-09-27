@@ -9,7 +9,6 @@ import { HeaderComponent } from './header.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { routing } from './app.routing';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
-import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './auth/auth.service';
 
 @NgModule({
@@ -17,8 +16,7 @@ import { AuthService } from './auth/auth.service';
     AppComponent,
     HeaderComponent,
     SearchboxComponent,
-    SearchresultsComponent,
-    AuthComponent
+    SearchresultsComponent
   ],
   imports: [
     BrowserModule,
