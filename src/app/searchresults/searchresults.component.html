@@ -26,7 +26,8 @@
       <i class="material-icons">menu</i>
     </button></span>
     <span>&nbsp;&nbsp;&nbsp;VentureOut</span>
-    <a href="#" class="example-fill-remaining-space">Sign Up or Login</a>
+    <a class="example-fill-remaining-space" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
+    <a class="example-fill-remaining-space" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
   </md-toolbar>
   </div>
 
