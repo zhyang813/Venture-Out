@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./searchresults.component.css']
 })
 export class SearchresultsComponent {
-
+  onSearch(form) {
+    console.log(form);
+  }
 }

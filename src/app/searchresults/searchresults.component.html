@@ -1,67 +1,81 @@
-<div class="container">
-  <div class="panel panel-info">
-    <div class="panel-heading">- Search Adjust -</div>
-
-    <div class="panel-body">
-      <form class="form-inline">
-        <div class="form-group">
-          <label for="exampleInputName2">Find: </label>
-          <input type="text" class="form-control" id="exampleInputName2" placeholder="Event Name">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail2">Budget: </label>
-          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="300">
-        </div>
-        <hr>
-        <div class="form-group">
-          <label for="exampleInputEmail2">Availability: </label>
-          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="MM-DD-YYYY">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail2">Interests: </label>
-          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Game">
-        </div>
-        <button type="submit" class="btn btn-default">Update</button>
+<md-sidenav-layout>
+  <md-sidenav #sidenav mode="side" class="app-sidenav">
+    <md-card>
+      <md-card-title>Search Adjust</md-card-title>
+      <form (ngSubmit)="onSearch(form)" #form="ngForm">
+        <md-input placeholder="Find" style="width: 100%" ngModel name="find"></md-input>
+        <br>
+        <md-input placeholder="Budget" style="width: 100%" align="end" ngModel name="budget">
+          <span md-prefix>$&nbsp;</span>
+          <span md-suffix>.00</span>
+        </md-input>
+        <br>
+        <md-input placeholder="Availability" style="width: 100%" ngModel name="availability"></md-input>
+        <br>
+        <md-input placeholder="Interests" style="width: 100%" ngModel name="interests"></md-input>
+        <br>
+        <br>
+        <div align="center"><button md-raised-button type="submit">Update</button></div>
       </form>
-    </div>
+    </md-card>
+  </md-sidenav>
+
+  <div class="codrops-top">
+  <md-toolbar color="warn">
+    <span><button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons">menu</i>
+    </button></span>
+    <span>&nbsp;&nbsp;&nbsp;VentureOut</span>
+    <a href="#" class="example-fill-remaining-space">Sign Up or Login</a>
+  </md-toolbar>
   </div>
+
+
+<div class="col-md-4">
+  <md-card>
+    <img md-card-image src="https://i.ytimg.com/vi/vn2mfDELAv4/maxresdefault.jpg">
+    <md-card-title>Event Title</md-card-title>
+    <md-card-content>
+          <p>This is event description.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+    </md-card-content>
+    <md-card-actions>
+          <button md-button>MORE INFO</button>
+          <button md-button>FAVORITE</button>
+     </md-card-actions>
+  </md-card>
+</div>
+<div class="col-md-4">
+  <md-card>
+    <img md-card-image src="https://i.ytimg.com/vi/vn2mfDELAv4/maxresdefault.jpg">
+    <md-card-title>Event Title</md-card-title>
+    <md-card-content>
+          <p>This is event description.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+    </md-card-content>
+    <md-card-actions>
+          <button md-button>MORE INFO</button>
+          <button md-button>FAVORITE</button>
+     </md-card-actions>
+  </md-card>
+</div>
+<div class="col-md-4">
+  <md-card>
+    <img md-card-image src="https://i.ytimg.com/vi/vn2mfDELAv4/maxresdefault.jpg">
+    <md-card-title>Event Title</md-card-title>
+    <md-card-content>
+          <p>This is event description.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+    </md-card-content>
+    <md-card-actions>
+          <button md-button>MORE INFO</button>
+          <button md-button>FAVORITE</button>
+     </md-card-actions>
+  </md-card>
 </div>
 
-<div class="container">
 
-  <div class="row">
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <img src="..." alt="...">
-        <div class="caption">
-          <h3>Event Name</h3>
-          <p>...</p>
-          <p><a href="#" class="btn btn-primary" role="button">More Info</a></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <img src="..." alt="...">
-        <div class="caption">
-          <h3>Event Name</h3>
-          <p>...</p>
-          <p><a href="#" class="btn btn-primary" role="button">More Info</a></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <img src="..." alt="...">
-        <div class="caption">
-          <h3>Event Name</h3>
-          <p>...</p>
-          <p><a href="#" class="btn btn-primary" role="button">More Info</a></p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
+</md-sidenav-layout>
