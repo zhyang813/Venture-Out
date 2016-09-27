@@ -27,3 +27,7 @@
   text-align: left;
   text-decoration: none;
 }
+
+.col-md-4 {
+  margin-bottom: 30px;
+}
