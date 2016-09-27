@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
-import { routing } from "./app.routing";
 
 // app components
 import { AppComponent } from './app.component';
@@ -12,8 +11,6 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
 import { routing } from './app.routing';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
 import { AuthService } from './auth/auth.service';
-
-import { SearchresultsComponent } from './searchresults/searchresults.component';
 
 // ng2 material design modules
 import { MdToolbarModule } from '@angular2-material/toolbar';
