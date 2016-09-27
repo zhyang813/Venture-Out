@@ -12,6 +12,7 @@ import { routing } from './app.routing';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
 import { AuthService } from './auth/auth.service';
 import { UserPageComponent } from './user-page/user-page.component';
+import { EventService } from './searchresults/searchresults.service';
 
 // ng2 material design modules
 import { MdToolbarModule } from '@angular2-material/toolbar';
@@ -42,7 +43,7 @@ import { MdIconModule } from '@angular2-material/icon';
     MdSidenavModule,
     MdIconModule
   ],
-  providers: [AUTH_PROVIDERS, AuthService],
+  providers: [AUTH_PROVIDERS, AuthService, EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
