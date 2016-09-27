@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,11 +11,13 @@ import { AuthService } from '../auth/auth.service';
 
 export class SearchboxComponent {
 
-  onSearch(form) {
-    console.log(form);
+  constructor(private auth: AuthService,
+              private router: Router) {
   }
 
-  constructor(private auth: AuthService) {
+  onSearch(form) {
+    console.log(form.value);
+    this.router.navigate(['/searchresults']);
   }
 
 }
