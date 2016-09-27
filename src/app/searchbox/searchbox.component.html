@@ -1,11 +1,11 @@
-<div class="codrops-top">
+
 <md-toolbar color="warn">
   <span>VentureOut</span>
   <a *ngIf="auth.authenticated()" [routerLink]="['user']">User Page</a>
   <a class="example-fill-remaining-space" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
   <a class="example-fill-remaining-space" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
 </md-toolbar>
-</div>
+
 
 <div class="container">
 <md-card class="searchbox">
