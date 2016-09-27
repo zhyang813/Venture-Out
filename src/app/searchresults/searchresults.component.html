@@ -32,7 +32,7 @@
   </md-toolbar>
 
 
-<div class="col-md-4">
+<!-- <div class="col-md-4">
   <md-card>
     <img md-card-image src="https://i.ytimg.com/vi/vn2mfDELAv4/maxresdefault.jpg">
     <md-card-subtitle>TUE, OCT 4 7:00PM</md-card-subtitle>
@@ -79,22 +79,23 @@
           <button md-button>FAVORITE</button>
      </md-card-actions>
   </md-card>
-</div>
-<div class="col-md-4">
+</div> -->
+<div class="col-md-4" *ngFor="let event of events">
   <md-card>
-    <img md-card-image src="https://i.ytimg.com/vi/vn2mfDELAv4/maxresdefault.jpg">
+    <img md-card-image src={{event.imageUrl}}>
     <md-card-subtitle>TUE, OCT 4 7:00PM</md-card-subtitle>
-    <md-card-title>Event Title</md-card-title>
+    <md-card-title>{{event.name}}</md-card-title>
     <md-card-content>
           <p>This is event description.</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
     </md-card-content>
     <md-card-actions>
-          <button md-button>TICKETS</button>
+          <button md-button><a href={{event.url}}>TICKETS</a></button>
           <button md-button>FAVORITE</button>
      </md-card-actions>
   </md-card>
 </div>
+
 
 </md-sidenav-layout>
