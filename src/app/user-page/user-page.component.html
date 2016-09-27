@@ -1,6 +1,7 @@
 <div class="codrops-top">
   <md-toolbar color="warn">
     <span>VentureOut</span>
+    <a *ngIf="auth.authenticated()" [routerLink]="['/']">Find Events!</a>
     <a class="example-fill-remaining-space" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
     <a class="example-fill-remaining-space" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
   </md-toolbar>
@@ -18,7 +19,6 @@
           <p><strong>Nickname: </strong> {{auth.userProfile.nickname}}</p>
           <p><strong>Created At: </strong> {{auth.userProfile.created_at}}</p>
           <p><strong>Updated At: </strong> {{auth.userProfile.updated_at}}</p>
-          <a *ngIf="auth.authenticated()" [routerLink]="['/']">Find Events!</a>
         </div>
       </div>
     </div>
