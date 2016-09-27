@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class SearchboxComponent {
     console.log(form);
   }
 
-  constructor() {
+  constructor(private auth: AuthService) {
   }
 
 }

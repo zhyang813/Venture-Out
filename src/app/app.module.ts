@@ -11,6 +11,7 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
 import { routing } from './app.routing';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
 import { AuthService } from './auth/auth.service';
+import { UserPageComponent } from './user-page/user-page.component';
 
 // ng2 material design modules
 import { MdToolbarModule } from '@angular2-material/toolbar';
@@ -25,7 +26,8 @@ import { MdIconModule } from '@angular2-material/icon';
   declarations: [
     AppComponent,
     SearchboxComponent,
-    SearchresultsComponent
+    SearchresultsComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,
