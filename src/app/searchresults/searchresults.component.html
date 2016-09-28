@@ -85,12 +85,11 @@
   <div id="columns">
       <div class="pin" *ngFor="let event of events">
         <img src={{event.imageUrl}}>
-        <p>TUE, OCT 4 7:00PM</p>
+        <p>{{event.eventStartTime}}</p>
         <h4>{{event.name}}</h4>
         <md-card-content>
-              <p>This is event description.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+              <!-- <p>This is event description.</p> -->
+              <!-- <p>{{event.desc}}</p> -->
         </md-card-content>
         <md-card-actions>
               <button md-button><a href={{event.url}}>TICKETS</a></button>

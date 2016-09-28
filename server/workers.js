@@ -13,13 +13,8 @@ module.exports = {
     var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=EHAU7JI8sxVlrnoDKQD0Ylr01o9cdudk&size=100&countryCode=US&startDateTime='+currentDate+'T00:00:00Z';
     Request.get(url).then(function(response) {
       response.body._embedded.events.forEach(function(event) {
-       //console.log('response event ',count, ' : ', event.dates? event.dates: null);
+       //console.log('response event ',count, ' : ', event._embedded);
          // console.log('=====================================');
-         // eventStartTime = event.dates.start.dateTime || null;
-         // price = event.priceRanges.min || null;
-
-         // console.log('eventStartTime', eventStartTime);
-         // console.log('price', price);
 
          Event.findEvent(event.id, function() {
           var newEvent  = {
@@ -47,9 +42,7 @@ module.exports = {
             };
             console.log("new event ", count, newEvent);
             Event.addEvent(newEvent);
-
-
-          });
+         });
          count++;
        })
     });
