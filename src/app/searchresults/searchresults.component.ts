@@ -30,7 +30,7 @@ export class SearchresultsComponent {
       .filter( event => {
         return event.name.toLowerCase().includes(this.eventService.find.toLowerCase());
       }).filter( event => {
-        return event.price > this.eventService.budget;
+        return event.price <= this.eventService.budget;
       }).filter( event => {
         return Date.parse (event.eventStartTime) > Date.parse (this.eventService.when);
       }).filter( event => {
