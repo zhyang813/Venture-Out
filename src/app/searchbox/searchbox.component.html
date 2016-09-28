@@ -1,15 +1,25 @@
+<ul class="cb-slideshow">
+    <li><span>Image 01</span></li>
+    <li><span>Image 02</span></li>
+    <li><span>Image 03</span></li>
+    <li><span>Image 04</span></li>
+    <li><span>Image 05</span></li>
+    <li><span>Image 06</span></li>
+</ul>
 
-<md-toolbar color="warn">
-  <span><a [routerLink]="['/']">VentureOut</a></span>
-  <a *ngIf="auth.authenticated()" [routerLink]="['/user']">User Page</a>
-  <a class="example-fill-remaining-space" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
-  <a class="example-fill-remaining-space" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
-</md-toolbar>
+<div class="codrops-top">
+  <md-toolbar color="warn">
+    <span><a [routerLink]="['/']">VentureOut</a></span>
+    <a *ngIf="auth.authenticated()" [routerLink]="['/user']">User Page</a>
+    <a class="example-fill-remaining-space" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
+    <a class="example-fill-remaining-space" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
+  </md-toolbar>
+</div>
 
 
 <div class="container">
 <md-card class="searchbox">
-  <md-card-title>Search Criteria</md-card-title>
+  <md-card-title>Search For Your Next Event</md-card-title>
   <form (ngSubmit)="onSearch(form)" #form="ngForm">
     <table style="width: 85%" cellspacing="10"><tr>
       <td><md-input placeholder="Find" style="width: 80%" ngModel name="find"></md-input></td>
