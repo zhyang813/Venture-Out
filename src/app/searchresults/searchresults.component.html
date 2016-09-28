@@ -5,7 +5,7 @@
       <form (ngSubmit)="onSearch(form)" #form="ngForm">
         <md-input placeholder="Find" style="width: 100%" ngModel name="find"></md-input>
         <br>
-        <md-input placeholder="Budget" style="width: 100%" align="end" [(ngModel)]="budget" name="budget">
+        <md-input placeholder="Budget" style="width: 100%" align="end" ngModel name="budget">
           <span md-prefix>$&nbsp;</span>
           <span md-suffix>.00</span>
         </md-input>

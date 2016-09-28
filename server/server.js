@@ -31,6 +31,7 @@ app.use(cookieParser());
 app.use(express.static(__dirname));
 
 app.get('/api/events', eventHandler.getAllEvents);
+//app.get('/api/searchevents', eventHandler.searchEvents);
 
 
 app.get('/*', function (req, res) {
