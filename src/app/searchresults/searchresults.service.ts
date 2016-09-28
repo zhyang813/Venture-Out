@@ -6,11 +6,10 @@ import { Http } from '@angular/http';
 export class EventService {
 
   constructor(private http: Http) {
-    // this.httpModule = httpModule;
+
   }
 
   getEvents () {
-    // return console.log('Service');
     return this.http.get('/api/events').map(res => res.json());
   }
 }
