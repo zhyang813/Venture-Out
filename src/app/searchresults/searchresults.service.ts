@@ -7,10 +7,10 @@ export class EventService {
 
 
   // public events: Array<any>;
-  find: String;
-  budget: Number;
-  when: String;
-  interest: String;
+  find: string;
+  budget: number;
+  when: string;
+  interest: string;
 
 
   constructor(private http: Http) {}

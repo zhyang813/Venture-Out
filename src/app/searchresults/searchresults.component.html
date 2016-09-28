@@ -87,7 +87,7 @@
         <img src={{event.imageUrl}}>
         <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
         <p>{{event.genre}}</p>
-        <p>{{event.price? '$'+event.price+'.00' : 'Ticket Pricing Unavailable'}}</p>
+        <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
         <h4>{{event.name}}</h4>
         <md-card-content>
 
