@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
-import { EventService } from "../searchresults/searchresults.service"
+import { EventService } from '../searchresults/searchresults.service';
 
 
 @Component({
@@ -19,10 +19,10 @@ export class SearchboxComponent {
 
   onSearch(form) {
 
-    this.eventService.find = form.value.find? form.value.find : '';
-    this.eventService.budget = form.value.budget? form.value.budget : 0;
-    this.eventService.when = form.value.when? form.value.when+'T00:00:00Z' : '0000-01-01T00:00:00Z';
-    this.eventService.interest = form.value.interests? form.value.interests : '';
+    this.eventService.find = form.value.find ? form.value.find : '';
+    this.eventService.budget = form.value.budget ? form.value.budget : 0;
+    this.eventService.when = form.value.when ? form.value.when + 'T00:00:00Z' : '0000-01-01T00:00:00Z';
+    this.eventService.interest = form.value.interests ? form.value.interests : '';
     this.router.navigate(['/searchresults']);
 
   }
