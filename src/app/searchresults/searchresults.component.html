@@ -10,7 +10,7 @@
           <span md-suffix>.00</span>
         </md-input>
         <br>
-        <md-input placeholder="Availability" style="width: 100%" ngModel name="availability"></md-input>
+        <md-input placeholder="When" style="width: 100%" ngModel name="when"></md-input>
         <br>
         <md-input placeholder="Interests" style="width: 100%" ngModel name="interests"></md-input>
         <br>
@@ -80,22 +80,24 @@
      </md-card-actions>
   </md-card>
 </div> -->
-<div class="col-md-4" *ngFor="let event of events">
-  <md-card>
-    <img md-card-image src={{event.imageUrl}}>
-    <md-card-subtitle>TUE, OCT 4 7:00PM</md-card-subtitle>
-    <md-card-title>{{event.name}}</md-card-title>
-    <md-card-content>
-          <p>This is event description.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
-    </md-card-content>
-    <md-card-actions>
-          <button md-button><a href={{event.url}}>TICKETS</a></button>
-          <button md-button>FAVORITE</button>
-     </md-card-actions>
-  </md-card>
-</div>
 
+<div id="wrapper">
+  <div id="columns">
+      <div class="pin" *ngFor="let event of events">
+        <img src={{event.imageUrl}}>
+        <p>TUE, OCT 4 7:00PM</p>
+        <h4>{{event.name}}</h4>
+        <md-card-content>
+              <p>This is event description.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+        </md-card-content>
+        <md-card-actions>
+              <button md-button><a href={{event.url}}>TICKETS</a></button>
+              <button md-button>FAVORITE</button>
+         </md-card-actions>
+      </div>
+  </div>
+</div>
 
 </md-sidenav-layout>
