@@ -85,7 +85,7 @@
   <div id="columns">
       <div class="pin" *ngFor="let event of events">
         <img src={{event.imageUrl}}>
-        <p>{{event.eventStartTime}}</p>
+        <p>{{event.eventStartTime | date:'yMMMdjms'}}</p>
         <h4>{{event.name}}</h4>
         <md-card-content>
               <!-- <p>This is event description.</p> -->
