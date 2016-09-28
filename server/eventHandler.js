@@ -4,10 +4,10 @@ var Event = require('./eventModel.js');
 module.exports = {
 
   addEvent: function(event){
-    var newEvent = event;
-    //console.log('addEvent', event);
+    //var newEvent = event;
+    console.log('addEvent', event);
 
-    Event.create(newEvent, function(err, event){
+    Event.create(event, function(err, event){
       if (err) {
         console.log("New event created error", err);
         //helper.sendError(err, req, res);
@@ -19,7 +19,7 @@ module.exports = {
   },
 
   findEvent: function(eventId, callback){
-    //console.log('findEvent', eventId);
+    console.log('findEvent', eventId);
 
     Event.findOne({'eventId': eventId}, function(err, event){
       //console.log('event found?', event);

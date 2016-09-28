@@ -19,13 +19,13 @@ export class SearchresultsComponent {
 
   }
   onSearch(form) {
-    console.log(form);
+    // console.log(this.budget1, this.budget2);
   }
   getEvents() {
     this.eventService
         .getEvents()
         .subscribe(data => this.events = data,
           error => console.log(error),
-          () => console.log('Get all events complete', this.events));
+          () => console.log('Get all events complete', this.events.length));
   }
 }

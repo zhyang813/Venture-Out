@@ -5,7 +5,7 @@
       <form (ngSubmit)="onSearch(form)" #form="ngForm">
         <md-input placeholder="Find" style="width: 100%" ngModel name="find"></md-input>
         <br>
-        <md-input placeholder="Budget" style="width: 100%" align="end" ngModel name="budget">
+        <md-input placeholder="Budget" style="width: 100%" align="end" [(ngModel)]="budget" name="budget">
           <span md-prefix>$&nbsp;</span>
           <span md-suffix>.00</span>
         </md-input>
@@ -25,7 +25,7 @@
     <span><button class="app-icon-button" (click)="sidenav.toggle()">
       <i class="material-icons">menu</i>
     </button></span>
-    <span>&nbsp;&nbsp;&nbsp;VentureOut</span>
+    <span>&nbsp;&nbsp;&nbsp;<a [routerLink]="['/']">VentureOut</a></span>
     <a *ngIf="auth.authenticated()" [routerLink]="['/user']">User Page</a>
     <a class="example-fill-remaining-space" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
     <a class="example-fill-remaining-space" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
@@ -85,12 +85,11 @@
   <div id="columns">
       <div class="pin" *ngFor="let event of events">
         <img src={{event.imageUrl}}>
-        <p>TUE, OCT 4 7:00PM</p>
+        <p>{{event.eventStartTime}}</p>
         <h4>{{event.name}}</h4>
         <md-card-content>
-              <p>This is event description.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+              <!-- <p>This is event description.</p> -->
+              <!-- <p>{{event.desc}}</p> -->
         </md-card-content>
         <md-card-actions>
               <button md-button><a href={{event.url}}>TICKETS</a></button>
