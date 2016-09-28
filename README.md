@@ -1,31 +1,43 @@
-# VentureOut
+# Project Name
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.15.
+> VentureOut
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Team
 
-## Code scaffolding
+  - __Product Owner__: Hoon Bae
+  - __Scrum Master__: David Thai
+  - __Development Team Members__: Caleb Aston, Henry Yang
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
+## Table of Contents
 
-## Build
+1. [Usage](#Usage)
+1. [Requirements](#requirements)
+1. [Development](#development)
+    1. [Installing Dependencies](#installing-dependencies)
+    1. [Tasks](#tasks)
+1. [Team](#team)
+1. [Contributing](#contributing)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Usage
 
-## Running unit tests
+## Requirements
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Development
 
-## Running end-to-end tests
+### Installing Dependencies
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
-Before running the tests make sure you are serving the app via `ng serve`.
+From within the root directory:
 
-## Deploying to Github Pages
+```sh
+npm install
+```
 
-Run `ng github-pages:deploy` to deploy to Github Pages.
+### Tasks
 
-## Further help
+View the waffle.io issue [here](https://waffle.io/hrr18-codebrewers/ventureout)
+View the project planning docs [here]()
 
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
