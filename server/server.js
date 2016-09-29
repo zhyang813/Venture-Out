@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var worker = require('./workers');
-var eventHandler = require('./eventHandler')
+var eventHandler = require('./eventHandler');
+var cron = require('cron').CronJob;
 
 // start express
 var app = express();
@@ -58,8 +59,13 @@ app.listen(port);
 console.log("Server is listening on port " + port);
 
 //Ticket Master data fetcher
-setInterval(worker.fetchTM, 1000*60*60);
+
+// setInterval(worker.fetchTM, 1000*60*60);
 worker.fetchTM();
+new cron('* 0 * * * *', function() {
+  console.log('cron job running');
+  worker.fetchTM();
+}, null, true, 'America/Los_Angeles');
 
 module.exports = app;
 

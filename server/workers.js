@@ -5,6 +5,9 @@ var Request = require('superagent');
 module.exports = {
 
   fetchTM: function () {
+
+    console.log('TM fetcher is running');
+
     var futureDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toJSON().slice(0,10);
     var count  = 1;
 
