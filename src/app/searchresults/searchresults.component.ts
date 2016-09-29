@@ -33,7 +33,7 @@ export class SearchresultsComponent {
   getEvents() {
 
     this.eventService.find = this.eventService.find ? this.eventService.find : '';
-    this.eventService.budget = this.eventService.budget ? this.eventService.budget : 0;
+    this.eventService.budget = this.eventService.budget ? this.eventService.budget : 1000000000;
     this.eventService.when = this.eventService.when ? this.eventService.when : '0000-01-01T00:00:00Z';
     this.eventService.interest = this.eventService.interest ? this.eventService.interest : '';
 
