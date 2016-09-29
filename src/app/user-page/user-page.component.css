@@ -5,3 +5,19 @@
   border: 0px;
   padding: 0px;
 }
+
+.text-center-align {
+  margin: auto;
+  width: 35%;
+}
+
+img {
+    display: block;
+    margin: auto;
+    width: 40%;
+}
+
+.headerlink {
+  color: white;
+  text-decoration: none;
+}

@@ -8,11 +8,11 @@
 </ul>
 
 <div class="codrops-top">
-  <md-toolbar color="warn">
-    <span><a [routerLink]="['/']">VentureOut</a></span>
-    <a *ngIf="auth.authenticated()" [routerLink]="['/user']">User Page</a>
-    <a class="example-fill-remaining-space" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
-    <a class="example-fill-remaining-space" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
+  <md-toolbar color="accent">
+    <span><a class="headerlink"[routerLink]="['/']">VentureOut</a></span>
+    <a class="headerlink" *ngIf="auth.authenticated()" [routerLink]="['/user']">User Page</a>
+    <a class="example-fill-remaining-space headerlink" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
+    <a class="example-fill-remaining-space headerlink" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
   </md-toolbar>
 </div>
 
