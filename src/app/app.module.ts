@@ -23,12 +23,17 @@ import { MdMenuModule } from '@angular2-material/menu';
 import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdIconModule } from '@angular2-material/icon';
 
+import { InteractiveHelperComponent } from './interactive-helper/interactive-helper.component'
+
+
 @NgModule({
   declarations: [
     AppComponent,
     SearchboxComponent,
     SearchresultsComponent,
     UserPageComponent
+    InteractiveHelperComponent
+
   ],
   imports: [
     BrowserModule,
