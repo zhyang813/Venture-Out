@@ -21,14 +21,14 @@
   </md-sidenav>
 
 
-  <md-toolbar color="warn">
+  <md-toolbar color="accent">
     <span><button class="app-icon-button" (click)="sidenav.toggle()">
       <i class="material-icons">menu</i>
     </button></span>
-    <span>&nbsp;&nbsp;&nbsp;<a [routerLink]="['/']">VentureOut</a></span>
-    <a *ngIf="auth.authenticated()" [routerLink]="['/user']">User Page</a>
-    <a class="example-fill-remaining-space" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
-    <a class="example-fill-remaining-space" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
+    <span>&nbsp;&nbsp;&nbsp;<a class="headerlink"[routerLink]="['/']">VentureOut</a></span>
+    <a class="headerlink" *ngIf="auth.authenticated()" [routerLink]="['/user']">&nbsp;&nbsp;&nbsp;User Page</a>
+    <a class="example-fill-remaining-space headerlink" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
+    <a class="example-fill-remaining-space headerlink" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
   </md-toolbar>
 
 
