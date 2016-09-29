@@ -3,32 +3,25 @@ var User = require('./userModel.js');
 
 module.exports = {
 
-  addUser: function() {
-
+  addUser: function(user) {
+    User.create(user, function(error, user){
+      if(error){
+        console.error(error);
+      } else {
+        console.log('User Successfully Created!')
+      }
+    })
   },
 
-  findUser: function() {
-
+  findUser: function(user_id) {
+    User.findOne({'user_id': user_id}, function(error, user){
+      if(error){
+        console.error(error);
+      } else {
+        res.json(user);
+      }
+    })
   },
-
-
-
-  // Template to use to set up User Handler
-
-  // addEvent: function(event){
-  //   //var newEvent = event;
-  //   console.log('addEvent', event);
-
-  //   Event.create(event, function(err, event){
-  //     if (err) {
-  //       console.log("New event created error", err);
-  //       //helper.sendError(err, req, res);
-  //     } else {
-  //       //res.json(event);
-  //       console.log('Successful created a event!')
-  //     }
-  //   });
-  // },
 
   // findEvent: function(eventId, callback){
   //   console.log('findEvent', eventId);
