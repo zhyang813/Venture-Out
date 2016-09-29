@@ -58,7 +58,7 @@ app.listen(port);
 console.log("Server is listening on port " + port);
 
 //Ticket Master data fetcher
-//setInterval(worker.fetchTM, 10000);
+setInterval(worker.fetchTM, 1000*60*60);
 worker.fetchTM();
 
 module.exports = app;
