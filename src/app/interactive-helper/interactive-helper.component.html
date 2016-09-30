@@ -1,3 +1,14 @@
-<p>
-  interactive-helper works!
-</p>
+<div class="location">
+
+    <form class="location" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+        <label for="location"> Please enter your Location </label>
+        <input type="text"
+               class="form-control"
+               id="location"
+               formControlName="location">
+
+    </form>
+
+
+</div>

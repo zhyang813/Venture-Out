@@ -23,15 +23,15 @@ import { MdMenuModule } from '@angular2-material/menu';
 import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdIconModule } from '@angular2-material/icon';
 
-import { InteractiveHelperComponent } from './interactive-helper/interactive-helper.component'
-
+import { InteractiveHelperComponent } from './interactive-helper/interactive-helper.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchboxComponent,
     SearchresultsComponent,
-    UserPageComponent
+    UserPageComponent,
     InteractiveHelperComponent
 
   ],
@@ -46,7 +46,8 @@ import { InteractiveHelperComponent } from './interactive-helper/interactive-hel
     MdButtonModule,
     MdMenuModule,
     MdSidenavModule,
-    MdIconModule
+    MdIconModule,
+    ReactiveFormsModule
   ],
   providers: [AUTH_PROVIDERS, AuthService, EventService],
   bootstrap: [AppComponent]
