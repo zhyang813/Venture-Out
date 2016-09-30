@@ -20,23 +20,27 @@
 <div class="container">
 <md-card class="searchbox">
   <md-card-title>Search For Your Next Event</md-card-title>
-  <form (ngSubmit)="onSearch(form)" #form="ngForm">
-    <table style="width: 85%" cellspacing="10"><tr>
-      <td><md-input placeholder="Find" style="width: 80%" ngModel name="find"></md-input></td>
-      <td>
-        <md-input placeholder="Budget" style="width: 60%" align="end" ngModel name="budget">
-          <span md-prefix>$&nbsp;</span>
-          <span md-suffix>.00</span>
-        </md-input></td>
-    </tr></table>
+  <md-card-content>
+    <form (ngSubmit)="onSearch(form)" #form="ngForm">
+      <table style="width: 85%" cellspacing="10"><tr>
+        <td><md-input placeholder="Find" style="width: 80%" ngModel name="find"></md-input></td>
+        <td>
+          <md-input placeholder="Budget" style="width: 60%" align="end" ngModel name="budget">
+            <span md-prefix>$&nbsp;</span>
+            <span md-suffix>.00</span>
+          </md-input></td>
+      </tr></table>
 
-    <table style="width: 100%" cellspacing="0"><tr>
-      <td><md-input placeholder="When (YYYY-MM-DD)" style="width: 80%" ngModel name="when"></md-input></td>
-      <td>
-        <md-input placeholder="Interests" style="width: 73%" ngModel name="interests"></md-input>
-      </td>
-      <td><button md-raised-button class="searchbutton" type="submit">Search</button></td>
-    </tr></table>
-  </form>
+      <table style="width: 100%" cellspacing="0"><tr>
+        <td><md-input style="width: 80%"  placeholder="Start (YYYY-MM-DD)" ngModel name="start"></md-input></td>
+        <td>to</td>
+        <td><md-input style="width: 80%"  placeholder="End (YYYY-MM-DD)" ngModel name="end"></md-input></td>
+        <td>
+          <md-input placeholder="Interests" style="width: 73%" ngModel name="interests"></md-input>
+        </td>
+        <td><button md-raised-button class="searchbutton" type="submit">Search</button></td>
+      </tr></table>
+    </form>
+  </md-card-content>
 </md-card>
 </div>
