@@ -6,6 +6,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var worker = require('./workers');
 var eventHandler = require('./eventHandler');
+var userHandler = require('./userHandler');
 var cron = require('cron').CronJob;
 
 // start express
@@ -34,14 +35,20 @@ app.use(express.static(__dirname));
 app.get('/api/events', eventHandler.getAllEvents);
 //app.get('/api/searchevents', eventHandler.searchEvents);
 
+app.post('/api/users', function(req, res){
+  userHandler.addUser(req, res);
+});
+
+// id === user_id from auth0
+app.get('/api/user/:id', function(req, res){
+  userHandler.findUser(req, res);
+});
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname,'index.html'));
 });
 
 //Routes
-
-
 
 
 app.use(function(req, res, next) {
