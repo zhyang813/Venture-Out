@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-interactive-helper',
@@ -12,13 +12,13 @@ export class InteractiveHelperComponent implements OnInit {
   constructor() {
     this.myForm = new FormGroup({
       'location': new FormControl()
-    })
+    });
    }
 
   ngOnInit() {
   }
   onSubmit() {
-    console.log('submit')
+    console.log('submit');
   }
 
 }
