@@ -3,18 +3,19 @@ var User = require('./userModel.js');
 
 module.exports = {
 
-  addUser: function(user) {
-    User.create(user, function(error, user){
+  addUser: function(req, res) {
+    User.create(req.body, function(error, user){
       if(error){
         console.error(error);
       } else {
-        console.log('User Successfully Created!')
+        console.log('User Successfully Created!', user)
+        res.json(user);
       }
     })
   },
 
-  findUser: function(user_id) {
-    User.findOne({'user_id': user_id}, function(error, user){
+  findUser: function(req, res) {
+    User.findOne({'userId': req.params.id}, function(error, user){
       if(error){
         console.error(error);
       } else {
