@@ -21,7 +21,8 @@ export class SearchboxComponent {
 
     this.eventService.find = form.value.find ? form.value.find.toLowerCase() : '';
     this.eventService.budget = form.value.budget ? form.value.budget : 0;
-    this.eventService.when = form.value.when ? form.value.when + 'T00:00:00Z' : '0000-01-01T00:00:00Z';
+    this.eventService.start = form.value.start ? form.value.start + 'T00:00:00Z' : '0000-01-01T00:00:00Z';
+    this.eventService.end = form.value.end ? form.value.end + 'T00:00:00Z' : '0000-01-01T00:00:00Z';
     this.eventService.interest = form.value.interests ? form.value.interests.toLowerCase() : '';
     this.router.navigate(['/searchresults']);
 

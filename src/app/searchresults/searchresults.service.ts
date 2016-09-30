@@ -9,7 +9,8 @@ export class EventService {
   // public events: Array<any>;
   find: string;
   budget: number;
-  when: string;
+  start: string;
+  end: string;
   interest: string;
 
 
