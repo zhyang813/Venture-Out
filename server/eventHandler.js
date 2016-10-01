@@ -3,6 +3,7 @@ var Event = require('./eventModel.js');
 
 module.exports = {
 
+  // Add new Event
   addEvent: function(event){
 
     Event.create(event, function(err, event){
@@ -14,6 +15,8 @@ module.exports = {
     });
   },
 
+
+  // Find a specific event using eventId
   findEvent: function(eventId, callback){
     // console.log('findEvent', eventId);
 
@@ -27,6 +30,7 @@ module.exports = {
     });
   },
 
+  // Get all the events
   getAllEvents: function(req, res){
 
     Event.find({}, function(err, events) {
