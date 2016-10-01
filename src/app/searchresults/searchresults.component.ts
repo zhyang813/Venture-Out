@@ -11,17 +11,19 @@ import { EventService } from './searchresults.service';
 })
 export class SearchresultsComponent {
 
+  // Array to store events pulled from DB
   events: Array<any>;
-
 
   constructor(private auth: AuthService,
               private router: Router,
               private eventService: EventService) {
 
+    // On page load, run this to get all events
     this.getEvents();
 
   }
 
+  // Side bar search, store input data to shared service
   onSearch(form) {
 
     this.eventService.find = form.value.find ? form.value.find.toLowerCase() : '';
@@ -33,6 +35,8 @@ export class SearchresultsComponent {
     this.getEvents();
   }
 
+
+  // Get all event method
   getEvents() {
 
     this.eventService.find = this.eventService.find ? this.eventService.find : '';
@@ -41,6 +45,7 @@ export class SearchresultsComponent {
     this.eventService.end = this.eventService.end ? this.eventService.end : '9999-12-31T00:00:00Z';
     this.eventService.interest = this.eventService.interest ? this.eventService.interest : '';
 
+    // Invoke http request of getting all events, filtering data based on search inputs
     this.eventService.getEvents()
     .subscribe(data => this.events = data
       .filter( event => {
