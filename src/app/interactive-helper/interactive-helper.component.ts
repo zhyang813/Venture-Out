@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export class InteractiveHelperComponent implements OnInit {
   myForm: FormGroup;
+  isValid: Boolean = true;
   constructor() {
    }
 
@@ -16,12 +17,19 @@ export class InteractiveHelperComponent implements OnInit {
     this.myForm = new FormGroup({
       'location': new FormControl('',
         [
-          Validators.pattern('^\d{5}(?:[-\s]\d{4})?$')
+          Validators.required,
+          Validators.pattern('^(0|[1-9][0-9]*)$'),
+          Validators.minLength(5)
         ]
       )
     });
   }
   onSubmit() {
+    if (this.myForm.value.location && this.myForm.valid) {
+      this.isValid = true;
+    } else {
+      this.isValid = false;
+    }
     console.log(this.myForm);
   };
 

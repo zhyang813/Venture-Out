@@ -11,14 +11,15 @@
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
         <md-input
-          type="number"
-          id="location"
           formControlName="location"
           placeholder="Enter Zip Here"
         >
         </md-input>
-        <div *ngIf="!myForm.controls['location'].valid ">
-          invalid zipcode
-        </div>
     </form>
+        <div *ngIf="!isValid">
+            Invalid Input
+        </div>
+        <div *ngIf="myForm.controls['location'].value.length < 5 && !isValid">
+            Zip code needs more than 5 characters
+        </div>
 </div>
