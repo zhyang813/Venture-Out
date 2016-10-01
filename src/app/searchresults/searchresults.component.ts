@@ -14,7 +14,6 @@ export class SearchresultsComponent {
   // Array to store events pulled from DB
   events: Array<any>;
 
-
   constructor(private auth: AuthService,
               private router: Router,
               private eventService: EventService) {
