@@ -5,8 +5,6 @@ import { Http } from '@angular/http';
 @Injectable()
 export class EventService {
 
-
-  // public events: Array<any>;
   find: string;
   budget: number;
   start: string;
@@ -16,6 +14,7 @@ export class EventService {
 
   constructor(private http: Http) {}
 
+  // Http request to get all events from DB
   getEvents () {
     return this.http.get('/api/events').map(res => res.json());
   }
