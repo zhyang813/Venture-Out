@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Headers, Http, RequestOptions } from '@angular/http';
 import { AuthService } from '../auth/auth.service';
 // import 'rxjs'
 
@@ -23,9 +23,15 @@ export class EventService {
 
   public saveFavorite(eventId) {
     if (this.auth.authenticated()) {
-      console.log('You clicked the favorite button!', eventId);
+      let userProfile = JSON.parse(localStorage.getItem('profile'));
+      let body = JSON.stringify({userId: userProfile.user_id, favoritedEvent: eventId});
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({ headers: headers });
+      return this.http.put('/api/user', body, options).subscribe(function(response){
+        console.log(response);
+      });
     } else {
-      console.log('You still clicked it, but log in please!');
+      alert('Log In To Favorite Events!');
     }
   }
 
