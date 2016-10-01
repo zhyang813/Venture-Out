@@ -85,7 +85,7 @@ console.log("Server is listening on port " + port);
 
 // setInterval(worker.fetchTM, 1000*60*60);
 worker.fetchTM();
-new cron('0 0 * * * *', function() {
+new cron('0 0 0 * * *', function() {
   console.log('cron job running');
   worker.fetchTM();
 }, null, true, 'America/Los_Angeles');
