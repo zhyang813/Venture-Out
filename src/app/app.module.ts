@@ -25,6 +25,7 @@ import { MdIconModule } from '@angular2-material/icon';
 
 import { InteractiveHelperComponent } from './interactive-helper/interactive-helper.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CategorySelectComponent } from './interactive-helper/category-select/category-select.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SearchboxComponent,
     SearchresultsComponent,
     UserPageComponent,
-    InteractiveHelperComponent
+    InteractiveHelperComponent,
+    CategorySelectComponent
 
   ],
   imports: [

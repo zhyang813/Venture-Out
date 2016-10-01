@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-interactive-helper',
@@ -10,7 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class InteractiveHelperComponent implements OnInit {
   myForm: FormGroup;
   isValid: Boolean = true;
-  constructor() {
+  constructor(private router: Router) {
    }
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class InteractiveHelperComponent implements OnInit {
   }
   onSubmit() {
     if (this.myForm.value.location && this.myForm.valid) {
+      this.router.navigate(['category']);
       this.isValid = true;
     } else {
       this.isValid = false;
