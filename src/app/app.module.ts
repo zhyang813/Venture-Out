@@ -23,12 +23,19 @@ import { MdMenuModule } from '@angular2-material/menu';
 import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdIconModule } from '@angular2-material/icon';
 
+import { InteractiveHelperComponent } from './interactive-helper/interactive-helper.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CategorySelectComponent } from './interactive-helper/category-select/category-select.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     SearchboxComponent,
     SearchresultsComponent,
-    UserPageComponent
+    UserPageComponent,
+    InteractiveHelperComponent,
+    CategorySelectComponent
+
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,8 @@ import { MdIconModule } from '@angular2-material/icon';
     MdButtonModule,
     MdMenuModule,
     MdSidenavModule,
-    MdIconModule
+    MdIconModule,
+    ReactiveFormsModule
   ],
   providers: [AUTH_PROVIDERS, AuthService, EventService],
   bootstrap: [AppComponent]

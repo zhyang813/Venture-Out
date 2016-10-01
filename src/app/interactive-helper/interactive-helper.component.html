@@ -1,0 +1,25 @@
+
+<div class="center">
+    <div class="title animated fadeInDown">
+      VENTURE OUT
+    </div>
+    <div class='message'>
+      Hello!
+
+     We want to provide you with the best recommendations, to start please enter in your zip code.
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+        <md-input
+          formControlName="location"
+          placeholder="Enter Zip Here"
+        >
+        </md-input>
+    </form>
+        <div *ngIf="!isValid">
+            Invalid Input
+        </div>
+        <div *ngIf="myForm.controls['location'].value.length < 5 && !isValid">
+            Zip code needs more than 5 characters
+        </div>
+</div>
