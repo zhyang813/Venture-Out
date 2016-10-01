@@ -1,4 +1,5 @@
 var Event = require('./eventModel.js');
+var services = require('./services.js')
 
 
 module.exports = {
@@ -41,6 +42,23 @@ module.exports = {
         res.json(events);
       }
     });
+  },
+
+  findEvents: function(req, res){
+    console.log(Number.parseInt.call(this, req.params.amount))
+    var numberOfEvents = Number.parseInt.call(this, req.params.amount)
+    var zipCode;
+    services.geocoder.geocode('94604', function(err, res) {
+      console.log(res);
+    });
+    Event.where('genre').eq(req.params.name).limit(numberOfEvents)
+    .then(function(result){
+      res.send(result)
+    })
+    .catch(function(err){
+      res.send(err)
+    })
+
   }
 
 }
