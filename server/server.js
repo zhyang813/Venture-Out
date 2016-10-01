@@ -9,6 +9,12 @@ var eventHandler = require('./eventHandler');
 var userHandler = require('./userHandler');
 var cron = require('cron').CronJob;
 
+
+// set Promise provider to bluebird
+mongoose.Promise = require('bluebird');
+// q
+mongoose.Promise = require('q').Promise;
+
 // start express
 var app = express();
 
@@ -60,11 +66,15 @@ app.put('/api/user', function(req, res) {
   userHandler.addFavorite(req, res);
 })
 
+//Routes
+app.get('/api/events/category/:name/event/:amount', function(req, res) {
+  // eventHandler.
+  eventHandler.findEvents(req, res)
+})
+
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname,'index.html'));
 });
-
-//Routes
 
 
 app.use(function(req, res, next) {
