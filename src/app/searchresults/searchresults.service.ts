@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { AuthService } from '../auth/auth.service';
 // import 'rxjs'
 
 @Injectable()
@@ -12,11 +13,20 @@ export class EventService {
   interest: string;
 
 
-  constructor(private http: Http) {}
+  constructor(private http: Http,
+              private auth: AuthService) {}
 
   // Http request to get all events from DB
   getEvents () {
-    return this.http.get('/api/events').map(res => res.json());
+      return this.http.get('/api/events').map(res => res.json());
+  }
+
+  public saveFavorite(eventId) {
+    if (this.auth.authenticated()) {
+      console.log('You clicked the favorite button!', eventId);
+    } else {
+      console.log('You still clicked it, but log in please!');
+    }
   }
 
   // setSearchPara (find, budget, when, interest) {

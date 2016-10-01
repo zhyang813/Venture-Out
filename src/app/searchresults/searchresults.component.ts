@@ -70,4 +70,8 @@ export class SearchresultsComponent {
 
   }
 
+  saveFavorite(eventId) {
+    this.eventService.saveFavorite(eventId);
+  }
+
 }
