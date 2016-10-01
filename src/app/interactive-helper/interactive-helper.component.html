@@ -1,14 +1,19 @@
-<div class="location">
 
-    <form class="location" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<div class="center">
+    <div class='message'>
+      Hello!
 
-        <label for="location"> Please enter your Location </label>
-        <input type="text"
-               class="form-control"
-               id="location"
-               formControlName="location">
+     We want to provide you with the best recommendations, to start please enter in your zip code.
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+        <md-input
+          class='message'
+          type="text"
+          id="location"
+          formControlName="location"
+          placeholder="Enter Zip Here">
+        </md-input>
 
     </form>
-
-
 </div>
