@@ -7,10 +7,7 @@ var EventSchema = new mongoose.Schema({
   url: String,
   imageUrl: String,
   timeZone: String,
-  //accessStartTime: Date,
-  //accessEndTime: Date,
   eventStartTime: Date,
-  eventEndTime: Date,
   genre: String,
   address: {
     street: String,
@@ -18,10 +15,6 @@ var EventSchema = new mongoose.Schema({
     state: String,
     zip_code: Number,
     country: String
-  },
-  location: {
-    lon: String,
-    lat: String
   },
   price: Number
 },
