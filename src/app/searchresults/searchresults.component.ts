@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 import { EventService } from './searchresults.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class SearchresultsComponent {
 
 
   constructor(private auth: AuthService,
-    private eventService: EventService) {
+              private router: Router,
+              private eventService: EventService) {
 
     this.getEvents();
 
@@ -52,7 +54,14 @@ export class SearchresultsComponent {
         return event.genre ? event.genre.toLowerCase().includes(this.eventService.interest) : true;
       }),
       error => console.log(error),
-      () => console.log('Get all events complete', this.events.length));
+      () => {
+        if (this.events.length === 0) {
+          alert('No matched results. Please try again.');
+          this.router.navigate(['/']);
+        } else {
+          console.log('Get all events complete', this.events.length);
+        }
+      });
 
   }
 
