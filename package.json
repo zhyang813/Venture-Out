@@ -34,6 +34,7 @@
     "@angular2-material/toolbar": "^2.0.0-alpha.8-2",
     "@types/hammerjs": "^2.0.33",
     "angular2-jwt": "^0.1.23",
+    "animate.css": "^3.5.2",
     "auth0-lock": "^10.3.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",

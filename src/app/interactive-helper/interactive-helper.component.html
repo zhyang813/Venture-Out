@@ -1,5 +1,8 @@
 
 <div class="center">
+    <div class="title animated fadeInDown">
+      VENTURE OUT
+    </div>
     <div class='message'>
       Hello!
 
@@ -8,12 +11,14 @@
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
         <md-input
-          class='message'
-          type="text"
+          type="number"
           id="location"
           formControlName="location"
-          placeholder="Enter Zip Here">
+          placeholder="Enter Zip Here"
+        >
         </md-input>
-
+        <div *ngIf="!myForm.controls['location'].valid ">
+          invalid zipcode
+        </div>
     </form>
 </div>

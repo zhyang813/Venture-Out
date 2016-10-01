@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-interactive-helper',
@@ -10,15 +10,19 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class InteractiveHelperComponent implements OnInit {
   myForm: FormGroup;
   constructor() {
-    this.myForm = new FormGroup({
-      'location': new FormControl()
-    });
    }
 
   ngOnInit() {
+    this.myForm = new FormGroup({
+      'location': new FormControl('',
+        [
+          Validators.pattern('^\d{5}(?:[-\s]\d{4})?$')
+        ]
+      )
+    });
   }
   onSubmit() {
-    console.log('submit');
-  }
+    console.log(this.myForm);
+  };
 
 }
