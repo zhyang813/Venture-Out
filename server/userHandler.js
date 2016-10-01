@@ -1,5 +1,7 @@
 var User = require('./userModel.js');
+var mongoose = require('mongoose');
 
+var db = mongoose.connection;
 
 module.exports = {
 
@@ -23,6 +25,16 @@ module.exports = {
       }
     })
   },
+
+  addFavorite: function(req, res) {
+
+    console.log('****', req.body);
+    db.collections.users.update(
+      { userId: req.body.userId },
+      { $push: { favoritedEvents: req.body.favoritedEvent } }
+    );
+    res.status(200).send('Successfully updated user');
+  }
 
   // findEvent: function(eventId, callback){
   //   console.log('findEvent', eventId);

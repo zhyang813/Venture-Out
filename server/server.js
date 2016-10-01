@@ -18,6 +18,7 @@ var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/ventureout';
 // connect db
 mongoose.connect(mongoURI);
 
+
 // set middleware
 // use morgan
 app.use(morgan('dev'));
@@ -35,14 +36,29 @@ app.use(express.static(__dirname));
 app.get('/api/events', eventHandler.getAllEvents);
 //app.get('/api/searchevents', eventHandler.searchEvents);
 
-app.post('/api/users', function(req, res){
+/*
+req.body template for POST
+{
+  "name": "Me",
+  "email": "me@me.com",
+  "userId": "me",
+  "interests": ["art", "sports"],
+  "favoritedEvents": ["event1","event2"]
+}
+*/
+app.post('/api/users', function(req, res) {
   userHandler.addUser(req, res);
 });
 
 // id === user_id from auth0
-app.get('/api/user/:id', function(req, res){
+app.get('/api/user/:id', function(req, res) {
   userHandler.findUser(req, res);
 });
+
+// req.body should look like { userId: *'user_id' from auth*, favoritedEvent: *string of favorited event info* }
+app.put('/api/user', function(req, res) {
+  userHandler.addFavorite(req, res);
+})
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname,'index.html'));
