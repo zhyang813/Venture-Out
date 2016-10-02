@@ -28,9 +28,15 @@
       <i class="material-icons">menu</i>
     </button></span>
     <span>&nbsp;&nbsp;&nbsp;<a class="headerlink"[routerLink]="['/']">VentureOut</a></span>
-    <a class="headerlink" *ngIf="auth.authenticated()" [routerLink]="['/user']">&nbsp;&nbsp;&nbsp;User Page</a>
-    <a class="example-fill-remaining-space headerlink" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
-    <a class="example-fill-remaining-space headerlink" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
+
+    <button md-button class="example-fill-remaining-space headerlink" [md-menu-trigger-for]="menu">Menu</button>
+
+    <md-menu #menu="mdMenu">
+        <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
+        <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
+        <button md-menu-item *ngIf="auth.authenticated()"> Recommended </button>
+        <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
+    </md-menu>
   </md-toolbar>
 
 
