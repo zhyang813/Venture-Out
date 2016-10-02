@@ -10,36 +10,51 @@
 <div class="codrops-top">
   <md-toolbar color="accent">
     <span><a class="headerlink"[routerLink]="['/']">VentureOut</a></span>
-    <a class="headerlink" *ngIf="auth.authenticated()" [routerLink]="['/user']">User Page</a>
-    <a class="example-fill-remaining-space headerlink" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
-    <a class="example-fill-remaining-space headerlink" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
+
+    <button md-button class="example-fill-remaining-space headerlink" [md-menu-trigger-for]="menu">Menu</button>
+
+    <md-menu #menu="mdMenu">
+        <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
+        <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
+        <button md-menu-item *ngIf="auth.authenticated()"> Recommended </button>
+        <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
+    </md-menu>
   </md-toolbar>
 </div>
 
 
-<div class="container">
-<md-card class="searchbox">
-  <md-card-title>Search For Your Next Event</md-card-title>
+<div class="searchbox">
+<md-card>
+  <md-card-title class="cardtitletext">Search For Your Next Event</md-card-title>
   <md-card-content>
     <form (ngSubmit)="onSearch(form)" #form="ngForm">
-      <table style="width: 85%" cellspacing="10"><tr>
-        <td><md-input placeholder="Find" style="width: 80%" ngModel name="find"></md-input></td>
+
+
+      <table style="width: 100%"><tr>
+        <td><md-input placeholder="Find" style="width: 90%" dividerColor="accent" ngModel name="find"></md-input></td>
         <td>
-          <md-input placeholder="Budget" style="width: 60%" align="end" ngModel name="budget">
-            <span md-prefix>$&nbsp;</span>
-            <span md-suffix>.00</span>
-          </md-input></td>
+          <md-input placeholder="Interests" style="width: 98%" dividerColor="accent" ngModel name="interests"></md-input>
+        </td>
       </tr></table>
 
-      <table style="width: 100%" cellspacing="0"><tr>
-        <td><md-input style="width: 80%"  placeholder="Start (YYYY-MM-DD)" ngModel name="start"></md-input></td>
-        <td>to</td>
-        <td><md-input style="width: 80%"  placeholder="End (YYYY-MM-DD)" ngModel name="end"></md-input></td>
+      <table style="width: 100%"><tr>
+        <td><md-input placeholder="Start (YYYY-MM-DD)" style="width: 95%" dividerColor="accent" ngModel name="start"></md-input></td>
+        <td>to&nbsp;</td>
+        <td><md-input placeholder="End (YYYY-MM-DD)" style="width: 90%" dividerColor="accent" ngModel name="end"></md-input></td>
         <td>
-          <md-input placeholder="Interests" style="width: 73%" ngModel name="interests"></md-input>
+          <md-input placeholder="Budget" align="end" style="width: 96%" dividerColor="accent" ngModel name="budget">
+            <span md-prefix>$&nbsp;</span>
+            <span md-suffix>.00</span>
+          </md-input>
         </td>
-        <td><button md-raised-button class="searchbutton" type="submit">Search</button></td>
       </tr></table>
+
+      <table style="width: 100%"><tr>
+        <td><md-input placeholder="Location" style="width: 90%" dividerColor="accent" ngModel name="location"></md-input></td>
+        <td><button md-raised-button class="searchbutton" type="submit" style="width: 96%">Search</button></td>
+      </tr></table>
+
+
     </form>
   </md-card-content>
 </md-card>

@@ -46,7 +46,7 @@ import { CategorySelectComponent } from './interactive-helper/category-select/ca
     MdInputModule.forRoot(),
     MdCardModule,
     MdButtonModule,
-    MdMenuModule,
+    MdMenuModule.forRoot(),
     MdSidenavModule,
     MdIconModule,
     ReactiveFormsModule
