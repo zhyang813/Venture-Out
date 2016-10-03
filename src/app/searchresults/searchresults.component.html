@@ -1,3 +1,12 @@
+<md-toolbar color="accent">
+  <span><button class="app-icon-button" (click)="sidenav.toggle()">
+    <i class="material-icons">menu</i>
+  </button></span>
+  <span>&nbsp;&nbsp;&nbsp;<a class="headerlink"[routerLink]="['/']">VentureOut</a></span>
+
+  <button md-button class="example-fill-remaining-space headerlink" [md-menu-trigger-for]="menu">Menu</button>
+</md-toolbar>
+
 <div class="searchresultcontainer">
 <md-sidenav-layout>
   <md-sidenav #sidenav mode="side" class="app-sidenav">
@@ -23,22 +32,13 @@
     </md-card>
   </md-sidenav>
 
-<md-toolbar color="accent">
-  <span><button class="app-icon-button" (click)="sidenav.toggle()">
-    <i class="material-icons">menu</i>
-  </button></span>
-  <span>&nbsp;&nbsp;&nbsp;<a class="headerlink"[routerLink]="['/']">VentureOut</a></span>
-
-  <button md-button class="example-fill-remaining-space headerlink" [md-menu-trigger-for]="menu">Menu</button>
+<div id="wrapper">
   <md-menu #menu="mdMenu">
       <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
       <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
       <button md-menu-item *ngIf="auth.authenticated()"> Recommended </button>
       <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
   </md-menu>
-</md-toolbar>
-
-<div id="wrapper">
   <div id="columns">
       <div class="pin" *ngFor="let event of events">
         <img src={{event.imageUrl}}>
