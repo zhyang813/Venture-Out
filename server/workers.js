@@ -48,10 +48,87 @@ module.exports = {
         })
       });
     }
+  },
 
-    console.log('TM fetcher finished running');
+
+  fetchEB: function () {
+
+    console.log('EB fetcher is running');
+
+    var categories = {
+      '101': 'Business & Professional',
+      '103': 'Music',
+      '110': 'Food & Drink',
+      '113': 'Community & Culture',
+      '105': 'Performing & Visual Arts',
+      '104': 'Film, Media & Entertainment',
+      '108': 'Sports & Fitness',
+      '107': 'Health & Wellness',
+      '102': 'Science & Technology',
+      '109': 'Travel & Outdoor',
+      '111': 'Charity & Causes',
+      '114': 'Religion & Spirituality',
+      '115': 'Family & Education',
+      '116': 'Seasonal & Holiday',
+      '112': 'Government & Politics',
+      '106': 'Fashion & Beauty',
+      '117': 'Home & Lifestyle',
+      '118': 'Auto, Boat & Air',
+      '119': 'Hobbies & Special Interest',
+      '199': 'other'
+    };
+
+    var count = 1;
+
+    for (var i = 7; i < 30; i++) {
+
+      var futureDate = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000).toJSON().slice(0,10);
+      var startDate = futureDate + 'T00:00:00Z';
+
+      var url = 'https://www.eventbriteapi.com/v3/events/search/?sort_by=best&location.address=us&start_date.range_start='+ startDate +'&expand=venue&token=YZO3HZ5MJZYKY6QU64H2';
+
+      setTimeout(function() {
+
+        Request.get(url).then((response) => {
+
+          //console.log('Event Brite Event : ', count, response.body.events[0]);
+
+          response.body.events.forEach( function (event) {
+
+            // console.log('Event Brite Event : ', count, event.id);
+            // console.log("=============================")
+            // count++;
+
+            Event.findEvent(event.id, function() {
+
+            // If it's new event, create event obj
+              var newEvent  = {
+                name: event.name.text,
+                eventId: event.id,
+                desc: "No Description Available",
+                url: event.url || null,
+                imageUrl: event.logo? event.logo.url : null,
+                timeZone: event.start.timezone || null,
+                eventStartTime: event.start.utc || null,
+                genre: categories[event.category_id] || null,
+                address: {
+                  street: event.venue? (event.venue.address.line2? event.venue.address.line1 + event.venue.address.line2 : event.venue.address.line1) : null,
+                  city: event.venue? event.venue.address.city : null,
+                  state: event.venue? event.venue.address.region : null,
+                  zip_code: event.venue? (typeof event.venue.address.postal_code === 'number'? event.venue.address.postal_code: null) : null,
+                  country: event.venue? event.venue.address.country : null
+                },
+                price: null
+              };
+
+              // Add new event
+              Event.addEvent(newEvent);
+            });
+          });
+        });
+      }, 3000);
+    }
   }
-
 
 
 }

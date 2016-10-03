@@ -91,13 +91,18 @@ app.listen(port);
 
 console.log("Server is listening on port " + port);
 
-//Ticket Master data fetcher
-
-// setInterval(worker.fetchTM, 1000*60*60);
+// Ticket Master data fetcher
 worker.fetchTM();
 new cron('0 0 0 * * *', function() {
-  console.log('cron job running');
+  console.log('TM cron job running');
   worker.fetchTM();
+}, null, true, 'America/Los_Angeles');
+
+// EventBrite data fetcher
+worker.fetchEB();
+new cron('0 0 2 * * *', function() {
+  console.log('EB cron job running');
+  worker.fetchEB();
 }, null, true, 'America/Los_Angeles');
 
 module.exports = app;
