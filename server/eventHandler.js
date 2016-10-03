@@ -45,19 +45,40 @@ module.exports = {
   },
 
   findEvents: function(req, res){
-    console.log(Number.parseInt.call(this, req.params.amount))
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
-    var zipCode;
-    services.geocoder.geocode('94604', function(err, res) {
-      console.log(res);
-    });
-    Event.where('genre').eq(req.params.name).limit(numberOfEvents)
-    .then(function(result){
-      res.send(result)
-    })
-    .catch(function(err){
-      res.send(err)
-    })
+    var zipCode = req.params.zip;
+
+    var getLocation = function(zipCode){
+      return (
+        services.geocoder.geocode(zipCode)
+        .then(function(result){
+            var country;
+            var city = result[0].city.split(' ').join('_');
+            if(result[0].country === 'United States'){
+              country = 'America'
+            }
+           return `${country}/${city}`
+        })
+      )
+    },
+    getEvents = function(zip){
+      return Event.where('genre')
+      .eq(req.params.name)
+      .where('timeZone')
+      .eq(zip)
+      .limit(numberOfEvents)
+      .then(function(result){
+        res.send(result)
+      })
+      .catch(function(err){
+        res.send(err)
+      })
+    }
+
+    getLocation(zipCode)
+    .then(getEvents)
+
+
   }
 
   // frontPageRecommendation: function(req, res) {
