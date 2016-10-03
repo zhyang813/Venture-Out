@@ -11,6 +11,7 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
 import { routing } from './app.routing';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
 import { AuthService } from './auth/auth.service';
+import { UserPageService } from './user-page/user-page.service';
 import { UserPageComponent } from './user-page/user-page.component';
 import { EventService } from './searchresults/searchresults.service';
 
@@ -51,7 +52,7 @@ import { CategorySelectComponent } from './interactive-helper/category-select/ca
     MdIconModule,
     ReactiveFormsModule
   ],
-  providers: [AUTH_PROVIDERS, AuthService, EventService],
+  providers: [AUTH_PROVIDERS, AuthService, EventService, UserPageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
