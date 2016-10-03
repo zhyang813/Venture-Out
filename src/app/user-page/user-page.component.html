@@ -1,25 +1,32 @@
 <md-toolbar color="accent">
   <span><a class="headerlink" *ngIf="auth.authenticated()" [routerLink]="['/']">VentureOut</a></span>
-  <a class="example-fill-remaining-space headerlink" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
-  <a class="example-fill-remaining-space headerlink" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
+
+  <button md-button class="example-fill-remaining-space headerlink" [md-menu-trigger-for]="menu">Menu</button>
+
+  <md-menu #menu="mdMenu">
+      <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
+      <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
+      <button md-menu-item *ngIf="auth.authenticated()"> Recommended </button>
+      <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
+  </md-menu>
+
 </md-toolbar>
 
-<div class="container">
 <div class="row">
   <div class="col-md-8">
   </div>
-  <div class="col-md-4">
-    <md-card *ngIf="auth.authenticated() && auth.userProfile">
-      <md-card-title class="text-center-align">My Profile</md-card-title>
-      <img img md-card-md-image src="http://khns.org/wp-content/uploads/2014/07/profile-icon-400x380.png">
-      <hr>
-      <md-card-content>
-        <p><strong>Name: </strong> {{auth.userProfile.name}}</p>
-        <p><strong>Email: </strong> {{auth.userProfile.email}}</p>
-        <p><strong>Nickname: </strong> {{auth.userProfile.nickname}}</p>
-      </md-card-content>
-    </md-card>
+  <div class="col-md-4" *ngIf="auth.authenticated() && auth.userProfile">
+      <div class="profilecontainer">
+        <br>
+        <img src="http://khns.org/wp-content/uploads/2014/07/profile-icon-400x380.png">
+        <hr>
+        <div>
+          <p><strong>Name: </strong> {{auth.userProfile.name}}</p>
+          <p><strong>Email: </strong> {{auth.userProfile.email}}</p>
+          <p><strong>Nickname: </strong> {{auth.userProfile.nickname}}</p>
+        </div>
+      </div>
   </div>
 </div>
-</div>
+
 <h4 *ngIf="!auth.authenticated()">You are not logged in, please click 'Log in' button to login</h4>

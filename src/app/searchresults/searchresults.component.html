@@ -1,3 +1,4 @@
+<div class="searchresultcontainer">
 <md-sidenav-layout>
   <md-sidenav #sidenav mode="side" class="app-sidenav">
     <md-card>
@@ -22,72 +23,20 @@
     </md-card>
   </md-sidenav>
 
+<md-toolbar color="accent">
+  <span><button class="app-icon-button" (click)="sidenav.toggle()">
+    <i class="material-icons">menu</i>
+  </button></span>
+  <span>&nbsp;&nbsp;&nbsp;<a class="headerlink"[routerLink]="['/']">VentureOut</a></span>
 
-  <md-toolbar color="accent">
-    <span><button class="app-icon-button" (click)="sidenav.toggle()">
-      <i class="material-icons">menu</i>
-    </button></span>
-    <span>&nbsp;&nbsp;&nbsp;<a class="headerlink"[routerLink]="['/']">VentureOut</a></span>
-
-    <button md-button class="example-fill-remaining-space headerlink" [md-menu-trigger-for]="menu">Menu</button>
-
-    <md-menu #menu="mdMenu">
-        <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
-        <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
-        <button md-menu-item *ngIf="auth.authenticated()"> Recommended </button>
-        <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
-    </md-menu>
-  </md-toolbar>
-
-
-<!-- <div class="col-md-4">
-  <md-card>
-    <img md-card-image src="https://i.ytimg.com/vi/vn2mfDELAv4/maxresdefault.jpg">
-    <md-card-subtitle>TUE, OCT 4 7:00PM</md-card-subtitle>
-    <md-card-title>Event Title</md-card-title>
-    <md-card-content>
-          <p>This is event description.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
-    </md-card-content>
-    <md-card-actions>
-          <button md-button>TICKETS</button>
-          <button md-button>FAVORITE</button>
-     </md-card-actions>
-  </md-card>
-</div>
-<div class="col-md-4">
-  <md-card>
-    <img md-card-image src="https://i.ytimg.com/vi/vn2mfDELAv4/maxresdefault.jpg">
-    <md-card-subtitle>TUE, OCT 4 7:00PM</md-card-subtitle>
-    <md-card-title>Event Title</md-card-title>
-    <md-card-content>
-          <p>This is event description.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
-    </md-card-content>
-    <md-card-actions>
-          <button md-button>TICKETS</button>
-          <button md-button>FAVORITE</button>
-     </md-card-actions>
-  </md-card>
-</div>
-<div class="col-md-4">
-  <md-card>
-    <img md-card-image src="https://i.ytimg.com/vi/vn2mfDELAv4/maxresdefault.jpg">
-    <md-card-subtitle>TUE, OCT 4 7:00PM</md-card-subtitle>
-    <md-card-title>Event Title</md-card-title>
-    <md-card-content>
-          <p>This is event description.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
-    </md-card-content>
-    <md-card-actions>
-          <button md-button>TICKETS</button>
-          <button md-button>FAVORITE</button>
-     </md-card-actions>
-  </md-card>
-</div> -->
+  <button md-button class="example-fill-remaining-space headerlink" [md-menu-trigger-for]="menu">Menu</button>
+  <md-menu #menu="mdMenu">
+      <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
+      <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
+      <button md-menu-item *ngIf="auth.authenticated()"> Recommended </button>
+      <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
+  </md-menu>
+</md-toolbar>
 
 <div id="wrapper">
   <div id="columns">
@@ -109,3 +58,4 @@
 </div>
 
 </md-sidenav-layout>
+</div>
