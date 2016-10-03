@@ -7,12 +7,21 @@ module.exports = {
 
   addUser: function(req, res) {
     console.log('Add User Called');
-    User.create(req.body, function(error, user){
+    User.findOne({'userId': req.body.userId}, function(error, user){
       if(error){
         console.error(error);
+      } else if(user === null){
+        User.create(req.body, function(error, user){
+          if(error){
+            console.error(error);
+          } else {
+            console.log('User Successfully Created!', user)
+            res.json(user);
+          }
+        })
       } else {
-        console.log('User Successfully Created!', user)
-        res.json(user);
+        console.log('User Already Created');
+        res.status(200).send('User already exists!');
       }
     })
   },
@@ -23,6 +32,7 @@ module.exports = {
       if(error){
         console.error(error);
       } else {
+        console.log(user);
         res.json(user);
       }
     })
