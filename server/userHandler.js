@@ -1,4 +1,5 @@
 var User = require('./userModel.js');
+var Events = require('./eventModel.js');
 var mongoose = require('mongoose');
 
 var db = mongoose.connection;
@@ -46,6 +47,23 @@ module.exports = {
       { $push: { favoritedEvents: req.body.favoritedEvent } }
     );
     res.status(200).send('Successfully updated user');
+  },
+
+  getFavorites: function(req, res) {
+    console.log('Get Favorites Called');
+    User.findOne({'userId': req.params.id}, function(error, user){
+      if(error){
+        console.error(error);
+      } else {
+        Events.find({ eventId: { $in: user.favoritedEvents } }, function(error, events){
+          if(error){
+            console.error(error)
+          } else {
+            res.json(events);
+          }
+        })
+      }
+    })
   }
 
 }

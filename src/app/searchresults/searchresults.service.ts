@@ -14,7 +14,8 @@ export class EventService {
 
 
   constructor(private http: Http,
-              private auth: AuthService) {}
+              private auth: AuthService) {
+  }
 
   // Http request to get all events from DB
   getEvents () {
