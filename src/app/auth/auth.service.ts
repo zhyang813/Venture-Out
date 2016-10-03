@@ -1,5 +1,6 @@
 import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
+import { Headers, Http, RequestOptions } from '@angular/http';
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
@@ -15,7 +16,7 @@ export class AuthService {
 
   userProfile: Object;
 
-  constructor() {
+  constructor(private http: Http) {
 
     // Set userProfile attribute of already saved profile
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
@@ -34,6 +35,18 @@ export class AuthService {
         console.log(profile);
         localStorage.setItem('profile', JSON.stringify(profile));
         this.userProfile = profile;
+        let body = JSON.stringify({
+          'name': profile.name,
+          'email': profile.email,
+          'userId': profile.user_id,
+          'interests': [],
+          'favoritedEvents': []
+        });
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post('/api/users', body, options).subscribe(function(response){
+          console.log(response);
+        });
       });
     });
   };
@@ -55,4 +68,5 @@ export class AuthService {
     localStorage.removeItem('profile');
     this.userProfile = undefined;
   };
+
 }
