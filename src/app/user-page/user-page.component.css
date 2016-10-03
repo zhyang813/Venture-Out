@@ -7,17 +7,23 @@
 }
 
 .text-center-align {
-  margin: auto;
-  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 img {
     display: block;
     margin: auto;
-    width: 40%;
+    width: 30%;
 }
 
 .headerlink {
   color: white;
   text-decoration: none;
+}
+
+.profilecontainer {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
 }
