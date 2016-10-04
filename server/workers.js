@@ -14,10 +14,14 @@ module.exports = {
     for (var i = 7; i < 30; i++) {
 
       var futureDate = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000).toJSON().slice(0,10);
-      var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=EHAU7JI8sxVlrnoDKQD0Ylr01o9cdudk&size=30&countryCode=US&startDateTime='+futureDate+'T00:00:00Z';
+      // var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=EHAU7JI8sxVlrnoDKQD0Ylr01o9cdudk&size=30&countryCode=US&startDateTime='+futureDate+'T00:00:00Z';
+
+       var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=o8BUqiVck0XjtbRwN6tUjVsSFSjB22Fo&size=30&countryCode=US&startDateTime='+futureDate+'T00:00:00Z';
 
       Request.get(url).then(function(response) {
         response.body._embedded.events.forEach(function(event) {
+
+          console.log('Tm getting events');
 
           // Check if the event is already in DB
           Event.findEvent(event.id, function() {
@@ -99,7 +103,7 @@ module.exports = {
             // console.log("=============================")
             // count++;
 
-            Event.findEvent(event.id, function() {
+            Event.findEventById(event.id, function() {
 
             // If it's new event, create event obj
               var newEvent  = {

@@ -67,7 +67,6 @@ export class SearchresultsComponent {
           console.log('Get all events complete', this.events.length);
         }
       });
-
   }
 
   saveFavorite(eventId) {

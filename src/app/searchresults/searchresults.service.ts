@@ -19,7 +19,7 @@ export class EventService {
 
   // Http request to get all events from DB
   getEvents () {
-      return this.http.get('/api/events').map(res => res.json());
+    return this.http.get('/api/events').map(res => res.json());
   }
 
   public saveFavorite(eventId) {

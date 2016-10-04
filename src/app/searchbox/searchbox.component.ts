@@ -13,9 +13,15 @@ import { EventService } from '../searchresults/searchresults.service';
 
 export class SearchboxComponent {
 
+  events: Array<any>;
+
   constructor(private auth: AuthService,
-              private router: Router,
-              private eventService: EventService ) {}
+    private router: Router,
+    private eventService: EventService ) {
+
+    this.frontPageEvents();
+
+  }
 
   onSearch(form) {
 
@@ -26,6 +32,32 @@ export class SearchboxComponent {
     this.eventService.interest = form.value.interests ? form.value.interests.toLowerCase() : '';
     this.router.navigate(['/searchresults']);
 
+  }
+
+  frontPageEvents () {
+
+    var currentTime = new Date().toJSON().slice(0);
+
+    this.eventService.getEvents()
+    .subscribe(data => this.events = data
+      .filter(event => {
+        return Date.parse (event.eventStartTime) > Date.parse (currentTime)
+      }),
+      error => console.log(error),
+      () => {
+        if (this.events.length === 0) {
+          alert('No matched results. Please try again.');
+        } else {
+          var randomIdx = [];
+          var tempArray = []
+          for (var i = 0; i < 10; i++) {
+            randomIdx.push(Math.floor(Math.random() * this.events.length));
+          }
+          randomIdx.forEach(index => tempArray.push(this.events[index]));
+          this.events = tempArray.slice();
+          console.log('Landing Page get events complete', this.events.length);
+        }
+      });
   }
 
 }
