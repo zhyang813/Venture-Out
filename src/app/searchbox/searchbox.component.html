@@ -24,68 +24,7 @@
 
 
 <div class="searchbox">
-<<<<<<< e2bbc7d1afa4647a487d52b43b2b5220e49ba45a
-  <md-card>
-    <md-card-title class="cardtitletext">Search For Your Next Event</md-card-title>
-    <md-card-content>
-      <form (ngSubmit)="onSearch(form)" #form="ngForm">
-
-
-        <table style="width: 100%"><tr>
-          <td><md-input placeholder="Find" style="width: 90%" dividerColor="accent" ngModel name="find"></md-input></td>
-          <td>
-            <md-input placeholder="Interests" style="width: 98%" dividerColor="accent" ngModel name="interests"></md-input>
-          </td>
-        </tr></table>
-
-        <table style="width: 100%"><tr>
-          <td><md-input placeholder="Start (YYYY-MM-DD)" style="width: 95%" dividerColor="accent" ngModel name="start"></md-input></td>
-          <td>to&nbsp;</td>
-          <td><md-input placeholder="End (YYYY-MM-DD)" style="width: 90%" dividerColor="accent" ngModel name="end"></md-input></td>
-          <td>
-            <md-input placeholder="Budget" align="end" style="width: 96%" dividerColor="accent" ngModel name="budget">
-              <span md-prefix>$&nbsp;</span>
-              <span md-suffix>.00</span>
-            </md-input>
-          </td>
-        </tr></table>
-
-        <table style="width: 100%"><tr>
-          <td><md-input placeholder="Location" style="width: 90%" dividerColor="accent" ngModel name="location"></md-input></td>
-          <td><button md-raised-button class="searchbutton" type="submit" style="width: 96%">Search</button></td>
-        </tr></table>
-
-
-      </form>
-    </md-card-content>
-  </md-card>
-</div>
-
-
-<!--
-<div id="wrapper">
-  <div id="columns">
-      <div class="pin" *ngFor="let event of events">
-        <img src={{event.imageUrl}}>
-        <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
-        <p>{{event.genre}}</p>
-        <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
-        <h4>{{event.name}}</h4>
-        <md-card-content>
-
-        </md-card-content>
-        <md-card-actions>
-              <button md-button><a href={{event.url}} target="_blank">TICKETS</a></button>
-              <button md-button (click)="saveFavorite(event.eventId)">FAVORITE</button>
-         </md-card-actions>
-      </div>
-  </div>
-</div>
-
- -->
-
-=======
-<md-card>
+ <md-card>
   <md-card-title class="cardtitletext">Search For Your Next Event</md-card-title>
     <div class="row">
         <form autocomplete="off" class="col s12" (ngSubmit)="onSearch(form)" #form="ngForm">
@@ -148,4 +87,26 @@
     </div>
 </md-card>
 </div>
->>>>>>> Improved search box UI and also created auto complete on interest field
+
+
+<!--
+<div id="wrapper">
+  <div id="columns">
+      <div class="pin" *ngFor="let event of events">
+        <img src={{event.imageUrl}}>
+        <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
+        <p>{{event.genre}}</p>
+        <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
+        <h4>{{event.name}}</h4>
+        <md-card-content>
+
+        </md-card-content>
+        <md-card-actions>
+              <button md-button><a href={{event.url}} target="_blank">TICKETS</a></button>
+              <button md-button (click)="saveFavorite(event.eventId)">FAVORITE</button>
+         </md-card-actions>
+      </div>
+  </div>
+</div>
+
+ -->
