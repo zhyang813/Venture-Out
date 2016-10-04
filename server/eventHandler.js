@@ -68,7 +68,7 @@ module.exports = {
       .eq(zip)
       .limit(numberOfEvents)
       .then(function(result){
-        res.send(result)
+        res.json(result)
       })
       .catch(function(err){
         res.send(err)

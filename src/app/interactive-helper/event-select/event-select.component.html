@@ -1,0 +1,25 @@
+<div id="container">
+  <div id="message">
+    Here are some events for your area and within your city
+    Please select the ones you like so we can start adjusting events based
+    on your preferences!
+  </div>
+  <div id='columns'>
+    <div class="pin" id="suggestions" *ngFor="let event of events">
+      <img src={{event.imageUrl}}>
+      <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
+      <p>{{event.genre}}</p>
+      <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
+      <h4>{{event.name}}</h4>
+
+      <md-card-actions>
+            <button md-button (click)="onLike($event)" (click)="saveFavorite(event.eventId)">Like</button>
+            <button md-button (click)="saveFavorite(event.eventId)">Don't Like</button>
+       </md-card-actions>
+    </div>
+  </div>
+
+
+
+
+</div>

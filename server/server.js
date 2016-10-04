@@ -97,7 +97,6 @@ console.log("Server is listening on port " + port);
 
 // Ticket Master data fetcher
 // worker.fetchTM();
-
 new cron('0 0 0 * * *', function() {
   console.log('TM cron job running');
   worker.fetchTM();
