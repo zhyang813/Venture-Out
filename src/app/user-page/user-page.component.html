@@ -31,6 +31,22 @@
 
 <h4 *ngIf="!auth.authenticated()">You are not logged in, please click 'Log in' button to login</h4>
 
-<ul>
-  <li *ngFor="let event of favorites">{{event.name}}</li>
-</ul>
+<h1>Your Favorites!</h1>
+
+<div id="wrapper" *ngIf="auth.authenticated() && auth.userProfile">
+  <div id="columns">
+      <div class="pin" *ngFor="let event of favorites">
+        <img src={{event.imageUrl}}>
+        <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
+        <p>{{event.genre}}</p>
+        <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
+        <h4>{{event.name}}</h4>
+        <md-card-content>
+
+        </md-card-content>
+        <md-card-actions>
+              <button md-button><a href={{event.url}} target="_blank">TICKETS</a></button>
+        </md-card-actions>
+      </div>
+  </div>
+</div>
