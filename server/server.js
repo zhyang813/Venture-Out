@@ -96,14 +96,14 @@ app.listen(port);
 console.log("Server is listening on port " + port);
 
 // Ticket Master data fetcher
-worker.fetchTM();
+//worker.fetchTM();
 new cron('0 0 0 * * *', function() {
   console.log('TM cron job running');
   worker.fetchTM();
 }, null, true, 'America/Los_Angeles');
 
 // EventBrite data fetcher
-worker.fetchEB();
+//worker.fetchEB();
 new cron('0 0 2 * * *', function() {
   console.log('EB cron job running');
   worker.fetchEB();
