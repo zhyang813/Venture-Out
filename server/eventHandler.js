@@ -11,14 +11,14 @@ module.exports = {
       if (err) {
         console.log("New event created error", err);
       } else {
-        console.log('Successful created a event!')
+        console.log('Successful created an event!')
       }
     });
   },
 
 
   // Find a specific event using eventId
-  findEvent: function(eventId, callback){
+  findEventById: function(eventId, callback){
     // console.log('findEvent', eventId);
 
     Event.findOne({'eventId': eventId}, function(err, event){
@@ -58,7 +58,25 @@ module.exports = {
     .catch(function(err){
       res.send(err)
     })
-
   }
+
+  // frontPageRecommendation: function(req, res) {
+
+  //   var currentDate = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000).toJSON().slice(0,10);
+  //   var currentTime = currentDate + 'T00:00:00Z'
+
+  //   console.log('server currentTime', currentTime);
+
+  //   Event.find({eventStartTime: currentTime}, function(err, events) {
+  //     if (err) {
+  //       console.log("New event created error", err);
+  //       res.status(500).send({error: err});
+  //     } else {
+  //       console.log('server', events)
+  //       //res.json(events);
+  //     }
+  //   });
+
+  // }
 
 }
