@@ -18,9 +18,9 @@ export class SearchboxComponent {
   events: Array<any>;
 
   constructor(private auth: AuthService,
-    private router: Router,
-    private eventService: EventService,
-            myElement: ElementRef) {
+              private router: Router,
+              private eventService: EventService,
+              myElement: ElementRef) {
 
             this.frontPageEvents();
             this.elementRef = myElement;
