@@ -26,3 +26,36 @@
 .cardtitletext {
   text-align: center;
 }
+
+.suggestions{
+  border:solid 1px #f1f1f1;
+  position:absolute;
+  width:100%;
+  background: white;
+}
+
+.suggestions ul{
+  padding: 0px;
+  margin: 0px;
+}
+
+.suggestions ul li{
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.suggestions ul li a{
+  padding:5px;
+  display: block;
+  text-decoration: none;
+  color:#7E7E7E;
+}
+
+.suggestions ul li a:hover{
+  background-color: #f1f1f1;
+}
+
+.complete-selected {
+  background-color: #f1f1f1;
+}

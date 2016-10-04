@@ -26,36 +26,64 @@
 <div class="searchbox">
 <md-card>
   <md-card-title class="cardtitletext">Search For Your Next Event</md-card-title>
-  <md-card-content>
-    <form (ngSubmit)="onSearch(form)" #form="ngForm">
+    <div class="row">
+        <form autocomplete="off" class="col s12" (ngSubmit)="onSearch(form)" #form="ngForm">
+          <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">search</i>
+                <input id="find" type="text" ngModel name="find">
+                <label for="find">Find</label>
+              </div>
+
+              <div class="input-field col s6">
+                <i class="material-icons prefix">games</i>
+                <input id="interests" type="text" class="validate filter-input" [(ngModel)]=query (keyup)=filter($event) (blur)=handleBlur() ngModel name="interests">
+                <label for="interests">Interests</label>
+
+                <div class="suggestions" *ngIf="filteredList.length > 0">
+                  <ul *ngFor="let item of filteredList;let idx = index" >
+                    <li [class.complete-selected]="idx == selectedIdx">
+                      <a (click)="select(item)">{{item}}</a>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="input-field col s4">
+                <i class="material-icons prefix">today</i>
+                <input id="start" type="text" ngModel name="start">
+                <label for="start">Start (YYYY-MM-DD)</label>
+              </div>
+              <div class="input-field col s4">
+              <i class="material-icons prefix">today</i>
+                <input id="end" type="text" ngModel name="end">
+                <label for="end">End (YYYY-MM-DD)</label>
+              </div>
+              <div class="input-field col s4">
+                <i class="prefix">$</i>
+                <input id="budget" type="text" ngModel name="budget">
+                <label for="budget">Budget</label>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s7">
+              <i class="material-icons prefix">my_location</i>
+              <input id="location" type="text" ngModel name="location">
+              <label for="location">Location</label>
+            </div>
+            <div class="input-field col s5">
+              <button class="btn waves-effect waves-light" type="submit" style="width: 100%;">Search
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
 
 
-      <table style="width: 100%"><tr>
-        <td><md-input placeholder="Find" style="width: 90%" dividerColor="accent" ngModel name="find"></md-input></td>
-        <td>
-          <md-input placeholder="Interests" style="width: 98%" dividerColor="accent" ngModel name="interests"></md-input>
-        </td>
-      </tr></table>
-
-      <table style="width: 100%"><tr>
-        <td><md-input placeholder="Start (YYYY-MM-DD)" style="width: 95%" dividerColor="accent" ngModel name="start"></md-input></td>
-        <td>to&nbsp;</td>
-        <td><md-input placeholder="End (YYYY-MM-DD)" style="width: 90%" dividerColor="accent" ngModel name="end"></md-input></td>
-        <td>
-          <md-input placeholder="Budget" align="end" style="width: 96%" dividerColor="accent" ngModel name="budget">
-            <span md-prefix>$&nbsp;</span>
-            <span md-suffix>.00</span>
-          </md-input>
-        </td>
-      </tr></table>
-
-      <table style="width: 100%"><tr>
-        <td><md-input placeholder="Location" style="width: 90%" dividerColor="accent" ngModel name="location"></md-input></td>
-        <td><button md-raised-button class="searchbutton" type="submit" style="width: 96%">Search</button></td>
-      </tr></table>
-
-
-    </form>
-  </md-card-content>
+        </form>
+    </div>
 </md-card>
 </div>
