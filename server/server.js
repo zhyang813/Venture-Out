@@ -71,7 +71,7 @@ app.get('/api/user/favorites/:id', function(req, res){
 });
 
 //Routes
-app.get('/api/events/category/:name/event/:amount', function(req, res) {
+app.get('/api/events/category/:name/zipcode/:zip/quantity/:amount', function(req, res) {
   // eventHandler.
   eventHandler.findEvents(req, res)
 });
@@ -97,7 +97,6 @@ console.log("Server is listening on port " + port);
 
 // Ticket Master data fetcher
 // worker.fetchTM();
-
 new cron('0 0 0 * * *', function() {
   console.log('TM cron job running');
   worker.fetchTM();

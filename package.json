@@ -36,6 +36,7 @@
     "angular2-jwt": "^0.1.23",
     "animate.css": "^3.5.2",
     "auth0-lock": "^10.3.0",
+    "axios": "^0.14.0",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",

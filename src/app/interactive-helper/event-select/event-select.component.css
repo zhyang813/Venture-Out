@@ -13,6 +13,9 @@
   margin-top: 5%;
 }
 
+.md-raised-button {
+  margin-left: 100px;
+}
 #columns {
   -webkit-column-count: 3;
   -webkit-column-gap: 10px;
