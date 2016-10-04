@@ -36,21 +36,21 @@ export class SearchboxComponent {
 
   frontPageEvents () {
 
-    var currentTime = new Date().toJSON().slice(0);
+    let currentTime = new Date().toJSON().slice(0);
 
     this.eventService.getEvents()
     .subscribe(data => this.events = data
       .filter(event => {
-        return Date.parse (event.eventStartTime) > Date.parse (currentTime)
+        return Date.parse (event.eventStartTime) > Date.parse (currentTime);
       }),
       error => console.log(error),
       () => {
         if (this.events.length === 0) {
           alert('No matched results. Please try again.');
         } else {
-          var randomIdx = [];
-          var tempArray = []
-          for (var i = 0; i < 10; i++) {
+          let randomIdx = [];
+          let tempArray = [];
+          for (let i = 0; i < 10; i++) {
             randomIdx.push(Math.floor(Math.random() * this.events.length));
           }
           randomIdx.forEach(index => tempArray.push(this.events[index]));
