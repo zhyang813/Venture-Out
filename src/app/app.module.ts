@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { Ng2PaginationModule } from 'ng2-pagination';
 
 
 // app components
@@ -23,6 +24,7 @@ import { MdCardModule } from '@angular2-material/card';
 import { MdMenuModule } from '@angular2-material/menu';
 import { MdSidenavModule } from '@angular2-material/sidenav';
 import { MdIconModule } from '@angular2-material/icon';
+
 
 import { InteractiveHelperComponent } from './interactive-helper/interactive-helper.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -52,7 +54,8 @@ import { EventSelectComponent } from './interactive-helper/event-select/event-se
     MdMenuModule.forRoot(),
     MdSidenavModule,
     MdIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2PaginationModule
   ],
   providers: [AUTH_PROVIDERS, AuthService, EventService, UserPageService],
   bootstrap: [AppComponent]
