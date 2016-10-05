@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 // import { EventService } from '../../searchresults/searchresults.service';
 import { UserPageService } from '../../user-page/user-page.service';
@@ -10,7 +10,7 @@ import { UserPageService } from '../../user-page/user-page.service';
   templateUrl: './event-select.component.html',
   styleUrls: ['./event-select.component.css']
 })
-export class EventSelectComponent implements OnInit {
+export class EventSelectComponent {
   events: any;
 
   constructor(private http: Http, private userService: UserPageService) {
@@ -22,8 +22,7 @@ export class EventSelectComponent implements OnInit {
   }
 
 
-  ngOnInit() {
-  }
+
   onLike(event) {
     console.log(event);
   }
