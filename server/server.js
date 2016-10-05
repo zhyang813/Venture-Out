@@ -69,10 +69,12 @@ app.put('/api/user', function(req, res) {
 app.get('/api/user/favorites/:id', function(req, res){
   userHandler.getFavorites(req, res);
 });
+app.post('/api/user/addZipCode', function(req, res){
+  userHandler.addZipCode(req, res);
+});
 
 //Routes
 app.get('/api/events/category/:name/zipcode/:zip/quantity/:amount', function(req, res) {
-  // eventHandler.
   eventHandler.findEvents(req, res)
 });
 
@@ -101,7 +103,7 @@ new cron('0 0 0 * * *', function() {
   console.log('TM cron job running');
   worker.fetchTM();
 }, null, true, 'America/Los_Angeles');
-
+// worker.fetchEB()
 // EventBrite data fetcher
 // setTimeout(worker.fetchEB, 10000);
 new cron('0 0 2 * * *', function() {

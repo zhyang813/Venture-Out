@@ -40,7 +40,8 @@ export class AuthService {
           'email': profile.email,
           'userId': profile.user_id,
           'interests': [],
-          'favoritedEvents': []
+          'favoritedEvents': [],
+          'zipCode': null
         });
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
