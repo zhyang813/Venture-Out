@@ -32,7 +32,9 @@
     </md-card>
   </md-sidenav>
 
+
 <div id="wrapper">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
   <md-menu #menu="mdMenu">
       <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
       <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
@@ -40,7 +42,7 @@
       <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
   </md-menu>
   <div id="columns">
-      <div class="pin" *ngFor="let event of events">
+      <div class="pin" *ngFor="let event of events | paginate: { itemsPerPage: 50, currentPage: p }">
         <img src={{event.imageUrl}}>
         <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
         <p>{{event.genre}}</p>
@@ -55,7 +57,9 @@
          </md-card-actions>
       </div>
   </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
+
 
 </md-sidenav-layout>
 </div>
