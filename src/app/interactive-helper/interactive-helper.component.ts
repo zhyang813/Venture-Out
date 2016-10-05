@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Http } from '@angular/http';
+import { UserPageService } from '../user-page/user-page.service';
+
+
 
 
 @Component({
@@ -10,10 +14,15 @@ import { Router } from '@angular/router';
 })
 
 export class InteractiveHelperComponent implements OnInit {
+
   myForm: FormGroup;
   isValid: Boolean = true;
-  constructor(private router: Router) {
-   }
+
+  constructor(
+    private http: Http,
+    private router: Router,
+    private userService: UserPageService
+  ) {}
 
   ngOnInit() {
     this.myForm = new FormGroup({
@@ -28,12 +37,13 @@ export class InteractiveHelperComponent implements OnInit {
   }
   onSubmit() {
     if (this.myForm.value.location && this.myForm.valid) {
+      this.userService.zipCode = this.myForm.value.location;
+      this.userService.addZipToDB();
       this.router.navigate(['category']);
       this.isValid = true;
     } else {
       this.isValid = false;
     }
-    console.log(this.myForm);
   };
 
 }

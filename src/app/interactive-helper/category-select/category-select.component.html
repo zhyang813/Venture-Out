@@ -2,23 +2,35 @@
   <div id="message">
     Let's start off with some categories!
     Select 3 to continue!
-    <button *ngIf="liked.length >= 3"
-            id='next'
-            (click)="goToNextPage()"
-            md-raised-button>
-      Next
-    </button>
+
+
+  </div>
+  <div id="next">
+    <a class="btn-floating btn-large waves-effect waves-light red"
+    *ngIf="liked.length >= 3"
+    id='next'
+    (click)="goToNextPage()">
+      <i class="material-icons">trending_flat</i>
+    </a>
   </div>
   <div id='columns'>
     <div [attr.data-category]="category.genre" class="pin" id="suggestions" *ngFor="let category of categories">
 
-    <img src={{category.imageUrl}}>
-      <h4>{{category.genre}}</h4>
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img src={{category.imageUrl}}>
+              <span class="card-title">{{category.genre}}</span>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large"
+              (click)="onLike(category.genre)">
+                Like
+              </a>
+            </div>
+          </div>
+        </div>
 
-      <md-card-actions>
-            <button md-button (click)="onLike(category.genre)" (click)="saveFavorite(event.eventId)">Like</button>
-            <button md-button (click)="saveFavorite(event.eventId)">Don't Like</button>
-       </md-card-actions>
     </div>
 
   </div>

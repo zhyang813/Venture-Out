@@ -9,12 +9,16 @@
      We want to provide you with the best recommendations, to start please enter in your zip code.
     </div>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-
-        <md-input
+      <div class="input-field col s12">
+        <input
+          type="text"
           formControlName="location"
-          placeholder="Enter Zip Here"
+          id="location1"
         >
-        </md-input>
+        <label for="location1">
+          Zip Code
+        </label>
+      </div>
     </form>
         <div *ngIf="!isValid">
             Invalid Input

@@ -64,6 +64,18 @@ module.exports = {
         })
       }
     })
+  },
+  addZipCode: function(req, res) {
+    db.collections.users.findOneAndUpdate(
+      {userId: req.body.userId},
+      {
+        $set: { zipCode:req.body.zipCode }
+      }
+    ).then(function(result) {
+      res.json(result)
+    }).catch(function(err) {
+      res.json(err)
+    })
   }
 
 }

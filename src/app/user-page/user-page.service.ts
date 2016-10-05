@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class UserPageService {
 
-  constructor(private http: Http) { }
+  userInformation: any;
+  userId: string;
+  zipCode: string;
+  constructor(private http: Http) {
+    this.userInformation = JSON.parse(localStorage.getItem('profile'));
+    this.userId = this.userInformation.user_id;
+  }
 
   public getFavorites() {
     let userProfile = JSON.parse(localStorage.getItem('profile'));
@@ -12,5 +18,18 @@ export class UserPageService {
       response.json()
     );
   }
+  public addZipToDB() {
+    let body = JSON.stringify({
+      userId: this.userId,
+      zipCode: this.zipCode
+    });
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post('/api/user/addZipCode', body, options).subscribe(function(response){
+      console.log(response);
+    });
+  }
+  addInterests() {
 
+  }
 }
