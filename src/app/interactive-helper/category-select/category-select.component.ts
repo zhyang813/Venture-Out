@@ -21,7 +21,10 @@ export class CategorySelectComponent {
       {genre: 'Drinking', imageUrl: '../../assets/StockPhotos/drinking.jpeg'},
       {genre: 'Concert', imageUrl: '../../assets/StockPhotos/concert.jpg'},
       {genre: 'Food', imageUrl: '../../assets/StockPhotos/food.jpg'},
-      {genre: 'Classical', imageUrl: '../../assets/StockPhotos/classical.jpeg'}
+      {genre: 'Classical', imageUrl: '../../assets/StockPhotos/classical.jpeg'},
+      {genre: 'Fitness', imageUrl: '../../assets/StockPhotos/fitness2.jpeg'},
+      {genre: 'Business', imageUrl: '../../assets/StockPhotos/business.jpeg'},
+      {genre: 'Technology', imageUrl: '../../assets/StockPhotos/technology.jpeg'}
     ];
     this.liked = [];
   }
@@ -29,6 +32,7 @@ export class CategorySelectComponent {
     this.liked.push(event);
   }
   goToNextPage() {
+    this.userService.interests = this.liked;
     this.userService.addInterestsToDb(this.liked);
     this.router.navigate(['event-select']);
   }
