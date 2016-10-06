@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserPageService } from '../../user-page/user-page.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class CategorySelectComponent {
   liked: Array<string>;
   disliked: Array<string>;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private userService: UserPageService) {
     this.categories = [
       {genre: 'Music', imageUrl: '../../assets/StockPhotos/music-festivals.jpg'},
       {genre: 'Comedy', imageUrl: '../../assets/StockPhotos/comedy.jpg'},
@@ -28,6 +29,7 @@ export class CategorySelectComponent {
     this.liked.push(event);
   }
   goToNextPage() {
+    this.userService.addInterestsToDb(this.liked);
     this.router.navigate(['event-select']);
   }
 

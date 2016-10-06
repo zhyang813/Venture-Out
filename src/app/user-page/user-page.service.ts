@@ -7,6 +7,8 @@ export class UserPageService {
   userInformation: any;
   userId: string;
   zipCode: string;
+  interests: Array<string>;
+
   constructor(private http: Http) {
     this.userInformation = JSON.parse(localStorage.getItem('profile'));
     this.userId = this.userInformation.user_id;
@@ -29,7 +31,15 @@ export class UserPageService {
       console.log(response);
     });
   }
-  addInterests() {
-
+  public addInterestsToDb(interests) {
+    let body = JSON.stringify({
+      userId: this.userId,
+      interests: interests
+    });
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post('/api/user/addInterests', body, options).subscribe(function(response){
+      console.log(response);
+    });
   }
 }

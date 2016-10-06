@@ -12,7 +12,10 @@
   left:0;
   margin-top: 5%;
 }
-
+#next {
+  display: inline-block;
+  margin-left: 10px
+}
 
 #columns {
   -webkit-column-count: 3;

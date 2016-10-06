@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 // import { EventService } from '../../searchresults/searchresults.service';
 import { UserPageService } from '../../user-page/user-page.service';
+import { Router } from '@angular/router';
 
 
 
@@ -12,18 +13,24 @@ import { UserPageService } from '../../user-page/user-page.service';
 })
 export class EventSelectComponent {
   events: any;
-
-  constructor(private http: Http, private userService: UserPageService) {
-    http.get(`/api/events/category/Sports & Fitness/zipcode/${this.userService.zipCode}/quantity/11`)
+  count: number;
+  favorite: Array<string>;
+  constructor(private http: Http, private userService: UserPageService,
+    private router: Router) {
+    http.get(`/api/events/category/Music/zipcode/${this.userService.zipCode}/quantity/12`)
                   .subscribe(result => {
                     console.log(result.json());
                     this.events = result.json();
                   });
+    this.favorite = [];
   }
-
 
 
   onLike(event) {
-    console.log(event);
+    this.favorite.push('placeholder');
   }
+  goToNextPage() {
+    this.router.navigate(['/']);
+  }
+
 }

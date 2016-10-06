@@ -4,6 +4,14 @@
     Please select the ones you like so we can start adjusting events based
     on your preferences!
   </div>
+  <div id="next">
+    <a class="btn-floating btn-large waves-effect waves-light red"
+    *ngIf="liked >= 3"
+    id='next'
+    (click)="goToNextPage()">
+      <i class="material-icons">trending_flat</i>
+    </a>
+  </div>
   <div id='columns'>
     <div class="pin" id="suggestions" *ngFor="let event of events">
 
@@ -12,12 +20,20 @@
             <div class="card-image">
               <img src={{event.imageUrl}}>
               <span class="card-title">{{event.genre}}</span>
-              <h4>{{event.name}}</h4>
+            </div>
+            <div class="card-content">
+              <p>
+                {{event.name}}
+              </p>
             </div>
             <div class="card-action">
               <a class="waves-effect waves-light btn-large"
-              (click)="onLike($event)">
-                Like
+              (click)="onLike()">
+                 <i class="material-icons">thumb_up</i>
+              </a>
+              <a class="waves-effect waves-light btn-large"
+              >
+                <i class="material-icons">thumb_down</i>
               </a>
             </div>
           </div>

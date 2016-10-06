@@ -70,11 +70,12 @@ module.exports = {
       var genre = req.params.name.split('%20').join(' ');
       var city = locationData.city.split('_').join(' ');
 
-      query = Event.where('genre').eq(req.params.name).sort('createdAt')
-      return query.or([
-        { 'address.city': city }
-        // { timeZone: `${locationData.country}/${locationData.city}` }
-      ]).then(function(result){
+      query = Event.where('genre').eq(req.params.name).sort('createdAt').limit(12)
+      // return query.or([
+      //   { 'address.city': city }
+      //   // { timeZone: `${locationData.country}/${locationData.city}` }
+      // ])
+      .then(function(result){
         res.json(result)
       })
       .catch(function(err){
