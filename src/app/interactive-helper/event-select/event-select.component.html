@@ -6,16 +6,22 @@
   </div>
   <div id='columns'>
     <div class="pin" id="suggestions" *ngFor="let event of events">
-      <img src={{event.imageUrl}}>
-      <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
-      <p>{{event.genre}}</p>
-      <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
-      <h4>{{event.name}}</h4>
 
-      <md-card-actions>
-            <button md-button (click)="onLike($event)" (click)="saveFavorite(event.eventId)">Like</button>
-            <button md-button (click)="saveFavorite(event.eventId)">Don't Like</button>
-       </md-card-actions>
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img src={{event.imageUrl}}>
+              <span class="card-title">{{event.genre}}</span>
+              <h4>{{event.name}}</h4>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large"
+              (click)="onLike($event)">
+                Like
+              </a>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 

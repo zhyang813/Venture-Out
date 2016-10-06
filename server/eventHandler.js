@@ -58,22 +58,30 @@ module.exports = {
           if(result[0].country === 'United States'){
             country = 'America'
           }
-          return `${country}/${city}`
+          return {
+            country: country,
+            city: city
+          }
         })
         )
     },
-    getEvents = function(zip){
-      return Event.where('genre')
-      .eq(req.params.name)
-      .where('timeZone')
-      .eq(zip)
-      .limit(numberOfEvents)
-      .then(function(result){
+    getEvents = function(locationData){
+
+      var genre = req.params.name.split('%20').join(' ');
+      var city = locationData.city.split('_').join(' ');
+
+      query = Event.where('genre').eq(req.params.name).sort('createdAt')
+      return query.or([
+        { 'address.city': city }
+        // { timeZone: `${locationData.country}/${locationData.city}` }
+      ]).then(function(result){
         res.json(result)
       })
       .catch(function(err){
         res.send(err)
       })
+
+
     }
 
     getLocation(zipCode)

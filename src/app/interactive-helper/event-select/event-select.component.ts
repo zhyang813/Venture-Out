@@ -14,7 +14,7 @@ export class EventSelectComponent {
   events: any;
 
   constructor(private http: Http, private userService: UserPageService) {
-    http.get(`/api/events/category/Music/zipcode/${this.userService.zipCode}/quantity/11`)
+    http.get(`/api/events/category/Sports & Fitness/zipcode/${this.userService.zipCode}/quantity/11`)
                   .subscribe(result => {
                     console.log(result.json());
                     this.events = result.json();
