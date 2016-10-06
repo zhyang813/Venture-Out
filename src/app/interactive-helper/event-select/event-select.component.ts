@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 // import { EventService } from '../../searchresults/searchresults.service';
 import { UserPageService } from '../../user-page/user-page.service';
+import { Router } from '@angular/router';
+// import  qs from './../../../../node_modules/qs/dist/qs.js';
 
 
 
@@ -12,18 +14,39 @@ import { UserPageService } from '../../user-page/user-page.service';
 })
 export class EventSelectComponent {
   events: any;
-
-  constructor(private http: Http, private userService: UserPageService) {
-    http.get(`/api/events/category/Music/zipcode/${this.userService.zipCode}/quantity/11`)
-                  .subscribe(result => {
-                    console.log(result.json());
-                    this.events = result.json();
-                  });
+  count: number;
+  favorites: Array<string>;
+  interests: Array<string>;
+  constructor(private http: Http, private userService: UserPageService,
+    private router: Router) {
+    this.grabEvents();
   }
 
+  grabEvents() {
 
+    var categories = this.userService.interests
+    console.log(this.userService.interests)
+    console.log(categories)
+    console.log(JSON.stringify(categories))
+    console.log(categories.toString())
 
+    // this.http.get(`/api/events/category/${JSON.stringify(categories.toString())}/zipcode/${this.userService.zipCode}/quantity/12`)
+    // .subscribe(result => {
+    //   console.log(result.json());
+    //   this.events = result.json();
+
+    this.http.get(`/api/events/zipcode/${this.userService.zipCode}`)
+    .subscribe(result => {
+      console.log(result.json());
+      this.events = result.json();
+    });
+    this.favorites = [];
+  }
   onLike(event) {
-    console.log(event);
+    this.favorites.push('placeholder');
   }
+  goToNextPage() {
+    this.router.navigate(['/']);
+  }
+
 }

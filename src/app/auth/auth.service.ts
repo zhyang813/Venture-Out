@@ -1,6 +1,8 @@
 import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Headers, Http, RequestOptions } from '@angular/http';
+import { Router } from '@angular/router';
+
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
@@ -16,7 +18,7 @@ export class AuthService {
 
   userProfile: Object;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private router: Router) {
 
     // Set userProfile attribute of already saved profile
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
@@ -46,7 +48,9 @@ export class AuthService {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
         return this.http.post('/api/users', body, options).subscribe(function(response){
-          console.log(response);
+          if (response.json().body !== 'User already exists!') {
+            router.navigate(['helper']);
+          };
         });
       });
     });

@@ -76,6 +76,19 @@ module.exports = {
     }).catch(function(err) {
       res.json(err)
     })
+  },
+  addInterests: function(req, res) {
+    console.log(req.body)
+    db.collections.users.findOneAndUpdate(
+      {userId: req.body.userId},
+      {
+        $addToSet: { interests: { $each: req.body.interests } }
+      }
+    ).then(function(result) {
+      res.json(result)
+    }).catch(function(err) {
+      res.json(err)
+    })
   }
 
 }

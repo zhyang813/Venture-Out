@@ -72,8 +72,13 @@ app.get('/api/user/favorites/:id', function(req, res){
 app.post('/api/user/addZipCode', function(req, res){
   userHandler.addZipCode(req, res);
 });
-
+app.post('/api/user/addInterests', function(req, res){
+  userHandler.addInterests(req, res);
+});
 //Routes
+app.get('/api/events/zipcode/:zip/', function(req, res) {
+  eventHandler.getEventsByZip(req, res)
+});
 app.get('/api/events/category/:name/zipcode/:zip/quantity/:amount', function(req, res) {
   eventHandler.findEvents(req, res)
 });
