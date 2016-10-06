@@ -58,7 +58,7 @@ describe('Component: CategorySelect', () => {
       // expecting to navigate to event-select page
       const id = 'event-select';
 
-      expect(navArgs).toBe('/asd' + id,
+      expect(navArgs).toBe('/' + id,
         'should nav to the category event select page');
       });
     });
