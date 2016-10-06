@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Http } from '@angular/http';
-import { EventService } from '../../searchresults/searchresults.service';
+// import { EventService } from '../../searchresults/searchresults.service';
+import { UserPageService } from '../../user-page/user-page.service';
 
 
 
@@ -9,11 +10,11 @@ import { EventService } from '../../searchresults/searchresults.service';
   templateUrl: './event-select.component.html',
   styleUrls: ['./event-select.component.css']
 })
-export class EventSelectComponent implements OnInit {
+export class EventSelectComponent {
   events: any;
 
-  constructor(private http: Http, private eventService: EventService) {
-    http.get(`/api/events/category/Music/zipcode/${this.eventService.zipCode}/quantity/11`)
+  constructor(private http: Http, private userService: UserPageService) {
+    http.get(`/api/events/category/Music/zipcode/${this.userService.zipCode}/quantity/11`)
                   .subscribe(result => {
                     console.log(result.json());
                     this.events = result.json();
@@ -21,8 +22,7 @@ export class EventSelectComponent implements OnInit {
   }
 
 
-  ngOnInit() {
-  }
+
   onLike(event) {
     console.log(event);
   }

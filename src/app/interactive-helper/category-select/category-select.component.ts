@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-category-select',
   templateUrl: './category-select.component.html',
   styleUrls: ['./category-select.component.css']
 })
-export class CategorySelectComponent implements OnInit {
+export class CategorySelectComponent {
   categories: Array<any>;
   liked: Array<string>;
   disliked: Array<string>;
@@ -23,12 +24,7 @@ export class CategorySelectComponent implements OnInit {
     ];
     this.liked = [];
   }
-
-  ngOnInit() {
-  }
-
   onLike(event) {
-    console.log(event);
     this.liked.push(event);
   }
   goToNextPage() {
