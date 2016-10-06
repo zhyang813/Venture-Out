@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class EventSelectComponent {
   events: any;
   count: number;
-  favorite: Array<string>;
+  favorites: Array<string>;
   interests: Array<string>;
   constructor(private http: Http, private userService: UserPageService,
     private router: Router) {
@@ -30,14 +30,20 @@ export class EventSelectComponent {
     console.log(JSON.stringify(categories))
     console.log(categories.toString())
 
-    this.http.get(`/api/events/category/${JSON.stringify(categories.toString())}/zipcode/${this.userService.zipCode}/quantity/12`)
+    // this.http.get(`/api/events/category/${JSON.stringify(categories.toString())}/zipcode/${this.userService.zipCode}/quantity/12`)
+    // .subscribe(result => {
+    //   console.log(result.json());
+    //   this.events = result.json();
+
+    this.http.get(`/api/events/zipcode/${this.userService.zipCode}`)
     .subscribe(result => {
       console.log(result.json());
       this.events = result.json();
     });
+    this.favorites = [];
   }
   onLike(event) {
-    this.favorite.push('placeholder');
+    this.favorites.push('placeholder');
   }
   goToNextPage() {
     this.router.navigate(['/']);

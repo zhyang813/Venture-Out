@@ -46,6 +46,46 @@ module.exports = {
     });
   },
 
+  // get events by zip
+  getEventsByZip: function(req, res){
+      var numberOfEvents = Number.parseInt.call(this, req.params.amount)
+      var zipCode = req.params.zip;
+
+      var getLocation = function(zipCode) {
+        return (
+          services.geocoder.geocode(zipCode)
+          .then(function(result){
+            var country;
+            var city = result[0].city.split(' ').join('_');
+            if(result[0].country === 'United States'){
+              country = 'America'
+            }
+            return {
+              country: country,
+              city: city
+            }
+          })
+          )
+      },
+      getEvents = function(locationData, genre, limit) {
+        console.log(req.params.name);
+        var city = locationData.city.split('_').join(' ');
+        return Event.where('address.city').eq(city).sort('createdAt').limit(20)
+
+      }
+
+      getLocation(zipCode)
+      .then(getEvents)
+      .then(function(result){
+        res.json(result)
+      })
+      .catch(function(err){
+        res.send(err)
+      })
+
+  },
+
+  // find events by zip and categories
   findEvents: function(req, res) {
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
@@ -125,7 +165,6 @@ module.exports = {
 
     getLocation(zipCode)
     .then(getMultipleEvents)
-
 
   }
 

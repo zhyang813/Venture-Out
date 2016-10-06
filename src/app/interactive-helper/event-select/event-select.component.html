@@ -6,7 +6,7 @@
   </div>
   <div id="next">
     <a class="btn-floating btn-large waves-effect waves-light red"
-    *ngIf="liked >= 3"
+    *ngIf="favorites.length >= 3"
     id='next'
     (click)="goToNextPage()">
       <i class="material-icons">trending_flat</i>
@@ -19,7 +19,7 @@
           <div class="card">
             <div class="card-image">
               <img src={{event.imageUrl}}>
-              <span class="card-title">{{event.genre}}</span>
+              <!-- <span class="card-title">{{event.genre}}</span> -->
             </div>
             <div class="card-content">
               <p>
