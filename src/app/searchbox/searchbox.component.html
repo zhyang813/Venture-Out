@@ -22,72 +22,66 @@
   </md-toolbar>
 </div>
 
-
-<div class="searchbox">
- <md-card>
-  <md-card-title class="cardtitletext">Search For Your Next Event</md-card-title>
-    <div class="row">
-        <form autocomplete="off" class="col s12" (ngSubmit)="onSearch(form)" #form="ngForm">
+<div class="container">
+  <div class="searchbox">
+   <div class="card hoverable">
+        <div class="card-content">
+          <h5 style="text-align:center;">Search For Your Next Event</h5>
           <div class="row">
-              <div class="input-field col s6">
-                <i class="material-icons prefix">search</i>
-                <input id="find" type="text" ngModel name="find">
-                <label for="find">Find</label>
-              </div>
+              <form autocomplete="off" class="col s12" (ngSubmit)="onSearch(form)" #form="ngForm">
+                  <div class="row">
+                      <div class="row">
+                          <div class="input-field col s4">
+                            <i class="material-icons prefix">grade</i>
+                            <input id="find" type="text" ngModel name="find">
+                            <label for="find">Find</label>
+                          </div>
 
-              <div class="input-field col s6">
-                <i class="material-icons prefix">games</i>
-                <input id="interests" type="text" class="validate filter-input" [(ngModel)]=query (keyup)=filter($event) (blur)=handleBlur() ngModel name="interests">
-                <label for="interests">Interests</label>
+                          <div class="input-field col s4">
+                            <i class="material-icons prefix">games</i>
+                            <input id="interests" type="text" ngModel name="interests">
+                            <label for="interests">Interests</label>
+                          </div>
 
-                <div class="suggestions" *ngIf="filteredList.length > 0">
-                  <ul *ngFor="let item of filteredList;let idx = index" >
-                    <li [class.complete-selected]="idx == selectedIdx">
-                      <a (click)="select(item)">{{item}}</a>
-                    </li>
-                  </ul>
-                </div>
+                          <div class="input-field col s4">
+                            <i class="material-icons prefix">my_location</i>
+                            <input id="location" type="text" ngModel name="location">
+                            <label for="location">Location</label>
+                          </div>
+                      </div>
+                  </div>
 
-              </div>
+                  <div class="row">
+                      <div class="input-field col s4">
+                        <i class="material-icons prefix">today</i>
+                        <input id="start" type="text" ngModel name="start">
+                        <label for="start">Start (YYYY-MM-DD)</label>
+                      </div>
+                      <div class="input-field col s4">
+                        <i class="material-icons prefix">today</i>
+                        <input id="end" type="text" ngModel name="end">
+                        <label for="end">End (YYYY-MM-DD)</label>
+                      </div>
+                      <div class="input-field col s4">
+                        <i class="material-icons prefix">attach_money</i>
+                        <input id="budget" type="text" ngModel name="budget">
+                        <label for="budget">Budget</label>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <button class="btn waves-effect purple darken-1" type="submit" style="width: 100%;">Search
+                      </button>
+                    </div>
+                  </div>
+
+              </form>
           </div>
-
-          <div class="row">
-              <div class="input-field col s4">
-                <i class="material-icons prefix">today</i>
-                <input id="start" type="text" ngModel name="start">
-                <label for="start">Start (YYYY-MM-DD)</label>
-              </div>
-              <div class="input-field col s4">
-                <i class="material-icons prefix">today</i>
-                <input id="end" type="text" ngModel name="end">
-                <label for="end">End (YYYY-MM-DD)</label>
-              </div>
-              <div class="input-field col s4">
-                <i class="prefix">$</i>
-                <input id="budget" type="text" ngModel name="budget">
-                <label for="budget">Budget</label>
-              </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s7">
-              <i class="material-icons prefix">my_location</i>
-              <input id="location" type="text" ngModel name="location">
-              <label for="location">Location</label>
-            </div>
-            <div class="input-field col s5">
-              <button class="btn waves-effect purple darken-1" type="submit" style="width: 100%;">Search
-                <i class="material-icons right">send</i>
-              </button>
-            </div>
-          </div>
-
-
-        </form>
-    </div>
-</md-card>
+        </div>
+   </div>
+  </div>
 </div>
-
 
 <!--
 <div id="wrapper">
@@ -108,5 +102,4 @@
       </div>
   </div>
 </div>
-
  -->
