@@ -11,7 +11,7 @@
   <md-toolbar color="accent">
     <span><a class="headerlink"[routerLink]="['/']">VentureOut</a></span>
 
-    <button md-button class="example-fill-remaining-space headerlink" [md-menu-trigger-for]="menu">Menu</button>
+    <button md-button class="navbar-right-align headerlink" [md-menu-trigger-for]="menu">Menu</button>
 
     <md-menu #menu="mdMenu">
       <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
@@ -24,7 +24,7 @@
 
 <div class="container">
   <div class="searchbox">
-   <div class="card hoverable">
+   <div class="card grey lighten-5 hoverable">
         <div class="card-content">
           <h5 style="text-align:center;">Search For Your Next Event</h5>
           <div class="row">
