@@ -1,24 +1,24 @@
 <md-toolbar color="accent">
-  <span><a class="headerlink" *ngIf="auth.authenticated()" [routerLink]="['/']">VentureOut</a></span>
+  <span><a class="headerlink" [routerLink]="['/']">VentureOut</a></span>
 
   <button md-button class="example-fill-remaining-space headerlink" [md-menu-trigger-for]="menu">Menu</button>
 
   <md-menu #menu="mdMenu">
       <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
       <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
-      <button md-menu-item *ngIf="auth.authenticated()"> Recommended </button>
       <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
   </md-menu>
 </md-toolbar>
 
 <div class="container">
-    <div class="row">
+    <h5 style="text-align:center" *ngIf="!auth.authenticated()">You are not logged in, please click 'Log in' button to login</h5>
+    <div class="row" style="position:absolute">
       <div class="col s12">
         <br>
       </div>
 
       <div class="col s4">
-        <div class="card-panel grey lighten-5">
+        <div class="card-panel grey lighten-5" *ngIf="auth.authenticated() && auth.userProfile">
           <img src="http://khns.org/wp-content/uploads/2014/07/profile-icon-400x380.png">
           <hr>
           <p><strong>Name: </strong> {{auth.userProfile.name}}</p>
@@ -26,7 +26,7 @@
           <p><strong>Nickname: </strong> {{auth.userProfile.nickname}}</p>
         </div>
       </div>
-
+<!--
       <div class="col s8">
         <div class="row">
           <div class="col s12">
@@ -54,9 +54,10 @@
           </div>
           <div id="test2" class="col s12">Test 2</div>
         </div>
-      </div>
+      </div> -->
 
-<!--       <div class="col s8">
+       <div class="col s8" *ngIf="auth.authenticated() && auth.userProfile">
+        <div class="divider"></div>
         <h4 class="header"><i class="small material-icons">grade</i>&nbsp;Favorited Events</h4>
         <div class="divider"></div>
         <br>
@@ -70,11 +71,16 @@
                 <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
               </div>
               <div class="col s4">
-                <a class="waves-effect purple lighten-3 btn" href={{event.url}} target="_blank"><i class="material-icons left">receipt</i>TICKETS</a>
+                <a class="waves-effect purple lighten-3 btn" href={{event.url}} target="_blank" style="z-index:0;"><i class="material-icons left">receipt</i>TICKETS</a>
               </div>
             </div>
         </div>
-      </div> -->
+
+        <div class="divider"></div>
+        <h4 class="header"><i class="small material-icons">grade</i>&nbsp;Recommended Events</h4>
+        <div class="divider"></div>
+        <br>
+      </div>
 
     </div>
 </div>

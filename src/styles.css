@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
+.headerlink {
+  color: white;
+  text-decoration: none;
+}
+
 fieldset,img {
   border:0;
 }
@@ -101,12 +106,6 @@ p.codrops-demos a.current-demo:hover{
     left: auto;
   }
 }
-
-
-
-
-
-
 
 .cb-slideshow,
 .cb-slideshow:after {

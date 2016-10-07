@@ -72,7 +72,6 @@
   <md-menu #menu="mdMenu">
       <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
       <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
-      <button md-menu-item *ngIf="auth.authenticated()"> Recommended </button>
       <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
   </md-menu>
   <div id="columns">
