@@ -1,6 +1,7 @@
 var User = require('./userModel.js');
 var Events = require('./eventModel.js');
 var mongoose = require('mongoose');
+var services = require('./services.js');
 
 var db = mongoose.connection;
 
@@ -86,6 +87,24 @@ module.exports = {
       }
     ).then(function(result) {
       res.json(result)
+    }).catch(function(err) {
+      res.json(err)
+    })
+  },
+  getUserZipcode: function(req, res) {
+    db.collections.users.findOne(
+      {userId: req.body.userId}
+    ).then(function(result) {
+      res.json(result.zipCode)
+    }).catch(function(err) {
+      res.json(err)
+    })
+  },
+  getUserInterests: function(req, res) {
+    db.collections.users.findOne(
+      {userId: req.body.userId}
+    ).then(function(result) {
+      res.json(result.interests)
     }).catch(function(err) {
       res.json(err)
     })

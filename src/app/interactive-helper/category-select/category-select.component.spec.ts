@@ -37,6 +37,7 @@ describe('Component: CategorySelect', () => {
       expect(comp.liked[1]).toBe('music');
       expect(comp.liked[2]).toBe('dance');
     });
+
   });
 
   describe('goToNextPage Method', () => {
@@ -62,5 +63,6 @@ describe('Component: CategorySelect', () => {
         'should nav to the category event select page');
       });
     });
+
   });
 });
