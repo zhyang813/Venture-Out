@@ -1,14 +1,19 @@
-<md-toolbar color="accent">
-  <span><a class="headerlink" [routerLink]="['/']">VentureOut</a></span>
-
-  <button md-button class="example-fill-remaining-space headerlink" [md-menu-trigger-for]="menu">Menu</button>
-
-  <md-menu #menu="mdMenu">
-      <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
-      <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
-      <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
-  </md-menu>
-</md-toolbar>
+<div class="codrops-top">
+  <nav>
+    <div class="nav-wrapper blue-grey darken-4 z-depth-2">
+      <a class="headerlink"><i class="material-icons">local_activity</i></a>
+      <a class="headerlink"[routerLink]="['/']">VentureOut</a>
+      <ul id="nav-mobile" class="right">
+        <li><a class="navsublink" *ngIf="auth.authenticated()" [routerLink]="['/user']">My Profile</a></li>
+        <li>
+          <a class="navsublink" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
+          <a class="navsublink" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
+        </li>
+        <li><a></a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
 
 <div class="container">
     <h5 style="text-align:center" *ngIf="!auth.authenticated()">You are not logged in, please click 'Log in' button to login</h5>
@@ -71,7 +76,7 @@
                 <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
               </div>
               <div class="col s4">
-                <a class="waves-effect purple lighten-3 btn" href={{event.url}} target="_blank" style="z-index:0;"><i class="material-icons left">receipt</i>TICKETS</a>
+                <a class="waves-effect orange darken-2 btn" href={{event.url}} target="_blank" style="z-index:0;"><i class="material-icons left">receipt</i>TICKETS</a>
               </div>
             </div>
         </div>

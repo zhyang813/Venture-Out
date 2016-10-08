@@ -1,11 +1,22 @@
-<md-toolbar color="accent">
-  <span><button class="app-icon-button" (click)="sidenav.toggle()">
-    <i class="material-icons">menu</i>
-  </button></span>
-  <span>&nbsp;&nbsp;&nbsp;<a class="headerlink"[routerLink]="['/']">VentureOut</a></span>
-
-  <button md-button class="navbar-right-align headerlink" [md-menu-trigger-for]="menu">Menu</button>
-</md-toolbar>
+<div class="codrops-top">
+  <nav>
+    <div class="nav-wrapper blue-grey darken-4 z-depth-2">
+      <a class="headerlink">  <span><button class="app-icon-button" (click)="sidenav.toggle()">
+    <i class="tiny material-icons">menu</i>
+  </button></span></a>
+      <a class="headerlink"><i class="material-icons">local_activity</i></a>
+      <a class="headerlink"[routerLink]="['/']">VentureOut</a>
+      <ul id="nav-mobile" class="right">
+        <li><a class="navsublink" *ngIf="auth.authenticated()" [routerLink]="['/user']">My Profile</a></li>
+        <li>
+          <a class="navsublink" (click)="auth.login()" *ngIf="!auth.authenticated()">Sign Up or Login</a>
+          <a class="navsublink" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
+        </li>
+        <li><a></a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
 
 <div class="searchresultcontainer">
 <md-sidenav-layout>
@@ -57,7 +68,7 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <button class="btn waves-effect waves-light" type="submit" style="width: 100%;">Search
+              <button class="btn waves-effect orange darken-2" type="submit" style="width: 100%;">Search
                 <i class="material-icons right">send</i>
               </button>
             </div>
@@ -77,13 +88,15 @@
   <div id="columns">
       <div class="pin" *ngFor="let event of events | paginate: { itemsPerPage: 50, currentPage: p }">
         <img src={{event.imageUrl}}>
-        <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
-        <p>{{event.genre}}</p>
-        <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
-        <h5>{{event.name}}</h5>
-        <br>
-        <a class="waves-effect purple lighten-3 btn" href={{event.url}} target="_blank"><i class="material-icons left">receipt</i>TICKETS&nbsp;&nbsp;</a>
-        <a class="waves-effect purple lighten-3 btn" (click)="saveFavorite(event.eventId)"><i class="material-icons left">grade</i>FAVORITE</a>
+        <div class="pincontent">
+            <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
+            <p>{{event.genre}}</p>
+            <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
+            <h5>{{event.name}}</h5>
+            <br>
+            <a class="waves-effect orange darken-1 btn" href={{event.url}} target="_blank" style="width: 100%;"><i class="material-icons left">receipt</i>TICKETS&nbsp;&nbsp;</a>
+            <a class="waves-effect orange darken-1 btn" (click)="saveFavorite(event.eventId)" style="width: 100%;"><i class="material-icons left">grade</i>FAVORITE</a>
+        </div>
       </div>
   </div>
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
