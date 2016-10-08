@@ -21,7 +21,7 @@ module.exports = {
 
   // Find a specific event using eventId
   findEventById: function(eventId, callback) {
-    // console.log('findEvent', eventId);
+     console.log('findEvent', eventId);
 
     Event.findOne({'eventId': eventId}, function(err, event){
       // console.log('event found?', event);
