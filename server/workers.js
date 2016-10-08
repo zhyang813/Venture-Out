@@ -16,7 +16,6 @@ module.exports = {
        setTimeout(function() {
 
       var futureDate = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000).toJSON().slice(0,10);
-      // var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=EHAU7JI8sxVlrnoDKQD0Ylr01o9cdudk&size=30&countryCode=US&startDateTime='+futureDate+'T00:00:00Z';
 
       var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=o8BUqiVck0XjtbRwN6tUjVsSFSjB22Fo&size=30&countryCode=US&startDateTime='+futureDate+'T00:00:00Z';
 
@@ -102,7 +101,7 @@ module.exports = {
 
           response.body.events.forEach( function (event) {
 
-            // console.log('Event Brite Event : ', count, event.id);
+            // console.log('Event Brite Event : ', count, event.venue? typeof event.venue.address.postal_code : null);
             // console.log("=============================")
             // count++;
 
@@ -122,7 +121,7 @@ module.exports = {
                 street: event.venue? (event.venue.address.line2? event.venue.address.line1 + event.venue.address.line2 : event.venue.address.line1) : null,
                 city: event.venue? event.venue.address.city : null,
                 state: event.venue? event.venue.address.region : null,
-                zip_code: event.venue? (typeof event.venue.address.postal_code === 'number'? event.venue.address.postal_code: null) : null,
+                zip_code: event.venue? (typeof event.venue.address.postal_code === 'string'? +event.venue.address.postal_code: null) : null,
                 country: event.venue? event.venue.address.country : null
               },
               price: null
