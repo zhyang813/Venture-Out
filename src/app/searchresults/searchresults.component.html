@@ -96,14 +96,17 @@
           <a href={{event.url}} target="_blank"><i class="material-icons">receipt</i></a>
           <a (click)="onClickLoc(event)"><i class="material-icons">location_on</i></a>
           <a (click)="onClickPrice(event)"><i class="material-icons">credit_card</i></a>
-          <a (click)="saveFavorite(event.eventId)"><i class="material-icons">star</i></a>
+          <a (click)="saveFavorite(event)" id="{{ 'fav' + event.eventId}}"><i class="material-icons">star</i></a>
           <div id={{event.eventId}} style="display:none;">
             <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
           </div>
           <div id={{event._id}} style="display:none;" >
-            <p>{{event.address.street? event.address.street : "No address Info Available"}}</p>
-            <p>{{event.address.street? event.address.city : ""}}</p>
-            <p>{{event.address.street? event.address.state : ""}} {{event.address.street? event.address.zip_code : ""}}</p>
+            <p>{{event.address? (event.address.street? event.address.street : "No address Info Available") : "No address Info Available"}}</p>
+            <p>{{event.address? (event.address.street? event.address.city : "") : ""}}</p>
+            <p>{{event.address? (event.address.street? event.address.state : "") : ""}} {{event.address? (event.address.street? event.address.zip_code : "") : ""}}</p>
+          </div>
+          <div id="{{'fava' + event.eventId}}" style="display:none;">
+          <p>Event Added to your Favorite!</p>
           </div>
         </div>
       </div>

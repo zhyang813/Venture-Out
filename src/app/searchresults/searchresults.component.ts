@@ -85,8 +85,8 @@ export class SearchresultsComponent {
       });
   }
 
-  saveFavorite(eventId) {
-    this.eventService.saveFavorite(eventId);
+  saveFavorite(event) {
+    this.eventService.saveFavorite(event.eventId);
     if(!this.eventService.login) {
       this.modal.alert()
       .size('sm')
@@ -96,11 +96,17 @@ export class SearchresultsComponent {
       // console.log("Not log in");
     } else {
 
+      $("#"+"fav"+event.eventId).css("opacity", "0");
+      $("#"+"fava"+event.eventId).show();
+      setTimeout(function() {
+        $("#"+"fava"+event.eventId).hide();
+      }, 2000);
+
     }
   }
 
   onClickPrice(event) {
-    console.log("onclickprice", event.eventId);
+    // console.log("onclickprice", event.eventId);
     $("#"+event._id).hide();
     $("#"+event.eventId).toggle();
   }
