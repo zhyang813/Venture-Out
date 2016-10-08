@@ -86,7 +86,7 @@ module.exports = {
   },
 
   // find events by zip and categories
-  findEvents: function(req, res) {
+  getEventsByCategoriesAndZip: function(req, res) {
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
 
