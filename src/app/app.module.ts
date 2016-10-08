@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { Ng2PaginationModule } from 'ng2-pagination';
-
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 // app components
 import { AppComponent } from './app.component';
@@ -40,8 +41,8 @@ import { EventSelectComponent } from './interactive-helper/event-select/event-se
     InteractiveHelperComponent,
     CategorySelectComponent,
     EventSelectComponent
-
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -55,7 +56,9 @@ import { EventSelectComponent } from './interactive-helper/event-select/event-se
     MdSidenavModule,
     MdIconModule,
     ReactiveFormsModule,
-    Ng2PaginationModule
+    Ng2PaginationModule,
+    BootstrapModalModule,
+    ModalModule.forRoot()
   ],
   providers: [AUTH_PROVIDERS, AuthService, EventService, UserPageService],
   bootstrap: [AppComponent]

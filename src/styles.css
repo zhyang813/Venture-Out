@@ -328,3 +328,12 @@ p.codrops-demos a.current-demo:hover{
 @media screen and (max-width: 600px) {
     .cb-slideshow li div h3 { font-size: 80px }
 }
+
+.modal {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.sebm-google-map-container {
+       height: 300px;
+     }

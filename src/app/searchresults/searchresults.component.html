@@ -18,17 +18,17 @@
   </nav>
 </div>
 
-<div class="searchresultcontainer">
-<md-sidenav-layout>
-  <md-sidenav #sidenav mode="side" class="app-sidenav">
-    <h5 style="text-align: center;">Search Adjust</h5>
-    <div class="row">
-      <form autocomplete="off" class="col s12" (ngSubmit)="onSearch(form)" #form="ngForm">
+<div class="searchresultcontainer" defaultOverlayTarget>
+  <md-sidenav-layout>
+    <md-sidenav #sidenav mode="side" class="app-sidenav">
+      <h5 style="text-align: center;">Search Adjust</h5>
+      <div class="row">
+        <form autocomplete="off" class="col s12" (ngSubmit)="onSearch(form)" #form="ngForm">
           <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">search</i>
-                <input id="find" type="text" ngModel name="find">
-                <label for="find">Find</label>
+              <i class="material-icons prefix">search</i>
+              <input id="find" type="text" ngModel name="find">
+              <label for="find">Find</label>
             </div>
           </div>
           <div class="row">
@@ -73,35 +73,42 @@
               </button>
             </div>
           </div>
-      </form>
-    </div>
-  </md-sidenav>
+        </form>
+      </div>
+    </md-sidenav>
 
 
-<div id="wrapper">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-  <md-menu #menu="mdMenu">
-      <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
-      <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
-      <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
-  </md-menu>
-  <div id="columns">
-      <div class="pin" *ngFor="let event of events | paginate: { itemsPerPage: 50, currentPage: p }">
-        <img src={{event.imageUrl}}>
-        <div class="pincontent">
-            <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
-            <p>{{event.genre}}</p>
+    <div id="wrapper">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <md-menu #menu="mdMenu">
+        <button md-menu-item (click)="auth.login()" *ngIf="!auth.authenticated()"> Sign Up or Login</button>
+        <button md-menu-item *ngIf="auth.authenticated()" [routerLink]="['/user']"> My Profile</button>
+        <button md-menu-item *ngIf="auth.authenticated()"> Recommended </button>
+        <button md-menu-item (click)="auth.logout()" *ngIf="auth.authenticated()"> Log Out </button>
+      </md-menu>
+      <div id="columns">
+        <div class="pin" *ngFor="let event of events | paginate: { itemsPerPage: 50, currentPage: p }">
+          <img src={{event.imageUrl}}>
+          <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
+          <p>{{event.genre}}</p>
+          <h5>{{event.name}}</h5>
+          <br>
+          <a href={{event.url}} target="_blank"><i class="material-icons">receipt</i></a>
+          <a (click)="onClickLoc(event)"><i class="material-icons">location_on</i></a>
+          <a (click)="onClickPrice(event)"><i class="material-icons">credit_card</i></a>
+          <a (click)="saveFavorite(event.eventId)"><i class="material-icons">star</i></a>
+          <div id={{event.eventId}} style="display:none;">
             <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
-            <h5>{{event.name}}</h5>
-            <br>
-            <a class="waves-effect orange darken-1 btn" href={{event.url}} target="_blank" style="width: 100%;"><i class="material-icons left">receipt</i>TICKETS&nbsp;&nbsp;</a>
-            <a class="waves-effect orange darken-1 btn" (click)="saveFavorite(event.eventId)" style="width: 100%;"><i class="material-icons left">grade</i>FAVORITE</a>
+          </div>
+          <div id={{event._id}} style="display:none;" >
+            <p>{{event.address.street? event.address.street : "No address Info Available"}}</p>
+            <p>{{event.address.street? event.address.city : ""}}</p>
+            <p>{{event.address.street? event.address.state : ""}} {{event.address.street? event.address.zip_code : ""}}</p>
+          </div>
         </div>
       </div>
-  </div>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
 
-
-</md-sidenav-layout>
+  </md-sidenav-layout>
 </div>

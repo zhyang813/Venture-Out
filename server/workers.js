@@ -11,20 +11,22 @@ module.exports = {
     console.log('TM fetcher is running');
 
     // To get the data between a week from now and in a month
-    for (var i = 7; i < 30; i++) {
+     for (var i = 7; i < 30; i++) {
+
+       setTimeout(function() {
 
       var futureDate = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000).toJSON().slice(0,10);
       // var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=EHAU7JI8sxVlrnoDKQD0Ylr01o9cdudk&size=30&countryCode=US&startDateTime='+futureDate+'T00:00:00Z';
 
-       var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=o8BUqiVck0XjtbRwN6tUjVsSFSjB22Fo&size=30&countryCode=US&startDateTime='+futureDate+'T00:00:00Z';
+      var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=o8BUqiVck0XjtbRwN6tUjVsSFSjB22Fo&size=30&countryCode=US&startDateTime='+futureDate+'T00:00:00Z';
 
-      Request.get(url).then(function(response) {
-        response.body._embedded.events.forEach(function(event) {
 
-          console.log('Tm getting events');
+
+        Request.get(url).then(function(response) {
+          response.body._embedded.events.forEach(function(event) {
 
           // Check if the event is already in DB
-          Event.findEvent(event.id, function() {
+          Event.findEventById(event.id, function() {
 
             // If it's new event, create event obj
             var newEvent  = {
@@ -35,7 +37,7 @@ module.exports = {
               imageUrl: event.images[event.images.length-1].url,
               timeZone: event.dates.timezone,
               eventStartTime: event.dates.start.dateTime || null,
-              genre: event.classifications? event.classifications[0].segment.name.toLowerCase(): null,
+              genre: event.classifications? event.classifications[0].segment.name: null,
               address: {
                 street: event._embedded.venues[0].address.line2? event._embedded.venues[0].address.line1 + event._embedded.venues[0].address.line2 : event._embedded.venues[0].address.line1,
                 city: event._embedded.venues[0].city.name,
@@ -50,8 +52,9 @@ module.exports = {
             Event.addEvent(newEvent);
           });
         })
-      });
-    }
+        });
+       }, 3000);
+     }
   },
 
 
@@ -106,24 +109,24 @@ module.exports = {
             Event.findEventById(event.id, function() {
 
             // If it's new event, create event obj
-              var newEvent  = {
-                name: event.name.text,
-                eventId: event.id,
-                desc: "No Description Available",
-                url: event.url || null,
-                imageUrl: event.logo? event.logo.url : null,
-                timeZone: event.start.timezone || null,
-                eventStartTime: event.start.utc || null,
-                genre: categories[event.category_id] || null,
-                address: {
-                  street: event.venue? (event.venue.address.line2? event.venue.address.line1 + event.venue.address.line2 : event.venue.address.line1) : null,
-                  city: event.venue? event.venue.address.city : null,
-                  state: event.venue? event.venue.address.region : null,
-                  zip_code: event.venue? (typeof event.venue.address.postal_code === 'number'? event.venue.address.postal_code: null) : null,
-                  country: event.venue? event.venue.address.country : null
-                },
-                price: null
-              };
+            var newEvent  = {
+              name: event.name.text,
+              eventId: event.id,
+              desc: "No Description Available",
+              url: event.url || null,
+              imageUrl: event.logo? event.logo.url : null,
+              timeZone: event.start.timezone || null,
+              eventStartTime: event.start.utc || null,
+              genre: categories[event.category_id] || null,
+              address: {
+                street: event.venue? (event.venue.address.line2? event.venue.address.line1 + event.venue.address.line2 : event.venue.address.line1) : null,
+                city: event.venue? event.venue.address.city : null,
+                state: event.venue? event.venue.address.region : null,
+                zip_code: event.venue? (typeof event.venue.address.postal_code === 'number'? event.venue.address.postal_code: null) : null,
+                country: event.venue? event.venue.address.country : null
+              },
+              price: null
+            };
 
               // Add new event
               Event.addEvent(newEvent);
