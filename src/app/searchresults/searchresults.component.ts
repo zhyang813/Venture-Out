@@ -100,7 +100,7 @@ export class SearchresultsComponent {
       // console.log("Not log in");
     } else {
 
-      $("#"+"fav"+event.eventId).css("opacity", "0");
+      $("#"+"fav"+event.eventId).hide();
       $("#"+"fava"+event.eventId).show();
       setTimeout(function() {
         $("#"+"fava"+event.eventId).hide();

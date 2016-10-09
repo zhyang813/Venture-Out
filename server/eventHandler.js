@@ -8,20 +8,26 @@ module.exports = {
   // Add new Event
   addEvent: function(event){
 
-    Event.create(event, function(err, event) {
-      if (err) {
-        console.log("New event created error", err);
-      } else {
-        console.log('Successful created an event!')
-        return event;
-      }
-    });
+    // Event.findOne({'eventId': event.eventId}, function(err, event){
+    //   // console.log('event found?', event);
+    //   if (err) {
+    //     console.log("mongo findOne event err: ", err);
+    //   } else if (!event) {
+        Event.create(event, function(err, event) {
+          if (err) {
+            console.log("New event created error", err);
+          } else {
+            console.log('Successful created an event!')
+          }
+        });
+      // }
+    // });
   },
 
 
   // Find a specific event using eventId
   findEventById: function(eventId, callback) {
-     console.log('findEvent', eventId);
+    console.log('findEvent', eventId);
 
     Event.findOne({'eventId': eventId}, function(err, event){
       // console.log('event found?', event);
@@ -60,7 +66,7 @@ module.exports = {
           city: city
         }
       })
-    )
+      )
   },
   // returns promise for chaining, does not take requests or send responses
   getEvents: function(locationData, genre, limit) {
@@ -70,17 +76,17 @@ module.exports = {
   },
   // get events by zip
   getEventsByZip: function(req, res) {
-      var numberOfEvents = Number.parseInt.call(this, req.params.amount)
-      var zipCode = req.params.zip;
+    var numberOfEvents = Number.parseInt.call(this, req.params.amount)
+    var zipCode = req.params.zip;
 
-      this.getLocationFromZip(zipCode)
-      .then(this.getEvents)
-      .then(function(result){
-        res.json(result)
-      })
-      .catch(function(err){
-        res.json(err)
-      })
+    this.getLocationFromZip(zipCode)
+    .then(this.getEvents)
+    .then(function(result){
+      res.json(result)
+    })
+    .catch(function(err){
+      res.json(err)
+    })
 
   },
 
@@ -91,11 +97,11 @@ module.exports = {
     var that = this;
     getMultipleEvents = function(locationData) {
      var events = [];
-      var interests = req.params.name.slice(1, req.params.name.length - 1).split(',')
-      var limit = Math.floor(13/interests.length);
-      async.waterfall([
-        function(Outercallback){
-          async.map(interests, function(interest, callback) {
+     var interests = req.params.name.slice(1, req.params.name.length - 1).split(',')
+     var limit = Math.floor(13/interests.length);
+     async.waterfall([
+      function(Outercallback){
+        async.map(interests, function(interest, callback) {
             // console.log(interest, locationData, '!------')
 
             that.getEvents(locationData, interest, 4)
@@ -111,7 +117,7 @@ module.exports = {
             // console.log('query Successful')
             Outercallback(err, result)
           })
-        }
+      }
       ],
       function(err, result){
         console.log('prmoise chain successful')
@@ -124,13 +130,13 @@ module.exports = {
         }, [])
         res.json(result)
       }
-    )
+      )
 
-    }
+   }
 
-    this.getLocationFromZip(zipCode)
-    .then(getMultipleEvents)
+   this.getLocationFromZip(zipCode)
+   .then(getMultipleEvents)
 
-  }
+ }
 
 }
