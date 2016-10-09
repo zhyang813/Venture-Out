@@ -83,21 +83,25 @@
       <div id="columns">
         <div class="pin" *ngFor="let event of events | paginate: { itemsPerPage: 50, currentPage: p }">
           <img src={{event.imageUrl}}>
-          <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
-          <p>{{event.genre}}</p>
-          <h5>{{event.name}}</h5>
-          <br>
-          <a href={{event.url}} target="_blank"><i class="material-icons">receipt</i></a>
-          <a (click)="onClickLoc(event)"><i class="material-icons">location_on</i></a>
-          <a (click)="onClickPrice(event)"><i class="material-icons">credit_card</i></a>
-          <a (click)="saveFavorite(event)" id="{{ 'fav' + event.eventId}}"><i class="material-icons">star</i></a>
-          <div id={{event.eventId}} style="display:none;">
-            <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
-          </div>
-          <div id={{event._id}} style="display:none;" >
-            <p>{{event.address? (event.address.street? event.address.street : "No address Info Available") : "No address Info Available"}}</p>
-            <p>{{event.address? (event.address.street? event.address.city : "") : ""}}</p>
-            <p>{{event.address? (event.address.street? event.address.state : "") : ""}} {{event.address? (event.address.street? event.address.zip_code : "") : ""}}</p>
+          <div class="pincontent">
+              <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
+              <p>{{event.genre}}</p>
+              <h5>{{event.name}}</h5>
+              <br>
+              <div class="pin-iconbuttons">
+                  <a href={{event.url}} target="_blank"><i class="material-icons">receipt</i></a>
+                  <a (click)="onClickLoc(event)"><i class="material-icons">location_on</i></a>
+                  <a (click)="onClickPrice(event)"><i class="material-icons">monetization_on</i></a>
+                  <a (click)="saveFavorite(event)" id="{{ 'fav' + event.eventId}}"><i class="material-icons">star</i></a>
+              </div>
+              <div id={{event.eventId}} style="display:none;">
+                <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
+              </div>
+              <div id={{event._id}} style="display:none;" >
+                <p>{{event.address? (event.address.street? event.address.street : "No address Info Available") : "No address Info Available"}}</p>
+                <p>{{event.address? (event.address.street? event.address.city : "") : ""}}</p>
+                <p>{{event.address? (event.address.street? event.address.state : "") : ""}} {{event.address? (event.address.street? event.address.zip_code : "") : ""}}</p>
+              </div>
           </div>
           <div id="{{'fava' + event.eventId}}" style="display:none;">
           <p>Event Added to your Favorite!</p>
