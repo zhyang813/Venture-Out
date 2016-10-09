@@ -40,6 +40,7 @@ export class SearchresultsComponent {
     this.eventService.start = form.value.start ? form.value.start + 'T00:00:00Z' : startDate;
     this.eventService.end = form.value.end ? form.value.end + 'T00:00:00Z' : '9999-12-31T00:00:00Z';
     this.eventService.interest = form.value.interests ? form.value.interests.toLowerCase() : '';
+    this.eventService.location = form.value.location ? form.value.location : '';
 
     this.getEvents();
   }
@@ -56,6 +57,7 @@ export class SearchresultsComponent {
     this.eventService.start = this.eventService.start ? this.eventService.start : startDate;
     this.eventService.end = this.eventService.end ? this.eventService.end : '9999-12-31T00:00:00Z';
     this.eventService.interest = this.eventService.interest ? this.eventService.interest : '';
+    this.eventService.location = this.eventService.location ? this.eventService.location : '';
 
     // Invoke http request of getting all events, filtering data based on search inputs
     this.eventService.getEvents()
@@ -69,6 +71,8 @@ export class SearchresultsComponent {
         Date.parse (event.eventStartTime) <= Date.parse (this.eventService.end);
       }).filter( event => {
         return event.genre ? event.genre.toLowerCase().includes(this.eventService.interest) : true;
+      }).filter( event => {
+        return event.address.city.toLowerCase().includes(this.eventService.location.toLowerCase());
       }).sort(function (a,b) {
         if(Date.parse (a.eventStartTime) > Date.parse (b.eventStartTime)) return 1;
         if(Date.parse (a.eventStartTime) < Date.parse (b.eventStartTime)) return -1;

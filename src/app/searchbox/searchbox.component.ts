@@ -27,6 +27,7 @@ export class SearchboxComponent {
     this.eventService.start = form.value.start ? form.value.start + 'T00:00:00Z' : '0000-01-01T00:00:00Z';
     this.eventService.end = form.value.end ? form.value.end + 'T00:00:00Z' : '9999-12-31T00:00:00Z';
     this.eventService.interest = form.value.interests ? form.value.interests.toLowerCase() : '';
+    this.eventService.location = form.value.location ? form.value.location : '';
     this.router.navigate(['/searchresults']);
   }
 
