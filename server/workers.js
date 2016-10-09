@@ -11,9 +11,7 @@ module.exports = {
     console.log('TM fetcher is running');
 
     // To get the data between a week from now and in a month
-     for (var i = 7; i < 30; i++) {
-
-       setTimeout(function() {
+    for (var i = 7; i < 15; i++) {
 
       var futureDate = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000).toJSON().slice(0,10);
 
@@ -21,11 +19,11 @@ module.exports = {
 
 
 
-        Request.get(url).then(function(response) {
-          response.body._embedded.events.forEach(function(event) {
+      Request.get(url).then(function(response) {
+        response.body._embedded.events.forEach(function(event) {
 
           // Check if the event is already in DB
-          Event.findEventById(event.id, function() {
+           Event.findEventById(event.id, function() {
 
             // If it's new event, create event obj
             var newEvent  = {
@@ -51,9 +49,8 @@ module.exports = {
             Event.addEvent(newEvent);
           });
         })
-        });
-       }, 3000);
-     }
+      });
+    }
   },
 
 
@@ -86,16 +83,16 @@ module.exports = {
 
     var count = 1;
 
-    for (var i = 7; i < 30; i++) {
+    for (var i = 7; i < 15; i++) {
 
       var futureDate = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000).toJSON().slice(0,10);
       var startDate = futureDate + 'T00:00:00Z';
 
       var url = 'https://www.eventbriteapi.com/v3/events/search/?sort_by=best&location.address=us&start_date.range_start='+ startDate +'&expand=venue&token=YZO3HZ5MJZYKY6QU64H2';
 
-      setTimeout(function() {
 
-        Request.get(url).then((response) => {
+
+      Request.get(url).then((response) => {
 
           //console.log('Event Brite Event : ', count, response.body.events[0]);
 
@@ -121,7 +118,7 @@ module.exports = {
                 street: event.venue? (event.venue.address.line2? event.venue.address.line1 + event.venue.address.line2 : event.venue.address.line1) : null,
                 city: event.venue? event.venue.address.city : null,
                 state: event.venue? event.venue.address.region : null,
-                zip_code: event.venue? (typeof event.venue.address.postal_code === 'string'? +event.venue.address.postal_code: null) : null,
+                zip_code: event.venue? (typeof event.venue.address.postal_code !== 'object'? +event.venue.address.postal_code: null) : null,
                 country: event.venue? event.venue.address.country : null
               },
               price: null
@@ -132,7 +129,6 @@ module.exports = {
             });
           });
         });
-      }, 3000);
     }
   }
 
