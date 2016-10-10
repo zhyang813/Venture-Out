@@ -2,8 +2,8 @@
   <nav>
     <div class="nav-wrapper blue-grey darken-4 z-depth-2">
       <a class="headerlink">  <span><button class="app-icon-button" (click)="sidenav.toggle()">
-    <i class="tiny material-icons">menu</i>
-  </button></span></a>
+        <i class="tiny material-icons">menu</i>
+      </button></span></a>
       <a class="headerlink"><i class="material-icons">local_activity</i></a>
       <a class="headerlink"[routerLink]="['/']">VentureOut</a>
       <ul id="nav-mobile" class="right">
@@ -84,27 +84,28 @@
         <div class="pin" *ngFor="let event of events | paginate: { itemsPerPage: 50, currentPage: p }">
           <img src={{event.imageUrl}}>
           <div class="pincontent">
-              <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
-              <p>{{event.genre}}</p>
-              <h5>{{event.name}}</h5>
-              <br>
-              <div class="pin-iconbuttons">
-                  <a href={{event.url}} target="_blank"><i class="material-icons">receipt</i></a>
-                  <a (click)="onClickLoc(event)"><i class="material-icons">location_on</i></a>
-                  <a (click)="onClickPrice(event)"><i class="material-icons">monetization_on</i></a>
-                  <a (click)="saveFavorite(event)"><i class="material-icons">star</i></a>
-              </div>
-              <div id={{event.eventId}} style="display:none;">
-                  <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
-              </div>
-              <div id={{event._id}} style="display:none;" >
-                  <p>{{event.address? (event.address.street? event.address.street : "No address Info Available") : "No address Info Available"}}</p>
-                  <p>{{event.address? (event.address.street? event.address.city : "") : ""}}</p>
-                  <p>{{event.address? (event.address.street? event.address.state : "") : ""}} {{event.address? (event.address.street? event.address.zip_code : "") : ""}}</p>
-              </div>
+            <p style="font-size: 12px">{{event.eventStartTime | date:'yMMMdjms'}}</p>
+            <p style="font-size: 12px">{{event.genre}}</p>
+            <h6><strong>{{event.name}}</strong></h6>
+            <br>
+            <div class="pin-iconbuttons">
+              <a href={{event.url}} target="_blank"><i class="material-icons">receipt</i></a>
+              <a (click)="onClickLoc(event)"><i class="material-icons">location_on</i></a>
+              <a (click)="onClickPrice(event)"><i class="material-icons">monetization_on</i></a>
+              <a (click)="saveFavorite(event)"><i class="material-icons">star</i></a>
+            </div>
+            <div id={{event.eventId}} style="display:none;">
+              <p><b>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</b></p>
+            </div>
+            <div id={{event._id}} style="display:none;" >
+              <p><b>Address: </b></p>
+              <p><b>- {{event.address? (event.address.street? event.address.street : "No address Info Available") : "No address Info Available"}}</b></p>
+              <p><b>- {{event.address? (event.address.street? event.address.city : "") : ""}}</b></p>
+              <p><b>- {{event.address? (event.address.street? event.address.state : "") : ""}} {{event.address? (event.address.street? event.address.zip_code : "") : ""}}</b></p>
+            </div>
           </div>
           <div id="{{'fava' + event.eventId}}" style="display:none;">
-              <p>Event Added to your Favorite!</p>
+            <p>  Event Added to your Favorite!</p>
           </div>
         </div>
       </div>

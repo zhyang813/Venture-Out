@@ -20,7 +20,7 @@ describe('Component: Searchbox', () => {
       providers: [
         { provide: Router, useClass: RouterStub }
       ]
-    }).compileComponents()
+    }).compileComponents();
   });
 
   it('should render searchbox heading in a h5 tag', async(() => {
