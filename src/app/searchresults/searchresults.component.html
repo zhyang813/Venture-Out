@@ -99,10 +99,10 @@
               <p><b>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</b></p>
             </div>
             <div id={{event._id}} style="display:none;" >
-              <p><b>Address: </b></p>
-              <p><b>- {{event.address? (event.address.street? event.address.street : "No address Info Available") : "No address Info Available"}}</b></p>
-              <p><b>- {{event.address? (event.address.street? event.address.city : "") : ""}}</b></p>
-              <p><b>- {{event.address? (event.address.street? event.address.state : "") : ""}} {{event.address? (event.address.street? event.address.zip_code : "") : ""}}</b></p>
+              <p><b>{{event.address? (event.address.street? "Address: " : "No address Info Available") : "No address Info Available"}}</b></p>
+              <p><b>{{event.address? (event.address.street? event.address.street + "," : "") : ""}}</b></p>
+              <p><b>{{event.address? (event.address.street? event.address.city + "," : "") : ""}}</b></p>
+              <p><b>{{event.address? (event.address.street? event.address.state + "," : "") : ""}} {{event.address? (event.address.street? event.address.zip_code : "") : ""}}</b></p>
             </div>
           </div>
           <div id="{{'fava' + event.eventId}}" style="display:none;">
