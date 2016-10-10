@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class UserPageService {
 
   userInformation: any;
+  userProfile: any;
   userId: string;
   zipCode: string;
   interests: Array<string>;
 
   constructor(private http: Http) {
-    this.userInformation = JSON.parse(localStorage.getItem('profile'));
-    this.userId = this.userInformation.user_id;
+      this.userInformation = JSON.parse(localStorage.getItem('profile'));
+
+    if(this.userInformation){
+      this.userProfile = JSON.parse(localStorage.getItem('profile'));
+      this.userId = this.userProfile.user_id
+    }
+
   }
 
   public getFavorites() {
@@ -20,7 +27,12 @@ export class UserPageService {
       response.json()
     );
   }
+  //TODO moves these to interactive-helper compoent service
   public addZipToDB() {
+
+    this.userProfile = JSON.parse(localStorage.getItem('profile'));
+    this.userId = this.userProfile.user_id
+
     let body = JSON.stringify({
       userId: this.userId,
       zipCode: this.zipCode
@@ -32,6 +44,7 @@ export class UserPageService {
     });
   }
   public addInterestsToDb(interests) {
+
     let body = JSON.stringify({
       userId: this.userId,
       interests: interests
@@ -42,4 +55,27 @@ export class UserPageService {
       console.log(response);
     });
   }
+  // public getZipCode() {
+  //   return this.http.get(`/api/user/${this.userId}/zipcode`)
+  // }
+  // public getInterests() {
+  //   return this.http.get(`/api/user/${this.userId}/interests`)
+  // }
+  public getRecommendations(zip, interests) {
+    interests = JSON.stringify(interests)
+    let url = `/api/user/zipcode/${zip}/interests/${interests}`
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(url, options).map(response =>
+      response.json()
+    );
+  }
+  public getZipAndInterests() {
+
+    return Observable.forkJoin(
+      this.http.get(`/api/user/${this.userId}/zipcode`).map((res:Response) => res.json()),
+      this.http.get(`/api/user/${this.userId}/interests`).map((res:Response) => res.json())
+    )
+
+  };
 }

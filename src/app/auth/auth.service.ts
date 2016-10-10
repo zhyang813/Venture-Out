@@ -2,6 +2,7 @@ import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
+import { UserPageService } from '../user-page/user-page.service';
 
 
 // Avoid name not found warnings
@@ -18,7 +19,7 @@ export class AuthService {
 
   userProfile: Object;
 
-  constructor(private http: Http, private router: Router) {
+  constructor(private http: Http, private router: Router, private userService: UserPageService) {
 
     // Set userProfile attribute of already saved profile
     this.userProfile = JSON.parse(localStorage.getItem('profile'));

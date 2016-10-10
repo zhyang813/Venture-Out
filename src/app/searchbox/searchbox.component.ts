@@ -18,7 +18,7 @@ export class SearchboxComponent {
               private router: Router,
               private eventService: EventService) {
 
-            this.frontPageEvents();
+            // this.frontPageEvents();
   }
 
   public onSearch(form) {
