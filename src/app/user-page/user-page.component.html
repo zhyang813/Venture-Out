@@ -70,10 +70,11 @@
         <div clas="row" *ngIf="auth.authenticated() && auth.userProfile">
             <div class="row card-panel grey lighten-5" *ngFor="let event of favorites">
               <div class="col s8">
-                <h6><strong>{{event.name}}</strong></h6>
+                <p><b>{{event.name}}</b></p>
+                <br>
                 <p style="font-size: 12px">{{event.eventStartTime | date:'yMMMdjms'}}</p>
                 <p style="font-size: 12px">{{event.genre}}</p>
-                <p><b>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</b></p>
+                <p style="font-size: 10px">{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
               </div>
               <div class="col s4">
                 <a class="waves-effect orange darken-2 btn" href={{event.url}} target="_blank" style="z-index:0;"><i class="material-icons left">receipt</i>TICKETS</a>
