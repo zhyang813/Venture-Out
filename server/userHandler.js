@@ -92,8 +92,9 @@ module.exports = {
     })
   },
   getUserZipcode: function(req, res) {
+    console.log
     db.collections.users.findOne(
-      {userId: req.body.userId}
+      {userId: req.params.id}
     ).then(function(result) {
       res.json(result.zipCode)
     }).catch(function(err) {
@@ -102,7 +103,7 @@ module.exports = {
   },
   getUserInterests: function(req, res) {
     db.collections.users.findOne(
-      {userId: req.body.userId}
+      {userId: req.params.id}
     ).then(function(result) {
       res.json(result.interests)
     }).catch(function(err) {

@@ -69,7 +69,9 @@
 
         <div clas="row" *ngIf="auth.authenticated() && auth.userProfile">
 
+
             <div class="row card-panel grey lighten-5" *ngFor="let event of recommendations">
+
 
               <div class="col s8">
                 <p><b>{{event.name}}</b></p>
@@ -86,6 +88,21 @@
 
         <div class="divider"></div>
         <h4 class="header"><i class="small material-icons">grade</i>&nbsp;Recommended Events</h4>
+
+        <div clas="row" *ngIf="auth.authenticated() && auth.userProfile">
+            <div class="row" *ngFor="let event of recommendations">
+              <div class="col s8">
+                <h6><strong>{{event.name}}</strong></h6>
+                <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
+                <p>{{event.genre}}</p>
+                <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
+              </div>
+              <div class="col s4">
+                <a class="waves-effect orange darken-2 btn" href={{event.url}} target="_blank" style="z-index:0;"><i class="material-icons left">receipt</i>TICKETS</a>
+              </div>
+            </div>
+        </div>
+
         <div class="divider"></div>
         <br>
       </div>

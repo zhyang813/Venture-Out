@@ -71,7 +71,20 @@ module.exports = {
   // returns promise for chaining, does not take requests or send responses
   getEvents: function(locationData, genre, limit) {
     var city = locationData.city.split('_').join(' ');
-    return Event.where('address.city').eq(city).sort('createdAt').limit(20)
+    if(!genre){
+      return Event.where('address.city').eq(city).sort('createdAt').limit(20)
+    } else {
+      // using a regex to find categories in searches that have multiple words
+      var regex = `\\bgenre\\b`.replace('genre', genre).split('"').join('');
+      console.log(regex, 'this is in get events')
+      return Event.find({
+        $and: [
+          {'address.city': city},
+          {'genre': { $regex: regex }}
+
+        ]
+      })
+    }
 
   },
   getEventsByZip: function(req, res) {
@@ -91,7 +104,7 @@ module.exports = {
   getEventsByCategoriesAndZip: function(req, res) {
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
-
+    console.log(req.params)
     var that = this;
 
     getMultipleEvents = function(locationData) {
@@ -103,10 +116,10 @@ module.exports = {
       async.waterfall([
         function(Outercallback){
           async.map(interests, function(interest, callback) {
-            // console.log(interest, locationData, '!------')
+            console.log(interest, locationData, '!------')
             that.getEvents(locationData, interest, 4)
             .then(function(result){
-              // console.log(result, 'grabbing each event')
+              console.log(result, 'grabbing each event')
               callback(null, result)
             })
             .catch(function(err){

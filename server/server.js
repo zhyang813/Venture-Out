@@ -74,13 +74,13 @@ app.post('/api/user/addZipCode', function(req, res){
 app.post('/api/user/addInterests', function(req, res){
   userHandler.addInterests(req, res);
 });
-app.get('/api/user/getRecommendations', function(req, res) {
+app.get('/api/user/zipcode/:zip/interests/:name', function(req, res) {
   eventHandler.getEventsByCategoriesAndZip(req, res);
 })
-app.get('/api/user/zipcode', function(req, res) {
+app.get('/api/user/:id/zipcode', function(req, res) {
   userHandler.getUserZipcode(req, res);
 })
-app.get('/api/user/interests', function(req, res) {
+app.get('/api/user/:id/interests', function(req, res) {
   userHandler.getUserInterests(req, res);
 })
 //Routes

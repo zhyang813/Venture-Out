@@ -27,12 +27,22 @@ describe ('', function() {
       address: {city: 'Los Angeles' },
       genre: 'Sports'
     }
+    event3 = {
+      eventId: 'demoTest3',
+      eventZip: '90001',
+      address: {city: 'Los Angeles' },
+      genre: 'Community Sports'
+    }
+
     // Event.remove({'eventId': 'LOL_ITS_TEST'}).exec();
     Event.create(event1)
     .then(function() {
       Event.create(event2)
       .then(function() {
-        done();
+        Event.create(event3)
+        .then(function() {
+          done();
+        })
       })
     })
 
@@ -42,6 +52,7 @@ describe ('', function() {
 
     Event.remove({'eventId': 'demoTest'}).exec();
     Event.remove({'eventId': 'demoTest2'}).exec();
+    Event.remove({'eventId': 'demoTest3'}).exec();
     // User.remove({'userId': 'David'}).exec();
     done();
 
@@ -76,7 +87,7 @@ describe ('', function() {
         }
       }, res = {
         json: function(result) {
-          // console.log(result,'this is multiple result')
+          console.log(result,'this is multiple result')
           expect(result[0].genre).to.equal('Music')
           expect(result[1].genre).to.equal('Sports')
           done();
