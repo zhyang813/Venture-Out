@@ -6,6 +6,26 @@
   padding: 0px;
 }
 
+#clicked {
+  color: #26007a;
+}
+
+#icon-ticket {
+
+}
+
+#icon-location {
+
+}
+
+#sicon-price {
+
+}
+
+.icon-favorite {
+
+}
+
 .headerlink {
   color: white;
   text-decoration: none;
@@ -86,7 +106,8 @@
 }
 
 .pin-iconbuttons {
-
+  margin: auto;
+  width: 65%;
 }
 
 .pin img {
