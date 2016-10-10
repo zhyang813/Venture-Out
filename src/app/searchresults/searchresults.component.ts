@@ -99,13 +99,10 @@ export class SearchresultsComponent {
       .open()
       // console.log("Not log in");
     } else {
-
-      $("#"+"fav"+event.eventId).hide();
       $("#"+"fava"+event.eventId).show();
       setTimeout(function() {
         $("#"+"fava"+event.eventId).hide();
       }, 2000);
-
     }
   }
 
