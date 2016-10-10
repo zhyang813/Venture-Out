@@ -20,6 +20,7 @@ export class UserPageService {
       response.json()
     );
   }
+  //TODO moves these to interactive-helper compoent service
   public addZipToDB() {
     let body = JSON.stringify({
       userId: this.userId,
@@ -41,5 +42,19 @@ export class UserPageService {
     return this.http.post('/api/user/addInterests', body, options).subscribe(function(response){
       console.log(response);
     });
+  }
+  public getZipCode() {
+    return this.http.get('/api/user/zipcode')
+  }
+  public getInterests() {
+    return this.http.get('/api/user/interests')
+  }
+  public getRecommendations(zip, interests) {
+    let url = `/api/user/getRecommendations/`
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(url, options).map(response =>
+      response.json()
+    );
   }
 }

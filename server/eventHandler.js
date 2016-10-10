@@ -74,7 +74,6 @@ module.exports = {
     return Event.where('address.city').eq(city).sort('createdAt').limit(20)
 
   },
-  // get events by zip
   getEventsByZip: function(req, res) {
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
@@ -89,21 +88,22 @@ module.exports = {
     })
 
   },
-
-  // find events by zip and categories
   getEventsByCategoriesAndZip: function(req, res) {
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
+
     var that = this;
+
     getMultipleEvents = function(locationData) {
      var events = [];
-     var interests = req.params.name.slice(1, req.params.name.length - 1).split(',')
-     var limit = Math.floor(13/interests.length);
-     async.waterfall([
-      function(Outercallback){
-        async.map(interests, function(interest, callback) {
-            // console.log(interest, locationData, '!------')
 
+      // JSON is stringified in the request. slice off start/end quotations
+      var interests = req.params.name.slice(1, req.params.name.length - 1).split(',')
+      var limit = Math.floor(13/interests.length);
+      async.waterfall([
+        function(Outercallback){
+          async.map(interests, function(interest, callback) {
+            // console.log(interest, locationData, '!------')
             that.getEvents(locationData, interest, 4)
             .then(function(result){
               // console.log(result, 'grabbing each event')

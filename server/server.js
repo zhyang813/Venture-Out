@@ -65,7 +65,6 @@ app.get('/api/user/:id', function(req, res) {
 app.put('/api/user', function(req, res) {
   userHandler.addFavorite(req, res);
 });
-
 app.get('/api/user/favorites/:id', function(req, res){
   userHandler.getFavorites(req, res);
 });
@@ -75,6 +74,15 @@ app.post('/api/user/addZipCode', function(req, res){
 app.post('/api/user/addInterests', function(req, res){
   userHandler.addInterests(req, res);
 });
+app.get('/api/user/getRecommendations', function(req, res) {
+  eventHandler.getEventsByCategoriesAndZip(req, res);
+})
+app.get('/api/user/zipcode', function(req, res) {
+  userHandler.getUserZipcode(req, res);
+})
+app.get('/api/user/interests', function(req, res) {
+  userHandler.getUserInterests(req, res);
+})
 //Routes
 app.get('/api/events/zipcode/:zip/', function(req, res) {
   eventHandler.getEventsByZip(req, res)
