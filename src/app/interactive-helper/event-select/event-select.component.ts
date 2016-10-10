@@ -24,11 +24,11 @@ export class EventSelectComponent {
 
   grabEvents() {
 
-    var categories = this.userService.interests
-    console.log(this.userService.interests)
-    console.log(categories)
-    console.log(JSON.stringify(categories))
-    console.log(categories.toString())
+    // let categories = this.userService.interests;
+    // console.log(this.userService.interests);
+    // console.log(categories);
+    // console.log(JSON.stringify(categories));
+    // console.log(categories.toString());
 
     // this.http.get(`/api/events/category/${JSON.stringify(categories.toString())}/zipcode/${this.userService.zipCode}/quantity/12`)
     // .subscribe(result => {
