@@ -20,10 +20,12 @@ export class EventService {
   }
 
   // Http request to get all events from DB
-  getEvents () {
+  public getEvents () {
     return this.http.get('/api/events').map(res => res.json());
   }
 
+
+  // Save favorite event to DB, making sure user is authenticated
   public saveFavorite(eventId) {
     if (this.auth.authenticated()) {
       let userProfile = JSON.parse(localStorage.getItem('profile'));

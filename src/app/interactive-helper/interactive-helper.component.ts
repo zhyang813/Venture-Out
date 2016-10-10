@@ -35,7 +35,7 @@ export class InteractiveHelperComponent implements OnInit {
       )
     });
   }
-  onSubmit() {
+  public onSubmit() {
     if (this.myForm.value.location && this.myForm.valid) {
       this.userService.zipCode = this.myForm.value.location;
       this.userService.addZipToDB();

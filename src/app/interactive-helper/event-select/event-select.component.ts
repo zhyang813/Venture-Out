@@ -22,7 +22,7 @@ export class EventSelectComponent {
     this.grabEvents();
   }
 
-  grabEvents() {
+  public grabEvents() {
 
     // let categories = this.userService.interests;
     // console.log(this.userService.interests);
@@ -42,10 +42,10 @@ export class EventSelectComponent {
     });
     this.favorites = [];
   }
-  onLike(event) {
+  public onLike(event) {
     this.favorites.push('placeholder');
   }
-  goToNextPage() {
+  public goToNextPage() {
     this.router.navigate(['/']);
   }
 

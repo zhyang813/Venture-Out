@@ -21,7 +21,7 @@ export class SearchboxComponent {
             this.frontPageEvents();
   }
 
-  onSearch(form) {
+  public onSearch(form) {
     this.eventService.find = form.value.find ? form.value.find.toLowerCase() : '';
     this.eventService.budget = form.value.budget ? form.value.budget : 0;
     this.eventService.start = form.value.start ? form.value.start + 'T00:00:00Z' : '0000-01-01T00:00:00Z';
@@ -31,7 +31,9 @@ export class SearchboxComponent {
     this.router.navigate(['/searchresults']);
   }
 
-  frontPageEvents () {
+
+  // Plan for front page recommendation
+  public frontPageEvents () {
 
     let currentTime = new Date().toJSON().slice(0);
 

@@ -28,10 +28,10 @@ export class CategorySelectComponent {
     ];
     this.liked = [];
   }
-  onLike(event) {
+  public onLike(event) {
     this.liked.push(event);
   }
-  goToNextPage() {
+  public goToNextPage() {
     this.userService.interests = this.liked;
     this.userService.addInterestsToDb(this.liked);
     this.router.navigate(['event-select']);
