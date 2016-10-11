@@ -37,22 +37,5 @@ export class EventService {
       this.login = false;
     }
   }
-  // refactored out to node services
-  // public eventTitlesToWords(titles) {
-  //   this.keyWords = {};
-
-  //   titles.forEach((title) => {
-  //       title.split(' ').forEach((word) => {
-
-  //           word = word.replace(/[^A-Za-z0-9]/g, '');
-  //           if(this.keyWords[word]){
-  //               this.keyWords[word] += 1
-  //           } else {
-  //               this.keyWords[word] = 1
-  //           }
-  //       })
-  //   })
-  //    // return keyWords
-  // }
 
 }

@@ -45,9 +45,9 @@ export class EventSelectComponent {
     this.favorites = [];
   }
   public onLike(event) {
-    console.log(event)
+    console.log(event);
     this.keyWords.push(event);
-    console.log(this.keyWords)
+    console.log(this.keyWords);
   }
   public goToNextPage() {
     this.router.navigate(['/']);

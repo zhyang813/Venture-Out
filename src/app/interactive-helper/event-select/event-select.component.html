@@ -16,10 +16,7 @@
     on your preferences!
   </div>
   <div id="next">
-    <a class="btn-floating btn-large waves-effect waves-light red"
-    *ngIf="favorites.length >= 3"
-    id='next'
-    (click)="goToNextPage()">
+    <a class="btn-floating btn-large waves-effect waves-light red" (click)="goToNextPage()">
     <i class="material-icons">trending_flat</i>
   </a>
 </div>
@@ -60,7 +57,7 @@
       </div>
       <div class="card-action">
         <a class="waves-effect waves-light btn-large"
-        (click)="onLike(event)">
+        (click)="onLike(event.name)">
         Like
       </a>
     </div>
