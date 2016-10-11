@@ -22,6 +22,7 @@
       <br>
     </div>
 
+<<<<<<< f744d179b94b079d61485256caf2a3d36b05bff3
     <div class="col s4">
       <div class="card-panel grey lighten-5" *ngIf="auth.authenticated() && auth.userProfile">
         <img src="http://khns.org/wp-content/uploads/2014/07/profile-icon-400x380.png">
@@ -48,6 +49,32 @@
           <div class="col s4">
             <a class="waves-effect orange darken-2 btn" href={{event.url}} target="_blank" style="z-index:0;"><i class="material-icons left">receipt</i>TICKETS</a>
           </div>
+=======
+      <div class="col s4">
+        <div class="card-panel grey lighten-5" *ngIf="auth.authenticated() && auth.userProfile">
+          <div class="image-cropper">
+            <img src="{{userImgUrl}}">
+          </div>
+          <br>
+
+
+          <div class="row">
+            <form class="col s12" (ngSubmit)="onSubmit(form)" #form="ngForm">
+              <div class="row">
+                <div class="col s9">
+                    <input placeholder="Image URL" id="imgUrl" type="text" class="validate" ngModel name="imgUrl">
+                </div>
+                <div class="col s3">
+                  <button type="submit"><i class="material-icons">add_a_photo</i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <p><strong>Name: </strong> {{auth.userProfile.name}}</p>
+          <p><strong>Email: </strong> {{auth.userProfile.email}}</p>
+          <p><strong>Nickname: </strong> {{auth.userProfile.nickname}}</p>
+>>>>>>> Create user profile image uploader on user component.
         </div>
       </div>
 
@@ -73,7 +100,11 @@
       <div class="divider"></div>
       <br>
     </div>
+<<<<<<< f744d179b94b079d61485256caf2a3d36b05bff3
 
   </div>
 </div>
 
+=======
+</div>
+>>>>>>> Create user profile image uploader on user component.

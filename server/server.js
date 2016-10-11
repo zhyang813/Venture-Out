@@ -84,8 +84,16 @@ app.get('/api/user/:id/zipcode', function(req, res) {
 app.get('/api/user/:id/interests', function(req, res) {
   userHandler.getUserInterests(req, res);
 })
+app.post('/api/user/addImgUrl', function(req, res){
+  userHandler.addImgUrl(req, res);
+});
+app.get('/api/user/getImgUrl/:id', function(req, res) {
+  userHandler.getImgUrl(req, res)
+});
+
+
 //Routes
-app.get('/api/events/zipcode/:zip/', function(req, res) {
+app.get('/api/user/getEventsByZip', function(req, res) {
   eventHandler.getEventsByZip(req, res)
 });
 app.get('/api/events/category/:name/zipcode/:zip/quantity/:amount', function(req, res) {

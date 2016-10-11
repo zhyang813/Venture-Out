@@ -91,6 +91,30 @@ module.exports = {
       res.json(err)
     })
   },
+  addImgUrl: function(req, res) {
+    db.collections.users.findOneAndUpdate(
+      {userId: req.body.userId},
+      {
+        $set: { imgUrl: req.body.imgUrl }
+      }
+    ).then(function(result) {
+      res.json(result)
+    }).catch(function(err) {
+      res.json(err)
+    })
+  },
+  getImgUrl: function(req, res) {
+    console.log('Get ImgUrl Called');
+    console.log("this is getImgUrl reqeust", req.params.id);
+    db.collections.users.findOne(
+      {userId: req.params.id} // get use params
+    ).then(function(result) {
+      console.log("this is getImgUrl result", result);
+      res.json(result.imgUrl)
+    }).catch(function(err) {
+      res.json(err)
+    })
+  },
   getUserZipcode: function(req, res) {
     console.log
     db.collections.users.findOne(
