@@ -4,11 +4,13 @@ var async = require('async');
 
 
 module.exports = {
-  addKeyWordsToDB: function() {
-
+  addKeyWordsToDB: function(req, res) {
+    // req.body.titles
+    services.titlesToKeyWords()
   },
-  getKeyWordsFromDB: function() {
+  getKeyWordsFromDB: function(req, res) {
+    // keyWord.find({
 
+    // })
   }
-
 }

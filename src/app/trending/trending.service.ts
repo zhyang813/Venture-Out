@@ -6,22 +6,22 @@ export class TrendingService {
 
   constructor(private http: Http) {}
 
+  // refactoed to services for now
+  // public eventTitlesToWords(titles) {
+  //   this.keyWords = {};
 
-  public eventTitlesToWords(titles) {
-    this.keyWords = {};
+  //   titles.forEach((title) => {
+  //       title.split(' ').forEach((word) => {
 
-    titles.forEach((title) => {
-        title.split(' ').forEach((word) => {
-
-            word = word.replace(/[^A-Za-z0-9]/g, '');
-            if(this.keyWords[word]){
-                this.keyWords[word] += 1
-            } else {
-                this.keyWords[word] = 1
-            }
-        })
-    })
-  }
+  //           word = word.replace(/[^A-Za-z0-9]/g, '');
+  //           if(this.keyWords[word]){
+  //               this.keyWords[word] += 1
+  //           } else {
+  //               this.keyWords[word] = 1
+  //           }
+  //       })
+  //   })
+  // }
   public getKeyWordsFromDB(){
     // grab the globally most popular keywords from the collection
   }

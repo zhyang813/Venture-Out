@@ -93,10 +93,10 @@ app.get('/api/events/category/:name/zipcode/:zip/quantity/:amount', function(req
 });
 // Routes for keywords
 app.get('/api/keywords/', function(req, res) {
-
+  keyWorldHandler.getKeyWordsFromDB(req, res)
 })
 app.post('/api/keywords/', function(req, res) {
-
+  keyWorldHandler.addKeyWordsToDB(req, res)
 })
 
 app.get('/*', function (req, res) {
