@@ -72,7 +72,7 @@ export class SearchresultsComponent {
       }).filter( event => {
         return event.genre ? event.genre.toLowerCase().includes(this.eventService.interest) : true;
       }).filter( event => {
-        return event.address ? (event.address.city.toLowerCase().includes(this.eventService.location.toLowerCase())) : true;
+        return event.address.city ? (event.address.city.toLowerCase().includes(this.eventService.location.toLowerCase())) : true;
       }).sort(function (a, b) {
         if (Date.parse (a.eventStartTime) > Date.parse (b.eventStartTime)) {
           return 1;
