@@ -10,7 +10,7 @@ module.exports = {
 
     console.log('TM fetcher is running');
 
-    // To get the data between a week from now and in a month
+    // To get the data between a week from now and in two weeks
     for (var i = 7; i < 15; i++) {
 
       var futureDate = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000).toJSON().slice(0,10);
@@ -58,6 +58,7 @@ module.exports = {
 
     console.log('EB fetcher is running');
 
+    // Map for category_id -> category name
     var categories = {
       '101': 'Business & Professional',
       '103': 'Music',
@@ -81,8 +82,7 @@ module.exports = {
       '199': 'other'
     };
 
-    var count = 1;
-
+    // To get the data between a week from now and in two weeks
     for (var i = 7; i < 15; i++) {
 
       var futureDate = new Date(new Date().getTime() + i * 24 * 60 * 60 * 1000).toJSON().slice(0,10);
@@ -104,7 +104,7 @@ module.exports = {
 
             Event.findEventById(event.id, function() {
 
-            // If it's new event, create event obj
+            // If it's a new event, create event obj
             var newEvent  = {
               name: event.name.text,
               eventId: event.id,

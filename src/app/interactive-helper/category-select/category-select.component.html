@@ -18,29 +18,29 @@
     *ngIf="liked.length >= 3"
     id='next'
     (click)="goToNextPage()">
-      <i class="material-icons">trending_flat</i>
-    </a>
-  </div>
-  <div id='columns'>
-    <div [attr.data-category]="category.genre" class="pin" id="suggestions" *ngFor="let category of categories">
+    <i class="material-icons">trending_flat</i>
+  </a>
+</div>
+<div id='columns'>
+  <div [attr.data-category]="category.genre" class="pin" id="suggestions" *ngFor="let category of categories">
 
-        <div class="col s12 m7" id="{{'gen' + category.genre}}">
-          <div class="card" style="margin:0 !important;">
-            <div class="card-image">
-              <img src={{category.imageUrl}}>
-              <span class="card-title">{{category.genre}}</span>
-            </div>
-            <div class="card-action">
-              <a class="waves-effect waves-light btn-large"
-              (click)="onLike(category.genre)">
-                Like
-              </a>
-            </div>
-          </div>
+    <div class="col s12 m7" id="{{'gen' + category.genre}}">
+      <div class="card" style="margin:0 !important;">
+        <div class="card-image">
+          <img src={{category.imageUrl}}>
+          <span class="card-title">{{category.genre}}</span>
         </div>
-
+        <div class="card-action">
+          <a class="waves-effect waves-light btn-large"
+          (click)="onLike(category.genre)">
+          Like
+        </a>
+      </div>
     </div>
-
   </div>
+
+</div>
+
+</div>
 
 </div>

@@ -8,20 +8,13 @@ module.exports = {
   // Add new Event
   addEvent: function(event){
 
-    // Event.findOne({'eventId': event.eventId}, function(err, event){
-    //   // console.log('event found?', event);
-    //   if (err) {
-    //     console.log("mongo findOne event err: ", err);
-    //   } else if (!event) {
-        Event.create(event, function(err, event) {
-          if (err) {
-            console.log("New event created error", err);
-          } else {
-            console.log('Successful created an event!')
-          }
-        });
-      // }
-    // });
+    Event.create(event, function(err, event) {
+      if (err) {
+        console.log("New event created error", err);
+      } else {
+        console.log('Successful created an event!')
+      }
+    });
   },
 
 
@@ -51,6 +44,7 @@ module.exports = {
       }
     });
   },
+
   // returns promise for chaining, does not take requests or send responses
   getLocationFromZipPromise: function(zipCode) {
     return (
@@ -68,6 +62,7 @@ module.exports = {
       })
       )
   },
+
   // returns promise for chaining, does not take requests or send responses
   // locationData is the result from the geocoder api
   // if genre is included search but category, if not get all events by city
@@ -81,14 +76,14 @@ module.exports = {
       console.log(regex, 'this is in get events')
       return Event.find({
         $and: [
-          {'address.city': city},
-          {'genre': { $regex: regex }}
-
+        {'address.city': city},
+        {'genre': { $regex: regex }}
         ]
       })
     }
 
   },
+
   getEventsByZip: function(req, res) {
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
@@ -103,6 +98,7 @@ module.exports = {
     })
 
   },
+
   getEventsByCategoriesAndZip: function(req, res) {
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
@@ -132,10 +128,10 @@ module.exports = {
             // console.log('query Successful')
             Outercallback(err, result)
           })
-      }
-      ],
-      function(err, result){
-        console.log('prmoise chain successful')
+        }
+        ],
+        function(err, result){
+          console.log('prmoise chain successful')
         // flatten arrays
         result = result.reduce(function(store, next) {
           next.forEach(function(element) {
@@ -147,11 +143,11 @@ module.exports = {
       }
       )
 
-   }
+    }
 
-   this.getLocationFromZipPromise(zipCode)
-   .then(getMultipleEvents)
+    this.getLocationFromZipPromise(zipCode)
+    .then(getMultipleEvents)
 
- }
+  }
 
 }
