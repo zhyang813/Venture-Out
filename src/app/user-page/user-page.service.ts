@@ -14,9 +14,9 @@ export class UserPageService {
   constructor(private http: Http) {
       this.userInformation = JSON.parse(localStorage.getItem('profile'));
 
-    if(this.userInformation){
+    if (this.userInformation) {
       this.userProfile = JSON.parse(localStorage.getItem('profile'));
-      this.userId = this.userProfile.user_id
+      this.userId = this.userProfile.user_id;
     }
 
   }
@@ -27,11 +27,11 @@ export class UserPageService {
       response.json()
     );
   }
-  //TODO moves these to interactive-helper compoent service
+  // TODO moves these to interactive-helper compoent service
   public addZipToDB() {
 
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
-    this.userId = this.userProfile.user_id
+    this.userId = this.userProfile.user_id;
 
     let body = JSON.stringify({
       userId: this.userId,
@@ -62,8 +62,8 @@ export class UserPageService {
   //   return this.http.get(`/api/user/${this.userId}/interests`)
   // }
   public getRecommendations(zip, interests) {
-    interests = JSON.stringify(interests)
-    let url = `/api/user/zipcode/${zip}/interests/${interests}`
+    interests = JSON.stringify(interests);
+    let url = `/api/user/zipcode/${zip}/interests/${interests}`;
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
     return this.http.get(url, options).map(response =>
@@ -73,9 +73,9 @@ export class UserPageService {
   public getZipAndInterests() {
 
     return Observable.forkJoin(
-      this.http.get(`/api/user/${this.userId}/zipcode`).map((res:Response) => res.json()),
-      this.http.get(`/api/user/${this.userId}/interests`).map((res:Response) => res.json())
-    )
+      this.http.get(`/api/user/${this.userId}/zipcode`).map((res: Response) => res.json()),
+      this.http.get(`/api/user/${this.userId}/interests`).map((res: Response) => res.json())
+    );
 
   };
 }

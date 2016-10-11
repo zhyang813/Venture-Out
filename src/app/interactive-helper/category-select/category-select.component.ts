@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserPageService } from '../../user-page/user-page.service';
+declare var $: any;
 
 
 @Component({
@@ -15,21 +16,33 @@ export class CategorySelectComponent {
 
   constructor(private router: Router, private userService: UserPageService) {
     this.categories = [
-      {genre: 'Music', imageUrl: '../../assets/StockPhotos/music-festivals.jpg'},
-      {genre: 'Entertainment & Media', imageUrl: '../../assets/StockPhotos/comedy.jpg'},
-      {genre: 'Dance', imageUrl: '../../assets/StockPhotos/dance.jpeg'},
-      {genre: 'Drinking', imageUrl: '../../assets/StockPhotos/drinking.jpeg'},
-      {genre: 'Concert', imageUrl: '../../assets/StockPhotos/concert.jpg'},
-      {genre: 'Food', imageUrl: '../../assets/StockPhotos/food.jpg'},
-      {genre: 'Classical', imageUrl: '../../assets/StockPhotos/classical.jpeg'},
-      {genre: 'Fitness & Health', imageUrl: '../../assets/StockPhotos/fitness2.jpeg'},
-      {genre: 'Business', imageUrl: '../../assets/StockPhotos/business.jpeg'},
-      {genre: 'Technology', imageUrl: '../../assets/StockPhotos/technology.jpeg'}
+    {genre: 'Music', imageUrl: '../../assets/StockPhotos/music-festivals.jpg'},
+    {genre: 'Comedy', imageUrl: '../../assets/StockPhotos/comedy.jpg'},
+    {genre: 'Dance', imageUrl: '../../assets/StockPhotos/dance.jpeg'},
+    {genre: 'Drinking', imageUrl: '../../assets/StockPhotos/drinking.jpeg'},
+    {genre: 'Concert', imageUrl: '../../assets/StockPhotos/concert.jpg'},
+    {genre: 'Food', imageUrl: '../../assets/StockPhotos/food.jpg'},
+    {genre: 'Classical', imageUrl: '../../assets/StockPhotos/classical.jpeg'},
+    {genre: 'Fitness', imageUrl: '../../assets/StockPhotos/fitness2.jpeg'},
+    {genre: 'Business', imageUrl: '../../assets/StockPhotos/business.jpeg'},
+    {genre: 'Technology', imageUrl: '../../assets/StockPhotos/technology.jpeg'}
     ];
     this.liked = [];
   }
   public onLike(event) {
-    this.liked.push(event);
+    let exist = false;
+    this.liked.forEach( (item, idx) => {
+      if ( event === item ) {
+        exist = true;
+        this.liked.splice(idx, 1);
+      }
+    });
+    if (exist) {
+      $('#' + 'gen' + event).css('border-style', 'none');
+    } else {
+      this.liked.push(event);
+      $('#' + 'gen' + event).css('border-style', 'groove');
+    }
   }
   public goToNextPage() {
     this.userService.interests = this.liked;

@@ -1,29 +1,36 @@
-
-<div class="center">
-    <div class="title animated fadeInDown">
-      VENTURE OUT
+<div class="codrops-top">
+  <nav>
+    <div class="nav-wrapper blue-grey darken-4 z-depth-2">
+      <a class="headerlink"><i class="material-icons">local_activity</i></a>
+      <a class="headerlink"[routerLink]="['/']">VentureOut</a>
     </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="input-box">
     <div class='message'>
       Hello!
 
-     We want to provide you with the best recommendations, to start please enter in your zip code.
+      We want to provide you with the best recommendations, to start please enter in your zip code.
     </div>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
       <div class="input-field col s12">
         <input
-          type="text"
-          formControlName="location"
-          id="location1"
+        type="text"
+        formControlName="location"
+        id="location1"
         >
         <label for="location1">
           Zip Code
         </label>
       </div>
     </form>
-        <div *ngIf="!isValid">
-            Invalid Input
-        </div>
-        <div *ngIf="myForm.controls['location'].value.length < 5 && !isValid">
-            Zip code needs more than 5 numbers
-        </div>
+    <div *ngIf="!isValid">
+      Invalid Input
+    </div>
+    <div *ngIf="myForm.controls['location'].value.length < 5 && !isValid">
+      Zip code needs more than 5 numbers
+    </div>
+  </div>
 </div>
