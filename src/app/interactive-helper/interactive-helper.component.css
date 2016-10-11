@@ -11,7 +11,7 @@
 }
 
 .message {
-  display:inline-block;
+  text-align: center;
   top:0;
   right:0;
   bottom:0;
@@ -27,5 +27,42 @@
   animation-duration: 4s;
 }
 .input-field {
+  margin-top: 10%;
   display: inline-block;
+  margin: auto !important;
+}
+
+.navbar-right-align {
+  position: absolute;
+  right: 0px;
+  width: 190px;
+  border: 0px;
+  padding: 0px;
+}
+
+
+.headerlink {
+  color: white;
+  text-decoration: none;
+  font-size: 1.8em;
+}
+
+.navsublink {
+  color: white;
+  text-decoration: none;
+}
+
+.input-box {
+  opacity: 0.9;
+  margin: auto;
+  width: 1000px;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateY(-30%);
+  transform: translateX(-50%);
+}
+
+form {
+  text-align: center;
 }

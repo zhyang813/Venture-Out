@@ -1,3 +1,14 @@
+<div class="codrops-top">
+  <nav>
+    <div class="nav-wrapper blue-grey darken-4 z-depth-2">
+      <a class="headerlink"><i class="material-icons">local_activity</i></a>
+      <a class="headerlink"[routerLink]="['/']">VentureOut</a>
+    </div>
+  </nav>
+</div>
+
+
+
 <div id="container">
   <div id="message">
     Here are some events nearby,
@@ -9,17 +20,17 @@
     *ngIf="favorites.length >= 3"
     id='next'
     (click)="goToNextPage()">
-      <i class="material-icons">trending_flat</i>
-    </a>
-  </div>
-  <div id='columns'>
+    <i class="material-icons">trending_flat</i>
+  </a>
+</div>
+<!--   <div id='columns'>
     <div class="pin" id="suggestions" *ngFor="let event of events">
 
         <div class="col s12 m7">
           <div class="card">
             <div class="card-image">
               <img src={{event.imageUrl}}>
-              <!-- <span class="card-title">{{event.genre}}</span> -->
+              <span class="card-title">{{event.genre}}</span>
             </div>
             <div class="card-content">
               <p>
@@ -31,16 +42,31 @@
               (click)="onLike(event.name)">
                  <i class="material-icons">thumb_up</i>
               </a>
-              <a class="waves-effect waves-light btn-large"
-              >
+              <a class="waves-effect waves-light btn-large">
                 <i class="material-icons">thumb_down</i>
               </a>
             </div>
           </div>
         </div>
     </div>
-  </div>
+  </div> -->
 
+  <div id="columns">
+    <div class="pin" *ngFor="let event of events">
+      <div class="pincontent">
+        <img src={{event.imageUrl}}>
+        <p style="font-size: 15px"><b>{{event.name}}</b></p>
+        <br><br>
+      </div>
+      <div class="card-action">
+        <a class="waves-effect waves-light btn-large"
+        (click)="onLike(event)">
+        Like
+      </a>
+    </div>
+
+  </div>
+</div>
 
 
 
