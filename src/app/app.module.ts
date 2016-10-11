@@ -31,6 +31,9 @@ import { InteractiveHelperComponent } from './interactive-helper/interactive-hel
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategorySelectComponent } from './interactive-helper/category-select/category-select.component';
 import { EventSelectComponent } from './interactive-helper/event-select/event-select.component';
+import { TrendingComponent } from './trending/trending/trending.component';
+import { TrendingComponent } from './trending/trending.component';
+import { TrendingService } from './trending/trending.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { EventSelectComponent } from './interactive-helper/event-select/event-se
     UserPageComponent,
     InteractiveHelperComponent,
     CategorySelectComponent,
-    EventSelectComponent
+    EventSelectComponent,
+    TrendingComponent,
+    TrendingComponent
   ],
 
   imports: [
@@ -60,7 +65,7 @@ import { EventSelectComponent } from './interactive-helper/event-select/event-se
     BootstrapModalModule,
     ModalModule.forRoot()
   ],
-  providers: [AUTH_PROVIDERS, AuthService, EventService, UserPageService],
+  providers: [AUTH_PROVIDERS, AuthService, EventService, UserPageService, TrendingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

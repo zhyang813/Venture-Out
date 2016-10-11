@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var worker = require('./workers');
 var eventHandler = require('./eventHandler');
 var userHandler = require('./userHandler');
+var keyWordHandler = require('./keyWorldHandler')
 var cron = require('cron').CronJob;
 
 
@@ -90,6 +91,13 @@ app.get('/api/events/zipcode/:zip/', function(req, res) {
 app.get('/api/events/category/:name/zipcode/:zip/quantity/:amount', function(req, res) {
   eventHandler.findEvents(req, res)
 });
+// Routes for keywords
+app.get('/api/keywords/', function(req, res) {
+  keyWorldHandler.getKeyWordsFromDB(req, res)
+})
+app.post('/api/keywords/', function(req, res) {
+  keyWorldHandler.addKeyWordsToDB(req, res)
+})
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname,'index.html'));
