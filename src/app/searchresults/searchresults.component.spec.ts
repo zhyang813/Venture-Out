@@ -9,10 +9,12 @@ describe('EventService', () => {
 
   beforeEach(function() {
     this.eventService = new EventService();
-  })
+  });
+
+
   describe('eventTitleToString', () => {
     it('should break titles to words', () => {
-      this.eventService.eventTitlesToWords('string')
+      this.eventService.eventTitlesToWords('string');
     });
 
   });

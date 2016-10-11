@@ -43,7 +43,6 @@ import { TrendingService } from './trending/trending.service';
     InteractiveHelperComponent,
     CategorySelectComponent,
     EventSelectComponent,
-    TrendingComponent,
     TrendingComponent
   ],
 

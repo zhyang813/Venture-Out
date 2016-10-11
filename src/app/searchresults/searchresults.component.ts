@@ -30,7 +30,7 @@ export class SearchresultsComponent {
   }
 
   // Side bar search, store input data to shared service
-  onSearch(form) {
+  public onSearch(form) {
 
     let currentDate = new Date().toJSON().slice(0, 10);
     let startDate = currentDate + 'T00:00:00Z';
@@ -47,7 +47,7 @@ export class SearchresultsComponent {
 
 
   // Get all event method
-  getEvents() {
+  public getEvents() {
 
     let currentDate = new Date().toJSON().slice(0, 10);
     let startDate = currentDate + 'T00:00:00Z';
@@ -93,7 +93,7 @@ export class SearchresultsComponent {
       });
   }
 
-  saveFavorite(event) {
+  public saveFavorite(event) {
     this.eventService.saveFavorite(event.eventId);
     if (!this.eventService.login) {
       this.modal.alert()
@@ -110,13 +110,13 @@ export class SearchresultsComponent {
     }
   }
 
-  onClickPrice(event) {
+  public onClickPrice(event) {
     // console.log('onclickprice', event.eventId);
     $('#' + event._id).hide();
     $('#' + event.eventId).toggle();
   }
 
-  onClickLoc(event) {
+  public onClickLoc(event) {
     $('#' + event.eventId).hide();
     $('#' + event._id).toggle();
   }

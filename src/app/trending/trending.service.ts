@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+
+
 @Injectable()
+
+
 export class TrendingService {
-  keyWords: any
+  keyWords: any;
 
   constructor(private http: Http) {}
 
@@ -22,10 +26,11 @@ export class TrendingService {
   //       })
   //   })
   // }
-  public getKeyWordsFromDB(){
+  public getKeyWordsFromDB() {
     // grab the globally most popular keywords from the collection
   }
-  public addKeyWordsToDB(){
+
+  public addKeyWordsToDB() {
     // add keywords to the collection from this,keywords
   }
 }
