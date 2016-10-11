@@ -29,7 +29,7 @@ module.exports = {
     console.log('get keywords handler')
     keyWord.where().sort('count').limit(20)
     .then(function(result) {
-      console.log(result)
+      res.json(result)
     })
   }
 }
