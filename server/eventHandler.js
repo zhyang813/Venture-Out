@@ -52,7 +52,7 @@ module.exports = {
     });
   },
   // returns promise for chaining, does not take requests or send responses
-  getLocationFromZip: function(zipCode) {
+  getLocationFromZipPromise: function(zipCode) {
     return (
       services.geocoder.geocode(zipCode)
       .then(function(result){
@@ -69,7 +69,9 @@ module.exports = {
       )
   },
   // returns promise for chaining, does not take requests or send responses
-  getEvents: function(locationData, genre, limit) {
+  // locationData is the result from the geocoder api
+  // if genre is included search but category, if not get all events by city
+  getEventsPromise: function(locationData, genre, limit) {
     var city = locationData.city.split('_').join(' ');
     if(!genre){
       return Event.where('address.city').eq(city).sort('createdAt').limit(20)
@@ -91,8 +93,8 @@ module.exports = {
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
 
-    this.getLocationFromZip(zipCode)
-    .then(this.getEvents)
+    this.getLocationFromZipPromise(zipCode)
+    .then(this.getEventsPromise)
     .then(function(result){
       res.json(result)
     })
@@ -117,7 +119,7 @@ module.exports = {
         function(Outercallback){
           async.map(interests, function(interest, callback) {
             console.log(interest, locationData, '!------')
-            that.getEvents(locationData, interest, 4)
+            that.getEventsPromise(locationData, interest, 4)
             .then(function(result){
               console.log(result, 'grabbing each event')
               callback(null, result)
@@ -147,7 +149,7 @@ module.exports = {
 
    }
 
-   this.getLocationFromZip(zipCode)
+   this.getLocationFromZipPromise(zipCode)
    .then(getMultipleEvents)
 
  }
