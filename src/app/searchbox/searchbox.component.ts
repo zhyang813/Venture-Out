@@ -15,20 +15,24 @@ export class SearchboxComponent {
   events: Array<any>;
 
   constructor(private auth: AuthService,
-              private router: Router,
-              private eventService: EventService) {
+    private router: Router,
+    private eventService: EventService) {
 
             // this.frontPageEvents();
   }
 
+  // Landing page search event handling
   public onSearch(form) {
-    this.eventService.find = form.value.find ? form.value.find.toLowerCase() : '';
-    this.eventService.budget = form.value.budget ? form.value.budget : 0;
-    this.eventService.start = form.value.start ? form.value.start + 'T00:00:00Z' : '0000-01-01T00:00:00Z';
-    this.eventService.end = form.value.end ? form.value.end + 'T00:00:00Z' : '9999-12-31T00:00:00Z';
-    this.eventService.interest = form.value.interests ? form.value.interests.toLowerCase() : '';
-    this.eventService.location = form.value.location ? form.value.location : '';
+
+    // Search data processing
+    this.eventService.find = form.value.find;
+    this.eventService.budget = form.value.budget;
+    this.eventService.start = form.value.start;
+    this.eventService.end = form.value.end;
+    this.eventService.interest = form.value.interests;
+    this.eventService.location = form.value.location;
     this.router.navigate(['/searchresults']);
+
   }
 
 

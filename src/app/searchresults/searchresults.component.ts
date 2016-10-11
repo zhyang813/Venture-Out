@@ -15,7 +15,7 @@ declare var $: any;
 
 export class SearchresultsComponent {
 
-  // Array to store events pulled from DB
+  // Array to store events queried from DB
   events: Array<any>;
 
   constructor(private auth: AuthService,
@@ -32,6 +32,7 @@ export class SearchresultsComponent {
   // Side bar search, store input data to shared service
   public onSearch(form) {
 
+    // user input data processing
     let currentDate = new Date().toJSON().slice(0, 10);
     let startDate = currentDate + 'T00:00:00Z';
 
@@ -49,12 +50,13 @@ export class SearchresultsComponent {
   // Get all event method
   public getEvents() {
 
+    // User input data processing
     let currentDate = new Date().toJSON().slice(0, 10);
     let startDate = currentDate + 'T00:00:00Z';
 
     this.eventService.find = this.eventService.find ? this.eventService.find.toLowerCase() : '';
     this.eventService.budget = this.eventService.budget ? this.eventService.budget : 1000000000;
-    this.eventService.start = this.eventService.start ? this.eventService.start : startDate;
+    this.eventService.start = this.eventService.start ? this.eventService.start + 'T00:00:00Z' : startDate;
     this.eventService.end = this.eventService.end ? this.eventService.end : '9999-12-31T00:00:00Z';
     this.eventService.interest = this.eventService.interest ? this.eventService.interest.toLowerCase() : '';
     this.eventService.location = this.eventService.location ? this.eventService.location.toLowerCase() : '';
@@ -93,16 +95,16 @@ export class SearchresultsComponent {
       });
   }
 
+  // For handling saving favorite events, checking if user is authenticated, if not, dialog box pop up
   public saveFavorite(event) {
-    this.eventService.saveFavorite(event.eventId);
     if (!this.eventService.login) {
       this.modal.alert()
       .size('sm')
       .showClose(false)
       .body('<b>Please Log In To Favorite Events!</b>')
       .open();
-      // console.log('Not log in');
     } else {
+      this.eventService.saveFavorite(event.eventId);
       $('#' + 'fava' + event.eventId).show();
       setTimeout(function() {
         $('#' + 'fava' + event.eventId).hide();
@@ -110,12 +112,14 @@ export class SearchresultsComponent {
     }
   }
 
+  // JQuery for handling price button click
   public onClickPrice(event) {
     // console.log('onclickprice', event.eventId);
     $('#' + event._id).hide();
     $('#' + event.eventId).toggle();
   }
 
+  // JQuery for handling address button click
   public onClickLoc(event) {
     $('#' + event.eventId).hide();
     $('#' + event._id).toggle();

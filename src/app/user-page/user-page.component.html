@@ -31,117 +31,49 @@
         <p><strong>Nickname: </strong> {{auth.userProfile.nickname}}</p>
       </div>
     </div>
-<!--
-      <div class="col s8">
-        <div class="row">
-          <div class="col s12">
-            <ul class="tabs">
-              <li class="tab col s3"><a href="#test1" class="tablink"><strong><i class="tiny material-icons">grade</i>&nbsp;Favorited Events</strong></a></li>
-              <li class="tab col s3"><a href="#test2" class="tablink"><strong><i class="tiny material-icons">info_outline</i>&nbsp;Recommended Events</strong></a></li>
-            </ul>
-          </div>
-          <br>
-          <div id="test1" class="col s12">
+
+    <div class="col s8" *ngIf="auth.authenticated() && auth.userProfile">
+      <div class="divider"></div>
+      <h4 class="header"><i class="small material-icons">grade</i>&nbsp;Favorited Events</h4>
+      <div class="divider"></div>
+      <div clas="row" *ngIf="auth.authenticated() && auth.userProfile">
+        <div class="row card-panel grey lighten-5" *ngFor="let event of favorites">
+          <div class="col s8">
+            <p><b>{{event.name}}</b></p>
             <br>
-            <div clas="row" *ngIf="auth.authenticated() && auth.userProfile">
-                <div class="row" *ngFor="let event of favorites">
-                  <div class="col s8">
-                    <h6><strong>{{event.name}}</strong></h6>
-                    <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
-                    <p>{{event.genre}}</p>
-                    <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
-                  </div>
-                  <div class="col s4">
-                    <a class="waves-effect purple lighten-3 btn" href={{event.url}} target="_blank"><i class="material-icons left">receipt</i>TICKETS</a>
-                  </div>
-                </div>
-            </div>
+            <p style="font-size: 12px">{{event.eventStartTime | date:'yMMMdjms'}}</p>
+            <p style="font-size: 12px">{{event.genre}}</p>
+            <p style="font-size: 10px">{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
           </div>
-          <div id="test2" class="col s12">Test 2</div>
-        </div>
-      </div> -->
-
-      <div class="col s8" *ngIf="auth.authenticated() && auth.userProfile">
-        <div class="divider"></div>
-        <h4 class="header"><i class="small material-icons">grade</i>&nbsp;Favorited Events</h4>
-        <div class="divider"></div>
-        <div clas="row" *ngIf="auth.authenticated() && auth.userProfile">
-          <div class="row card-panel grey lighten-5" *ngFor="let event of favorites">
-            <div class="col s8">
-              <p><b>{{event.name}}</b></p>
-              <br>
-              <p style="font-size: 12px">{{event.eventStartTime | date:'yMMMdjms'}}</p>
-              <p style="font-size: 12px">{{event.genre}}</p>
-              <p style="font-size: 10px">{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
-            </div>
-            <div class="col s4">
-              <a class="waves-effect orange darken-2 btn" href={{event.url}} target="_blank" style="z-index:0;"><i class="material-icons left">receipt</i>TICKETS</a>
-            </div>
+          <div class="col s4">
+            <a class="waves-effect orange darken-2 btn" href={{event.url}} target="_blank" style="z-index:0;"><i class="material-icons left">receipt</i>TICKETS</a>
           </div>
         </div>
+      </div>
 
 
-        <div class="divider"></div>
-        <h4 class="header"><i class="small material-icons">grade</i>&nbsp;Recommended Events</h4>
-        <div class="divider"></div>
-        <div clas="row" *ngIf="auth.authenticated() && auth.userProfile">
-          <div class="row card-panel grey lighten-5" *ngFor="let event of recommendations">
-            <div class="col s8">
-              <p><b>{{event.name}}</b></p>
-              <br>
-              <p style="font-size: 12px">{{event.eventStartTime | date:'yMMMdjms'}}</p>
-              <p style="font-size: 12px">{{event.genre}}</p>
-              <p style="font-size: 10px">{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
-            </div>
-            <div class="col s4">
+      <div class="divider"></div>
+      <h4 class="header"><i class="small material-icons">grade</i>&nbsp;Recommended Events</h4>
+      <div class="divider"></div>
+      <div clas="row" *ngIf="auth.authenticated() && auth.userProfile">
+        <div class="row card-panel grey lighten-5" *ngFor="let event of recommendations">
+          <div class="col s8">
+            <p><b>{{event.name}}</b></p>
+            <br>
+            <p style="font-size: 12px">{{event.eventStartTime | date:'yMMMdjms'}}</p>
+            <p style="font-size: 12px">{{event.genre}}</p>
+            <p style="font-size: 10px">{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
+          </div>
+          <div class="col s4">
             <a class="waves-effect blue-grey darken-2 btn" href={{event.url}} target="_blank" style="z-index:0;"><i class="material-icons left">receipt</i>TICKETS</a>
-            </div>
           </div>
         </div>
-
-        <div class="divider"></div>
-        <br>
       </div>
 
+      <div class="divider"></div>
+      <br>
     </div>
-  </div>
 
-
-<!-- <div class="row">
-  <div class="col-md-8">
-  </div>
-  <div class="col-md-4" *ngIf="auth.authenticated() && auth.userProfile">
-      <div class="profilecontainer">
-        <br>
-        <img src="http://khns.org/wp-content/uploads/2014/07/profile-icon-400x380.png">
-        <hr>
-        <div>
-          <p><strong>Name: </strong> {{auth.userProfile.name}}</p>
-          <p><strong>Email: </strong> {{auth.userProfile.email}}</p>
-          <p><strong>Nickname: </strong> {{auth.userProfile.nickname}}</p>
-        </div>
-      </div>
   </div>
 </div>
 
-<h4 *ngIf="!auth.authenticated()">You are not logged in, please click 'Log in' button to login</h4>
-
-<h1>Your Favorites!</h1>
-
-<div id="wrapper" *ngIf="auth.authenticated() && auth.userProfile">
-  <div id="columns">
-      <div class="pin" *ngFor="let event of favorites">
-        <img src={{event.imageUrl}}>
-        <p><strong>{{event.eventStartTime | date:'yMMMdjms'}}</strong></p>
-        <p>{{event.genre}}</p>
-        <p>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</p>
-        <h4>{{event.name}}</h4>
-        <md-card-content>
-
-        </md-card-content>
-        <md-card-actions>
-              <button md-button><a href={{event.url}} target="_blank">TICKETS</a></button>
-        </md-card-actions>
-      </div>
-  </div>
-</div> -->
