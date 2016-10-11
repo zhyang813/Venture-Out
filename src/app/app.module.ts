@@ -31,9 +31,8 @@ import { InteractiveHelperComponent } from './interactive-helper/interactive-hel
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategorySelectComponent } from './interactive-helper/category-select/category-select.component';
 import { EventSelectComponent } from './interactive-helper/event-select/event-select.component';
-import { TrendingComponent } from './trending/trending/trending.component';
 import { TrendingComponent } from './trending/trending.component';
-import { TrendingService } from './trending/trending.component';
+import { TrendingService } from './trending/trending.service';
 
 @NgModule({
   declarations: [

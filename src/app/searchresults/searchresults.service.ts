@@ -37,21 +37,22 @@ export class EventService {
       this.login = false;
     }
   }
-  public eventTitlesToWords(titles) {
-    this.keyWords = {};
+  // refactored out to node services
+  // public eventTitlesToWords(titles) {
+  //   this.keyWords = {};
 
-    titles.forEach((title) => {
-        title.split(' ').forEach((word) => {
+  //   titles.forEach((title) => {
+  //       title.split(' ').forEach((word) => {
 
-            word = word.replace(/[^A-Za-z0-9]/g, '');
-            if(this.keyWords[word]){
-                this.keyWords[word] += 1
-            } else {
-                this.keyWords[word] = 1
-            }
-        })
-    })
-     // return keyWords
-  }
+  //           word = word.replace(/[^A-Za-z0-9]/g, '');
+  //           if(this.keyWords[word]){
+  //               this.keyWords[word] += 1
+  //           } else {
+  //               this.keyWords[word] = 1
+  //           }
+  //       })
+  //   })
+  //    // return keyWords
+  // }
 
 }
