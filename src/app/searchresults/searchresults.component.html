@@ -96,7 +96,7 @@
               <a style="cursor:pointer" (click)="saveFavorite(event)"><i class="material-icons">star</i></a>
             </div>
             <div id={{event.eventId}} style="display:none;">
-              <p><b>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</b></p>
+              <p style="text-align:center;"><b>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</b></p>
             </div>
             <div id={{event._id}} style="display:none;" >
               <p><b>{{event.address? (event.address.street? "Address: " : "No address Info Available") : "No address Info Available"}}</b></p>
@@ -106,7 +106,7 @@
             </div>
           </div>
           <div id="{{'fava' + event.eventId}}" style="display:none;">
-            <p><b>     Event Added to your Favorite!</b></p>
+            <p style="text-align:center;"><b>Event Added to your Favorite!</b></p>
           </div>
         </div>
       </div>
