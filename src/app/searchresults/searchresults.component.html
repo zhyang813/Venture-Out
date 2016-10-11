@@ -79,7 +79,7 @@
 
 
     <div id="wrapper">
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <pagination-controls style="cursor:pointer" (pageChange)="p = $event"></pagination-controls>
       <div id="columns">
         <div class="pin" *ngFor="let event of events | paginate: { itemsPerPage: 50, currentPage: p }">
           <img src={{event.imageUrl}}>
@@ -91,9 +91,9 @@
             <br>
             <div class="pin-iconbuttons">
               <a href={{event.url}} target="_blank"><i class="material-icons">receipt</i></a>
-              <a (click)="onClickLoc(event)"><i class="material-icons">location_on</i></a>
-              <a (click)="onClickPrice(event)"><i class="material-icons">monetization_on</i></a>
-              <a (click)="saveFavorite(event)"><i class="material-icons">star</i></a>
+              <a style="cursor:pointer" (click)="onClickLoc(event)"><i class="material-icons">location_on</i></a>
+              <a style="cursor:pointer" (click)="onClickPrice(event)"><i class="material-icons">monetization_on</i></a>
+              <a style="cursor:pointer" (click)="saveFavorite(event)"><i class="material-icons">star</i></a>
             </div>
             <div id={{event.eventId}} style="display:none;">
               <p><b>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</b></p>
@@ -110,7 +110,7 @@
           </div>
         </div>
       </div>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <pagination-controls style="cursor:pointer" (pageChange)="p = $event"></pagination-controls>
     </div>
 
   </md-sidenav-layout>
