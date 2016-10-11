@@ -44,7 +44,8 @@ export class AuthService {
           'userId': profile.user_id,
           'interests': [],
           'favoritedEvents': [],
-          'zipCode': null
+          'zipCode': null,
+          'keyWords': {}
         });
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({ headers: headers });

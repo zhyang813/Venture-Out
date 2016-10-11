@@ -17,9 +17,11 @@ export class EventSelectComponent {
   count: number;
   favorites: Array<string>;
   interests: Array<string>;
+  keyWords: Array<string>;
   constructor(private http: Http, private userService: UserPageService,
     private router: Router) {
     this.grabEvents();
+    this.keyWords = [];
   }
 
   public grabEvents() {
@@ -43,7 +45,9 @@ export class EventSelectComponent {
     this.favorites = [];
   }
   public onLike(event) {
-    this.favorites.push('placeholder');
+    console.log(event)
+    this.keyWords.push(event);
+    console.log(this.keyWords)
   }
   public goToNextPage() {
     this.router.navigate(['/']);
