@@ -56,8 +56,8 @@ export class SearchresultsComponent {
     this.eventService.budget = this.eventService.budget ? this.eventService.budget : 1000000000;
     this.eventService.start = this.eventService.start ? this.eventService.start : startDate;
     this.eventService.end = this.eventService.end ? this.eventService.end : '9999-12-31T00:00:00Z';
-    this.eventService.interest = this.eventService.interest ? this.eventService.interest : '';
-    this.eventService.location = this.eventService.location ? this.eventService.location : '';
+    this.eventService.interest = this.eventService.interest ? this.eventService.interest.toLowerCase() : '';
+    this.eventService.location = this.eventService.location ? this.eventService.location.toLowerCase() : '';
 
     // Invoke http request of getting all events, filtering data based on search inputs
     this.eventService.getEvents()
@@ -72,7 +72,7 @@ export class SearchresultsComponent {
       }).filter( event => {
         return event.genre ? event.genre.toLowerCase().includes(this.eventService.interest) : true;
       }).filter( event => {
-        return event.address.city ? (event.address.city.toLowerCase().includes(this.eventService.location.toLowerCase())) : true;
+        return event.address.city ? (event.address.city.toLowerCase().includes(this.eventService.location)) : true;
       }).sort(function (a, b) {
         if (Date.parse (a.eventStartTime) > Date.parse (b.eventStartTime)) {
           return 1;
@@ -98,8 +98,8 @@ export class SearchresultsComponent {
     if (!this.eventService.login) {
       this.modal.alert()
       .size('sm')
-      .showClose(true)
-      .title('Please Log In To Favorite Events!')
+      .showClose(false)
+      .body('<b>Please Log In To Favorite Events!</b>')
       .open();
       // console.log('Not log in');
     } else {
