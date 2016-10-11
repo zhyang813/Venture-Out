@@ -2,7 +2,7 @@
 
 <div>
 
-            <div id="image_slider_right">
+<!--             <div id="image_slider_right">
                 <div id="sliderup" >
                     <figure>
   <div *ngFor="let trending of trendingWords">
@@ -16,5 +16,16 @@
                     </figure>
 
                 </div>
-            </div>
+            </div> -->
+    <div class="container">
+      <div class="marquee">
+        <div class="trending">TRENDING:</div>
+        <div *ngFor="let trending of trendingWords">
+              <div class="trending">
+                {{ trending.word }}
+              </div>
+        </div>
+      </div>
+    </div>
+
 </div>

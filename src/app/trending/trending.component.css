@@ -1,72 +1,37 @@
-    div {
-        white-space:nowrap;
-    }
-    #image_slider_right {
-        width:440px;
-        float:left;
-        position:relative;
-        height:380px;
-        margin-top:10px;
-        margin-bottom:10px;
-    }
+.container {
+  padding:3px;
+  border:1px solid #263238;
+  width:700px;
+  overflow:hidden;
+  height: 50px;
+  background-color:#263238;
+}
+.marquee{
+  display:block;
+  position:relative;
+    width:10000px;
+    height:160px;
+    animation:scroll 15s linear infinite;
+    padding:3px;
+    background-color:#263238;
+}
 
-    div#sliderup {
-        overflow: hidden;
-        position:relative;
-        height:100%;
-        margin-left:10px;
-        width:98%;
-    }
+.marquee:hover {
+    animation-play-state: paused
+}
 
-    div#sliderup figure .img_up {
-        width: 98%;
-        height: 50%;
-        float: left;
-        margin-bottom:10px;
-        position: relative;
-        min-width: 270px;
-    }
+.trending {
+  width:150px;
+  height:150px;
+  background-color:#263238;
+  margin:3px;
+  float:left;
+  color: #f57c00;
+  font-size: 30px;
+}
 
-    div#sliderup figure {
-        position: relative;
-        width: 98%;
-        margin: 0;
-        text-align: left;
-        animation: 20s mymove infinite;
-    }
-
-    .divimgslideup_txt {
-        float:left;
-        width:99%;
-        background: yellow;
-        margin-left:5px;
-        position:relative;
-        font-size:13px;
-
-    }
-
-    /* Chrome, Safari, Opera */
-    @-webkit-keyframes mymove {
-        0% { top: 0%; }
-        20% { top: -0%; }
-        25% { top: -20%; }
-        45% { top: -25%; }
-        50% { top: -45%; }
-        70% { top: -50%; }
-        75% { top: -70%; }
-        90% { top: -75%; }
-        100% { top: -110%; }
-    }
-
-    /* Standard syntax */
-    @keyframes mymove {
-        0% { top: 0%; }
-        20% { top: -0%; }
-        25% { top: -20%; }
-        45% { top: -25%; }
-        50% { top: -45%; }
-        70% { top: -50%; }
-        75% { top: -70%; }
-        90% { top: -75%; }
-        100% { top: -110%; }
-    }
+/* Make it move */
+@keyframes scroll{
+0% {left:800px;}
+100% {left:-800px;}
+}
