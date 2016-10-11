@@ -16,13 +16,13 @@ export class CategorySelectComponent {
   constructor(private router: Router, private userService: UserPageService) {
     this.categories = [
       {genre: 'Music', imageUrl: '../../assets/StockPhotos/music-festivals.jpg'},
-      {genre: 'Comedy', imageUrl: '../../assets/StockPhotos/comedy.jpg'},
+      {genre: 'Entertainment & Media', imageUrl: '../../assets/StockPhotos/comedy.jpg'},
       {genre: 'Dance', imageUrl: '../../assets/StockPhotos/dance.jpeg'},
       {genre: 'Drinking', imageUrl: '../../assets/StockPhotos/drinking.jpeg'},
       {genre: 'Concert', imageUrl: '../../assets/StockPhotos/concert.jpg'},
       {genre: 'Food', imageUrl: '../../assets/StockPhotos/food.jpg'},
       {genre: 'Classical', imageUrl: '../../assets/StockPhotos/classical.jpeg'},
-      {genre: 'Fitness', imageUrl: '../../assets/StockPhotos/fitness2.jpeg'},
+      {genre: 'Fitness & Health', imageUrl: '../../assets/StockPhotos/fitness2.jpeg'},
       {genre: 'Business', imageUrl: '../../assets/StockPhotos/business.jpeg'},
       {genre: 'Technology', imageUrl: '../../assets/StockPhotos/technology.jpeg'}
     ];
