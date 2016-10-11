@@ -1,0 +1,37 @@
+.container {
+  padding:3px;
+  border:1px solid #263238;
+  width:700px;
+  overflow:hidden;
+  height: 50px;
+  background-color:#263238;
+}
+.marquee{
+  display:block;
+  position:relative;
+    width:10000px;
+    height:160px;
+    animation:scroll 15s linear infinite;
+    padding:3px;
+    background-color:#263238;
+}
+
+.marquee:hover {
+    animation-play-state: paused
+}
+
+.trending {
+  width:150px;
+  height:150px;
+  background-color:#263238;
+  margin:3px;
+  float:left;
+  color: #f57c00;
+  font-size: 30px;
+}
+
+/* Make it move */
+@keyframes scroll{
+0% {left:800px;}
+100% {left:-800px;}
+}

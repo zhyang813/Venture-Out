@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 // import { EventService } from '../../searchresults/searchresults.service';
 import { UserPageService } from '../../user-page/user-page.service';
 import { Router } from '@angular/router';
+import { TrendingService } from '../../trending/trending.service'
 // import  qs from './../../../../node_modules/qs/dist/qs.js';
 
 
@@ -17,11 +18,11 @@ export class EventSelectComponent {
   count: number;
   favorites: Array<string>;
   interests: Array<string>;
-  keyWords: Array<string>;
+  titles: Array<string>;
   constructor(private http: Http, private userService: UserPageService,
-    private router: Router) {
+    private router: Router, private trendingService: TrendingService) {
     this.grabEvents();
-    this.keyWords = [];
+    this.titles = [];
   }
 
   public grabEvents() {
@@ -46,10 +47,10 @@ export class EventSelectComponent {
   }
   public onLike(event) {
     console.log(event);
-    this.keyWords.push(event);
-    console.log(this.keyWords);
+    this.titles.push(event.name);
   }
   public goToNextPage() {
+    this.trendingService.addKeyWordsToDB(this.titles);
     this.router.navigate(['/']);
   }
 

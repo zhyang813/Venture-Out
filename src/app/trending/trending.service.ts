@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 
@@ -28,9 +27,16 @@ export class TrendingService {
   // }
   public getKeyWordsFromDB() {
     // grab the globally most popular keywords from the collection
+    return this.http.get('/api/keywords/').map(response =>
+      response.json()
+    )
   }
 
-  public addKeyWordsToDB() {
+  public addKeyWordsToDB(titles) {
     // add keywords to the collection from this,keywords
+    let body = JSON.stringify({titles: titles});
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post('/api/keywords/', body, options).subscribe(function(response){});
   }
 }

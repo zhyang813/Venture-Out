@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { AuthService } from '../auth/auth.service';
+import { TrendingService } from '../trending/trending.service'
 // import 'rxjs'
 
 @Injectable()
@@ -16,7 +17,8 @@ export class EventService {
 
 
   constructor(private http: Http,
-              private auth: AuthService) {
+              private auth: AuthService,
+              private trendingService: TrendingService) {
   }
 
   // Http request to get all events from DB
@@ -32,6 +34,9 @@ export class EventService {
       let body = JSON.stringify({userId: userProfile.user_id, favoritedEvent: eventId});
       let headers = new Headers({'Content-Type': 'application/json'});
       let options = new RequestOptions({ headers: headers });
+      // Add to keywords to trending service
+      // console.log(eventId)
+      // this.trendingService.addKeyWordsToDB()
       return this.http.put('/api/user', body, options).subscribe(function(response){});
     } else {
       this.login = false;
