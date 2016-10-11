@@ -52,7 +52,7 @@ export class SearchresultsComponent {
     let currentDate = new Date().toJSON().slice(0, 10);
     let startDate = currentDate + 'T00:00:00Z';
 
-    this.eventService.find = this.eventService.find ? this.eventService.find : '';
+    this.eventService.find = this.eventService.find ? this.eventService.find.toLowerCase() : '';
     this.eventService.budget = this.eventService.budget ? this.eventService.budget : 1000000000;
     this.eventService.start = this.eventService.start ? this.eventService.start : startDate;
     this.eventService.end = this.eventService.end ? this.eventService.end : '9999-12-31T00:00:00Z';
@@ -63,7 +63,7 @@ export class SearchresultsComponent {
     this.eventService.getEvents()
     .subscribe(data => this.events = data
       .filter( event => {
-        return event.name.toLowerCase().includes(this.eventService.find);
+        return event.name ? event.name.toLowerCase().includes(this.eventService.find) : true;
       }).filter( event => {
         return event.price <= this.eventService.budget;
       }).filter( event => {
@@ -72,7 +72,7 @@ export class SearchresultsComponent {
       }).filter( event => {
         return event.genre ? event.genre.toLowerCase().includes(this.eventService.interest) : true;
       }).filter( event => {
-        return event.address.city.toLowerCase().includes(this.eventService.location.toLowerCase());
+        return event.address ? (event.address.city.toLowerCase().includes(this.eventService.location.toLowerCase())) : true;
       }).sort(function (a, b) {
         if (Date.parse (a.eventStartTime) > Date.parse (b.eventStartTime)) {
           return 1;
