@@ -27,7 +27,7 @@ export class UserPageService {
       response.json()
     );
   }
-  //TODO moves these to interactive-helper compoent service
+  // TODO moves these to interactive-helper compoent service
   public addZipToDB() {
 
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
@@ -73,8 +73,8 @@ export class UserPageService {
   public getZipAndInterests() {
 
     return Observable.forkJoin(
-      this.http.get(`/api/user/${this.userId}/zipcode`).map ((res:Response) => res.json()),
-      this.http.get(`/api/user/${this.userId}/interests`).map ((res:Response) => res.json())
+      this.http.get(`/api/user/${this.userId}/zipcode`).map((res: Response) => res.json()),
+      this.http.get(`/api/user/${this.userId}/interests`).map((res: Response) => res.json())
     );
 
   };
