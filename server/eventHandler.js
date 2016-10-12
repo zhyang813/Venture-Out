@@ -14,10 +14,12 @@ module.exports = {
         console.log('Successful created an event!')
       }
     });
+
   },
 
   // Find a specific event using eventId
   findEventById: function(eventId, callback) {
+
     console.log('findEvent', eventId);
 
     Event.findOne({'eventId': eventId}, function(err, event){
@@ -28,6 +30,7 @@ module.exports = {
         callback();
       }
     });
+
   },
 
   // Get all the events
@@ -40,10 +43,12 @@ module.exports = {
         res.json(events);
       }
     });
+
   },
 
   // returns promise for chaining, does not take requests or send responses
   getLocationFromZipPromise: function(zipCode) {
+
     return (
       services.geocoder.geocode(zipCode)
       .then(function(result){
@@ -57,14 +62,18 @@ module.exports = {
           city: city
         }
       })
+
     )
+
   },
 
   // returns promise for chaining, does not take requests or send responses
   // locationData is the result from the geocoder api
   // if genre is included search but category, if not get all events by city
   getEventsPromise: function(locationData, genre, limit) {
+
     var city = locationData.city.split('_').join(' ');
+
     if(!genre){
       return Event.where('address.city').eq(city).sort('createdAt').limit(20)
     } else {
@@ -82,6 +91,7 @@ module.exports = {
 
   // Use this method to get events by zip requires the zipcode in req params
   getEventsByZip: function(req, res) {
+
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
 

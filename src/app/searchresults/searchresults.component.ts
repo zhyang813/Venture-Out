@@ -93,11 +93,13 @@ export class SearchresultsComponent {
           console.log('Get all events complete', this.events.length);
         }
       });
+
   }
 
   // For handling saving favorite events, checking if user is authenticated, if not, dialog box pop up
   // Also Adds title to keyWords Collection when user favorties an event
   public saveFavorite(event) {
+
     if (!this.eventService.login) {
       this.modal.alert()
       .size('sm')
@@ -112,6 +114,7 @@ export class SearchresultsComponent {
         $('#' + 'fava' + event.eventId).hide();
       }, 2000);
     }
+
   }
 
   // JQuery for handling price button click
@@ -119,12 +122,15 @@ export class SearchresultsComponent {
     // console.log('onclickprice', event.eventId);
     $('#' + event._id).hide();
     $('#' + event.eventId).toggle();
+
   }
 
   // JQuery for handling address button click
   public onClickLoc(event) {
+
     $('#' + event.eventId).hide();
     $('#' + event._id).toggle();
+
   }
 
 }
