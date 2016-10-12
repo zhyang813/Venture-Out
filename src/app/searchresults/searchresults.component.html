@@ -86,12 +86,12 @@
         <div class="pin" *ngFor="let event of events | paginate: { itemsPerPage: 50, currentPage: p }">
           <img src={{event.imageUrl}}>
           <div class="pincontent">
-            <p style="font-size: 12px">{{event.eventStartTime | date:'yMMMdjms'}}</p>
-            <p style="font-size: 12px">{{event.genre}}</p>
+            <p style="font-size: 12px;text-align: center">{{event.eventStartTime | date:'yMMMdjms'}}</p>
+            <p style="font-size: 12px;text-align: center">{{event.genre}}</p>
             <br>
-            <p style="font-size: 15px"><b>{{event.name}}</b></p>
+            <p style="font-size: 15px;text-align: center"><b>{{event.name}}</b></p>
             <br>
-            <div class="pin-iconbuttons">
+            <div class="pin-iconbuttons" style="text-align: center">
               <a href={{event.url}} target="_blank"><i class="material-icons">receipt</i></a>
               <a style="cursor:pointer" (click)="onClickLoc(event)"><i class="material-icons">location_on</i></a>
               <a style="cursor:pointer" (click)="onClickPrice(event)"><i class="material-icons">monetization_on</i></a>
@@ -101,10 +101,10 @@
               <p style="text-align:center;"><b>{{event.price? '$' + event.price.toFixed(2) : 'Ticket Pricing Unavailable'}}</b></p>
             </div>
             <div id={{event._id}} style="display:none;" >
-              <p><b>{{event.address? (event.address.street? "Address: " : "No address Info Available") : "No address Info Available"}}</b></p>
-              <p><b>{{event.address? (event.address.street? event.address.street + "," : "") : ""}}</b></p>
-              <p><b>{{event.address? (event.address.street? event.address.city + "," : "") : ""}}</b></p>
-              <p><b>{{event.address? (event.address.street? event.address.state + "," : "") : ""}} {{event.address? (event.address.street? event.address.zip_code : "") : ""}}</b></p>
+              <p style="text-align: center"><b>{{event.address? (event.address.street? "Address: " : "No address Info Available") : "No address Info Available"}}</b></p>
+              <p style="text-align: center"><b>{{event.address? (event.address.street? event.address.street + "," : "") : ""}}</b></p>
+              <p style="text-align: center"><b>{{event.address? (event.address.street? event.address.city + "," : "") : ""}}</b></p>
+              <p style="text-align: center"><b>{{event.address? (event.address.street? event.address.state + "," : "") : ""}} {{event.address? (event.address.street? event.address.zip_code : "") : ""}}</b></p>
             </div>
           </div>
           <div id="{{'fava' + event.eventId}}" style="display:none;">

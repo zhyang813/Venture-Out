@@ -16,6 +16,7 @@ export class TrendingService {
     );
   };
 
+
   // server request to add words to the keyWords collection
   // titles - array
   public addKeyWordsToDB(titles) {
