@@ -9,12 +9,12 @@ var eventHandler = require('./eventHandler');
 var userHandler = require('./userHandler');
 var keyWordHandler = require('./keyWordHandler')
 var cron = require('cron').CronJob;
-
-
 // set Promise provider to bluebird
 mongoose.Promise = require('bluebird');
 // q
 mongoose.Promise = require('q').Promise;
+
+
 
 // start express
 var app = express();
@@ -40,8 +40,33 @@ app.use(cookieParser());
 // use express.static to serve client folder
 app.use(express.static(__dirname));
 
+
+// ======== Event Routes ========
+
+// get all events
 app.get('/api/events', eventHandler.getAllEvents);
-//app.get('/api/searchevents', eventHandler.searchEvents);
+
+// get all events by zipcode
+app.get('/api/events/zipcode/:zip', function(req, res) {
+  eventHandler.getEventsByZip(req, res)
+});
+
+// get events by zipcode and interests from events collection
+app.get('/api/user/zipcode/:zip/interests/:name', function(req, res) {
+  eventHandler.getEventsByCategoriesAndZip(req, res);
+})
+
+// ======== Key Word Routes ========
+
+// get all words from keyword collection
+app.get('/api/keywords/', function(req, res) {
+  keyWordHandler.getKeyWordsFromDB(req, res)
+})
+
+// add words to keyword collection
+app.post('/api/keywords/', function(req, res) {
+  keyWordHandler.addKeyWordsToDB(req, res)
+})
 
 /*
 req.body template for POST
@@ -53,11 +78,16 @@ req.body template for POST
   "favoritedEvents": ["event1","event2"]
 }
 */
+
+// ======== User Routes =========
+
+// add user to user collection
 app.post('/api/users', function(req, res) {
   userHandler.addUser(req, res);
 });
 
 // id === user_id from auth0
+// find user from user collection
 app.get('/api/user/:id', function(req, res) {
   userHandler.findUser(req, res);
 });
@@ -66,47 +96,44 @@ app.get('/api/user/:id', function(req, res) {
 app.put('/api/user', function(req, res) {
   userHandler.addFavorite(req, res);
 });
+
+// get user favorites events from user collection
 app.get('/api/user/favorites/:id', function(req, res){
   userHandler.getFavorites(req, res);
 });
+
+// add zip code to a user in user collection
 app.post('/api/user/addZipCode', function(req, res){
   userHandler.addZipCode(req, res);
 });
+
+// add interests to a user in user collection
 app.post('/api/user/addInterests', function(req, res){
   userHandler.addInterests(req, res);
 });
-app.get('/api/user/zipcode/:zip/interests/:name', function(req, res) {
-  eventHandler.getEventsByCategoriesAndZip(req, res);
-})
+
+// get users zipcode from user collection
 app.get('/api/user/:id/zipcode', function(req, res) {
   userHandler.getUserZipcode(req, res);
 })
+
+// get user interests from user collection
 app.get('/api/user/:id/interests', function(req, res) {
   userHandler.getUserInterests(req, res);
 })
+
+// add image url to user in user collection
 app.post('/api/user/addImgUrl', function(req, res){
   userHandler.addImgUrl(req, res);
 });
+
+// get image url from user in user collection
 app.get('/api/user/getImgUrl/:id', function(req, res) {
   userHandler.getImgUrl(req, res)
 });
 
 
-//Routes
-app.get('/api/user/getEventsByZip', function(req, res) {
-  eventHandler.getEventsByZip(req, res)
-});
-app.get('/api/events/category/:name/zipcode/:zip/quantity/:amount', function(req, res) {
-  eventHandler.findEvents(req, res)
-});
-// Routes for keywords
-app.get('/api/keywords/', function(req, res) {
-  keyWordHandler.getKeyWordsFromDB(req, res)
-})
-app.post('/api/keywords/', function(req, res) {
-  keyWordHandler.addKeyWordsToDB(req, res)
-})
-
+// route all unspecified paths to home
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname,'index.html'));
 });
