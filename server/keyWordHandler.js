@@ -27,7 +27,7 @@ module.exports = {
   },
   getKeyWordsFromDB: function(req, res) {
     console.log('get keywords handler')
-    keyWord.where().sort('count').limit(20)
+    keyWord.where().sort('-count').limit(20)
     .then(function(result) {
       res.json(result)
     })

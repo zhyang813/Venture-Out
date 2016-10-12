@@ -4,6 +4,8 @@ import { Modal } from 'angular2-modal/plugins/bootstrap';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { EventService } from './searchresults.service';
+import { TrendingService } from '../trending/trending.service';
+
 declare var $: any;
 
 @Component({
@@ -22,7 +24,8 @@ export class SearchresultsComponent {
     private router: Router,
     private eventService: EventService,
     public overlay: Overlay,
-    public modal: Modal) {
+    public modal: Modal,
+    private trendingService: TrendingService) {
 
     // On page load, run this to get all events
     this.getEvents();
@@ -96,6 +99,7 @@ export class SearchresultsComponent {
   }
 
   // For handling saving favorite events, checking if user is authenticated, if not, dialog box pop up
+  // Also Adds title to keyWords Collection when user favorties an event
   public saveFavorite(event) {
     if (!this.eventService.login) {
       this.modal.alert()
@@ -104,6 +108,7 @@ export class SearchresultsComponent {
       .body('<b>Please Log In To Favorite Events!</b>')
       .open();
     } else {
+      this.trendingService.addKeyWordsToDB([event.name])
       this.eventService.saveFavorite(event.eventId);
       $('#' + 'fava' + event.eventId).show();
       setTimeout(function() {
