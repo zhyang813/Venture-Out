@@ -29,6 +29,8 @@ export class CategorySelectComponent {
     ];
     this.liked = [];
   }
+
+  // Like event handling, JQuery for highlighting selected event
   public onLike(event) {
     let exist = false;
     this.liked.forEach( (item, idx) => {
@@ -44,6 +46,8 @@ export class CategorySelectComponent {
       $('#' + 'gen' + event).css('border-style', 'groove');
     }
   }
+
+  // Move to the next page
   public goToNextPage() {
     this.userService.interests = this.liked;
     this.userService.addInterestsToDb(this.liked);

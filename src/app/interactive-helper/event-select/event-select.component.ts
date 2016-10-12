@@ -54,7 +54,7 @@ export class EventSelectComponent {
     this.favorites = [];
   }
 
-  // when a user likes an event push to titles array
+  // when a user likes an event push to titles array, JQuery handling event highlight on selected events
   public onLike(event) {
     let exist = false;
     this.titles.forEach( (item, idx) => {
