@@ -15,10 +15,10 @@ export class UserPageService {
   constructor(private http: Http) {
       this.userInformation = JSON.parse(localStorage.getItem('profile'));
 
-    if (this.userInformation) {
-      this.userProfile = JSON.parse(localStorage.getItem('profile'));
-      this.userId = this.userProfile.user_id;
-    }
+      if (this.userInformation) {
+        this.userProfile = JSON.parse(localStorage.getItem('profile'));
+        this.userId = this.userProfile.user_id;
+      }
 
   }
 
@@ -28,6 +28,7 @@ export class UserPageService {
       response.json()
     );
   };
+
   // TODO moves these to interactive-helper compoent service
   public addZipToDB() {
 
@@ -44,6 +45,7 @@ export class UserPageService {
       console.log(response);
     });
   };
+
   public addInterestsToDb(interests) {
 
     let body = JSON.stringify({
@@ -62,6 +64,7 @@ export class UserPageService {
   // public getInterests() {
   //   return this.http.get(`/api/user/${this.userId}/interests`)
   // }
+
   public getRecommendations(zip, interests) {
     interests = JSON.stringify(interests);
     let url = `/api/user/zipcode/${zip}/interests/${interests}`;
@@ -71,6 +74,7 @@ export class UserPageService {
       response.json()
     );
   };
+
   public getZipAndInterests() {
 
     return Observable.forkJoin(
@@ -92,6 +96,7 @@ export class UserPageService {
       console.log(response);
     });
   };
+
   public getImgUrl() {
     console.log("getImgUrl happened");
     let userProfile = JSON.parse(localStorage.getItem('profile'));
