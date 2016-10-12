@@ -27,7 +27,7 @@ export class UserPageService {
     return this.http.get('/api/user/favorites/' + userProfile.user_id).map(response =>
       response.json()
     );
-  }
+  };
   // TODO moves these to interactive-helper compoent service
   public addZipToDB() {
 
@@ -43,7 +43,7 @@ export class UserPageService {
     return this.http.post('/api/user/addZipCode', body, options).subscribe(function(response){
       console.log(response);
     });
-  }
+  };
   public addInterestsToDb(interests) {
 
     let body = JSON.stringify({
@@ -55,8 +55,7 @@ export class UserPageService {
     return this.http.post('/api/user/addInterests', body, options).subscribe(function(response){
       console.log(response);
     });
-  }
-<<<<<<< f744d179b94b079d61485256caf2a3d36b05bff3
+  };
   // public getZipCode() {
   //   return this.http.get(`/api/user/${this.userId}/zipcode`)
   // }
@@ -71,7 +70,7 @@ export class UserPageService {
     return this.http.get(url, options).map(response =>
       response.json()
     );
-  }
+  };
   public getZipAndInterests() {
 
     return Observable.forkJoin(
@@ -80,7 +79,7 @@ export class UserPageService {
     );
 
   };
-=======
+
   public addImgUrlToDB() {
     console.log("addImgUrlToDB happened");
     let body = JSON.stringify({
@@ -92,13 +91,12 @@ export class UserPageService {
     return this.http.post('/api/user/addImgUrl', body, options).subscribe(function(response) {
       console.log(response);
     });
-  }
+  };
   public getImgUrl() {
     console.log("getImgUrl happened");
     let userProfile = JSON.parse(localStorage.getItem('profile'));
     return this.http.get('/api/user/getImgUrl/' + userProfile.user_id).map(response =>
       response.json()
     );
-  }
->>>>>>> Create user profile image uploader on user component.
+  };
 }

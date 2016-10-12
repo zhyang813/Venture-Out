@@ -61,8 +61,7 @@ import { TrendingService } from './trending/trending.service';
     ReactiveFormsModule,
     Ng2PaginationModule,
     BootstrapModalModule,
-    ModalModule.forRoot(),
-    Ng2Bs3ModalModule
+    ModalModule.forRoot()
   ],
   providers: [AUTH_PROVIDERS, AuthService, EventService, UserPageService, TrendingService],
   bootstrap: [AppComponent]
