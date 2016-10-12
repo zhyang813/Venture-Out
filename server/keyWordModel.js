@@ -8,7 +8,7 @@ var keyWordSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('KeyWords', KeyWordSchema);
+module.exports = mongoose.model('KeyWords', keyWordSchema);
 
 
 
