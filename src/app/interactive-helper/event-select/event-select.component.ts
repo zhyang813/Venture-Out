@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
-// import { EventService } from '../../searchresults/searchresults.service';
 import { UserPageService } from '../../user-page/user-page.service';
 import { Router } from '@angular/router';
-import { TrendingService } from '../../trending/trending.service'
-// import  qs from './../../../../node_modules/qs/dist/qs.js';
+import { TrendingService } from '../../trending/trending.service';
 
-
+/*
+  This component populates cards with event information that the user can like
+  to gather more information about user preferences.
+*/
 
 @Component({
   selector: 'app-event-select',
@@ -15,40 +16,35 @@ import { TrendingService } from '../../trending/trending.service'
 })
 export class EventSelectComponent {
   events: any;
-  count: number;
   favorites: Array<string>;
   interests: Array<string>;
   titles: Array<string>;
-  constructor(private http: Http, private userService: UserPageService,
-    private router: Router, private trendingService: TrendingService) {
+
+  constructor(private http: Http,
+              private userService: UserPageService,
+              private router: Router,
+              private trendingService: TrendingService) {
+
     this.grabEvents();
     this.titles = [];
   }
 
+  // grab events by zip to populate page on initilization
   public grabEvents() {
-
-    // let categories = this.userService.interests;
-    // console.log(this.userService.interests);
-    // console.log(categories);
-    // console.log(JSON.stringify(categories));
-    // console.log(categories.toString());
-
-    // this.http.get(`/api/events/category/${JSON.stringify(categories.toString())}/zipcode/${this.userService.zipCode}/quantity/12`)
-    // .subscribe(result => {
-    //   console.log(result.json());
-    //   this.events = result.json();
-
     this.http.get(`/api/events/zipcode/${this.userService.zipCode}`)
     .subscribe(result => {
-      console.log(result.json());
       this.events = result.json();
     });
+    // TODO: add these events to user favorites
     this.favorites = [];
   }
+
+  // when a user likes an event push to titles array
   public onLike(event) {
-    console.log(event);
     this.titles.push(event.name);
   }
+
+  // when user goes to the next page send titles to database using trending service function
   public goToNextPage() {
     this.trendingService.addKeyWordsToDB(this.titles);
     this.router.navigate(['/']);

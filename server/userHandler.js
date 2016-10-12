@@ -27,7 +27,6 @@ module.exports = {
       }
     })
   },
-
   findUser: function(req, res) {
     console.log('Find User Called');
     User.findOne({'userId': req.params.id}, function(error, user){
@@ -39,7 +38,6 @@ module.exports = {
       }
     })
   },
-
   addFavorite: function(req, res) {
     console.log('Add Favorite Called');
     console.log('****', req.body);
@@ -49,7 +47,6 @@ module.exports = {
     );
     res.status(200).send('Successfully updated user');
   },
-
   getFavorites: function(req, res) {
     console.log('Get Favorites Called');
     User.findOne({'userId': req.params.id}, function(error, user){
@@ -66,7 +63,7 @@ module.exports = {
       }
     })
   },
-
+  // adds users zipcode to the user collection
   addZipCode: function(req, res) {
     db.collections.users.findOneAndUpdate(
       {userId: req.body.userId},
@@ -79,9 +76,8 @@ module.exports = {
       res.json(err)
     })
   },
-
+  // add users interests to the user collection
   addInterests: function(req, res) {
-    console.log(req.body)
     db.collections.users.findOneAndUpdate(
       {userId: req.body.userId},
       {
@@ -93,7 +89,7 @@ module.exports = {
       res.json(err)
     })
   },
-
+  // add profile image link to user document in user collection
   addImgUrl: function(req, res) {
     db.collections.users.findOneAndUpdate(
       {userId: req.body.userId},
@@ -106,7 +102,7 @@ module.exports = {
       res.json(err)
     })
   },
-
+  // get profile image link from user document in user collection
   getImgUrl: function(req, res) {
     console.log('Get ImgUrl Called');
     console.log("this is getImgUrl reqeust", req.params.id);
@@ -119,7 +115,7 @@ module.exports = {
       res.json(err)
     })
   },
-
+  // grab the users zipcode from users collection
   getUserZipcode: function(req, res) {
     console.log
     db.collections.users.findOne(
@@ -130,7 +126,7 @@ module.exports = {
       res.json(err)
     })
   },
-
+  // grab the users interests from users collection
   getUserInterests: function(req, res) {
     db.collections.users.findOne(
       {userId: req.params.id}
