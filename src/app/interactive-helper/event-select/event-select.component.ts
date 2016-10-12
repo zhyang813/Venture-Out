@@ -28,6 +28,8 @@ export class EventSelectComponent {
 
     this.grabEvents();
     this.titles = [];
+    // TODO: add these events to user favorites
+    this.favorites = [];
   }
 
   // grab events by zip to populate page on initilization
@@ -36,22 +38,6 @@ export class EventSelectComponent {
     .subscribe(result => {
       this.events = result.json();
     });
-    // TODO: add these events to user favorites
-
-    // this.http.get('/api/events').map(res => res.json()).subscribe(data => this.events = data
-    //   .filter ( event => {
-    //     return event.zip_code? event.zip_code === this.userService.zipCode : false;
-    //   }).slice(0, 10),   error => console.log(error),
-    //   () => {
-    //     if (this.events.length === 0) {
-    //       alert('No matched results. Please try again.');
-    //       this.router.navigate(['/']);
-    //     } else {
-    //       console.log('Get all events complete', this.events.length);
-    //     }
-    //   });
-
-    this.favorites = [];
   }
 
   // when a user likes an event push to titles array, JQuery handling event highlight on selected events
@@ -63,6 +49,7 @@ export class EventSelectComponent {
         this.titles.splice(idx, 1);
       }
     });
+    // changes styling of border when event is liked
     if (exist) {
       $('#' + 'eve' + event.eventId).css('border-style', 'none');
     } else {

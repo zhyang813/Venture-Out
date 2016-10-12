@@ -3,6 +3,11 @@ import { Router } from '@angular/router';
 import { UserPageService } from '../../user-page/user-page.service';
 declare var $: any;
 
+/*
+  This component generates cards based on categories that users can like
+  and then be sent to the database as an array. Primary purpose is for
+  information gathering on user.
+*/
 
 @Component({
   selector: 'app-category-select',
@@ -12,9 +17,11 @@ declare var $: any;
 export class CategorySelectComponent {
   categories: Array<any>;
   liked: Array<string>;
-  disliked: Array<string>;
+  // TODO: add events that the user does not like
+  // disliked: Array<string>;
 
   constructor(private router: Router, private userService: UserPageService) {
+    // array of categories to display on cards
     this.categories = [
     {genre: 'Music', imageUrl: '../../assets/StockPhotos/music-festivals.jpg'},
     {genre: 'Comedy', imageUrl: '../../assets/StockPhotos/comedy.jpg'},

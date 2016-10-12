@@ -11,7 +11,7 @@
   position: relative;
   width: 10000px;
   height: 160px;
-  animation: scroll 20s linear infinite;
+  animation: scroll 80s linear infinite;
   padding: 3px;
   background-color: #263238;
   white-space: nowrap;
@@ -35,6 +35,6 @@
 
 /* Make it move */
 @keyframes scroll{
-0% {left:2500px;}
-100% {left:-2500px;}
+0% {left:1000px;}
+100% {left:-5500px;}
 }
