@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { EventService } from '../searchresults/searchresults.service';
-// import { TrendingComponent } from '../trending/trending.component';
+
+/*
+  Landing page of our application. The search box allows users to input their
+  search criteria that will direct them to the search results page.
+*/
 
 @Component({
   selector: 'app-searchbox',
