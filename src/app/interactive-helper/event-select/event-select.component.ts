@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { UserPageService } from '../../user-page/user-page.service';
 import { Router } from '@angular/router';
 import { TrendingService } from '../../trending/trending.service';
+declare var $: any;
 
 /*
   This component populates cards with event information that the user can like
@@ -36,12 +37,38 @@ export class EventSelectComponent {
       this.events = result.json();
     });
     // TODO: add these events to user favorites
+
+    // this.http.get('/api/events').map(res => res.json()).subscribe(data => this.events = data
+    //   .filter ( event => {
+    //     return event.zip_code? event.zip_code === this.userService.zipCode : false;
+    //   }).slice(0, 10),   error => console.log(error),
+    //   () => {
+    //     if (this.events.length === 0) {
+    //       alert('No matched results. Please try again.');
+    //       this.router.navigate(['/']);
+    //     } else {
+    //       console.log('Get all events complete', this.events.length);
+    //     }
+    //   });
+
     this.favorites = [];
   }
 
   // when a user likes an event push to titles array
   public onLike(event) {
-    this.titles.push(event.name);
+    let exist = false;
+    this.titles.forEach( (item, idx) => {
+      if ( event.name === item ) {
+        exist = true;
+        this.titles.splice(idx, 1);
+      }
+    });
+    if (exist) {
+      $('#' + 'eve' + event.eventId).css('border-style', 'none');
+    } else {
+      this.titles.push(event.name);
+      $('#' + 'eve' + event.eventId).css('border-style', 'groove');
+    }
   }
 
   // when user goes to the next page send titles to database using trending service function

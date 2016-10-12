@@ -85,7 +85,7 @@ export class UserPageService {
   };
 
   public addImgUrlToDB() {
-    console.log("addImgUrlToDB happened");
+    console.log('addImgUrlToDB happened');
     let body = JSON.stringify({
       userId: this.userId,
       imgUrl: this.imgUrl
@@ -98,7 +98,7 @@ export class UserPageService {
   };
 
   public getImgUrl() {
-    console.log("getImgUrl happened");
+    console.log('getImgUrl happened');
     let userProfile = JSON.parse(localStorage.getItem('profile'));
     return this.http.get('/api/user/getImgUrl/' + userProfile.user_id).map(response =>
       response.json()
