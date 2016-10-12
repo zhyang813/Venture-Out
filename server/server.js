@@ -11,8 +11,7 @@ var keyWordHandler = require('./keyWordHandler')
 var cron = require('cron').CronJob;
 // set Promise provider to bluebird
 mongoose.Promise = require('bluebird');
-// q
-mongoose.Promise = require('q').Promise;
+
 
 
 
