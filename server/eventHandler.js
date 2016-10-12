@@ -7,7 +7,6 @@ module.exports = {
 
   // Add new Event
   addEvent: function(event){
-
     Event.create(event, function(err, event) {
       if (err) {
         console.log("New event created error", err);
@@ -16,7 +15,6 @@ module.exports = {
       }
     });
   },
-
 
   // Find a specific event using eventId
   findEventById: function(eventId, callback) {
@@ -34,7 +32,6 @@ module.exports = {
 
   // Get all the events
   getAllEvents: function(req, res) {
-
     Event.find({}, function(err, events) {
       if (err) {
         console.log("New event created error", err);
@@ -60,7 +57,7 @@ module.exports = {
           city: city
         }
       })
-      )
+    )
   },
 
   // returns promise for chaining, does not take requests or send responses
@@ -76,14 +73,14 @@ module.exports = {
       console.log(regex, 'this is in get events')
       return Event.find({
         $and: [
-        {'address.city': city},
-        {'genre': { $regex: regex }}
+          {'address.city': city},
+          {'genre': { $regex: regex }}
         ]
       })
     }
-
   },
 
+  // Use this method to get events by zip requires the zipcode in req params
   getEventsByZip: function(req, res) {
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
@@ -96,21 +93,24 @@ module.exports = {
     .catch(function(err){
       res.json(err)
     })
-
   },
 
+  // grab events by categories and zip
   getEventsByCategoriesAndZip: function(req, res) {
+
     var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
     console.log(req.params)
     var that = this;
 
     getMultipleEvents = function(locationData) {
+
      var events = [];
 
       // JSON is stringified in the request. slice off start/end quotations
       var interests = req.params.name.slice(1, req.params.name.length - 1).split(',')
       var limit = Math.floor(13/interests.length);
+      // this runs async functions in order
       async.waterfall([
         function(Outercallback){
           async.map(interests, function(interest, callback) {
