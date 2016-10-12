@@ -11,6 +11,8 @@
 ## Description
 VentureOut is an event app that recommends you relevant events based on your event keyword, availability, budget, location, and interests.
 
+Mobile Version: https://github.com/hrr18-codebrewers/ventureout-mobile
+
 ## Development
 
 ### Installation
