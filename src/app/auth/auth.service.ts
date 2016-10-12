@@ -37,6 +37,7 @@ export class AuthService {
         }
         console.log(profile);
         localStorage.setItem('profile', JSON.stringify(profile));
+        // Use Profile info to create a new user of they do not already exist
         this.userProfile = profile;
         let body = JSON.stringify({
           'name': profile.name,
