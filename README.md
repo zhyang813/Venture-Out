@@ -40,5 +40,5 @@ You will need API keys from [Eventbrite](http://developer.eventbrite.com/), [Tic
 - Ticketmaster API keys are stored in ??
 - Auth0 API keys are stored in ??
 
-Eventbrite and Ticketmaster are the event ticket websites that will serve CRUD for events.
+Eventbrite and Ticketmaster are the event ticketing websites that will serve CRUD for events.
 Auth0 is used for user authentication.
