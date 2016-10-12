@@ -1,20 +1,21 @@
 .container {
-  padding:3px;
-  border:1px solid #263238;
-  width:700px;
-  overflow:hidden;
+  padding: 3px;
+  border: 1px solid #263238;
+  width: 700px;
+  overflow: hidden;
   height: 50px;
-  background-color:#263238;
+  background-color: #263238;
 }
 .marquee{
-  display:block;
-  position:relative;
-    width:100%;
-    height:160px;
-    animation:scroll 15s linear infinite;
-    padding:3px;
-    background-color:#263238;
-    white-space:nowrap;
+  display: block;
+  position: relative;
+  width: 10000px;
+  height: 160px;
+  animation: scroll 20s linear infinite;
+  padding: 3px;
+  background-color: #263238;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .marquee:hover {
@@ -22,17 +23,18 @@
 }
 
 .trending {
-  width:150px;
-  height:150px;
-  background-color:#263238;
-  margin:3px;
-  float:left;
+  height: 150px;
+  background-color: #263238;
+  margin: 3px;
+  float: left;
   color: #f57c00;
   font-size: 30px;
+  display: inline-block;
+  margin: 0 80px;
 }
 
 /* Make it move */
 @keyframes scroll{
-0% {left:800px;}
-100% {left:-800px;}
+0% {left:2500px;}
+100% {left:-2500px;}
 }
