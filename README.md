@@ -36,8 +36,8 @@ npm run serve
 ### Prerequisites
 You will need API keys from [Eventbrite](http://developer.eventbrite.com/), [Ticketmaster](http://developer.ticketmaster.com/), and [Auth0](https://auth0.com/).
 
-- Eventbrite API keys are stored in ??
-- Ticketmaster API keys are stored in ??
+- Eventbrite API keys are stored in server/workers.js embedded into http request url
+- Ticketmaster API keys are stored in server/workers.js embedded into http request url
 - Auth0 API keys are stored in ??
 
 Eventbrite and Ticketmaster are the event ticketing websites that will serve CRUD for events.
