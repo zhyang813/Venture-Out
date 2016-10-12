@@ -42,8 +42,3 @@ You will need API keys from [Eventbrite](http://developer.eventbrite.com/), [Tic
 
 Eventbrite and Ticketmaster are the event ticket websites that will serve CRUD for events.
 Auth0 is used for user authentication.
-
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
