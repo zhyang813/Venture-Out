@@ -66,6 +66,7 @@ module.exports = {
       }
     })
   },
+
   addZipCode: function(req, res) {
     db.collections.users.findOneAndUpdate(
       {userId: req.body.userId},
@@ -78,6 +79,7 @@ module.exports = {
       res.json(err)
     })
   },
+
   addInterests: function(req, res) {
     console.log(req.body)
     db.collections.users.findOneAndUpdate(
@@ -91,6 +93,7 @@ module.exports = {
       res.json(err)
     })
   },
+
   addImgUrl: function(req, res) {
     db.collections.users.findOneAndUpdate(
       {userId: req.body.userId},
@@ -103,6 +106,7 @@ module.exports = {
       res.json(err)
     })
   },
+
   getImgUrl: function(req, res) {
     console.log('Get ImgUrl Called');
     console.log("this is getImgUrl reqeust", req.params.id);
@@ -115,6 +119,7 @@ module.exports = {
       res.json(err)
     })
   },
+
   getUserZipcode: function(req, res) {
     console.log
     db.collections.users.findOne(
@@ -125,6 +130,7 @@ module.exports = {
       res.json(err)
     })
   },
+
   getUserInterests: function(req, res) {
     db.collections.users.findOne(
       {userId: req.params.id}

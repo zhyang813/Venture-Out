@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { AuthService } from '../auth/auth.service';
 import { TrendingService } from '../trending/trending.service'
-// import 'rxjs'
 
 @Injectable()
 export class EventService {

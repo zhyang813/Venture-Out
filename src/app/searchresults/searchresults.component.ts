@@ -5,14 +5,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { EventService } from './searchresults.service';
 import { TrendingService } from '../trending/trending.service';
-
 declare var $: any;
 
 @Component({
   selector: 'app-searchresults',
   templateUrl: './searchresults.component.html',
   styleUrls: ['./searchresults.component.css']
-  // providers: [Modal]
 })
 
 export class SearchresultsComponent {
@@ -21,18 +19,17 @@ export class SearchresultsComponent {
   events: Array<any>;
 
   constructor(private auth: AuthService,
-    private router: Router,
-    private eventService: EventService,
-    public overlay: Overlay,
-    public modal: Modal,
-    private trendingService: TrendingService) {
+              private router: Router,
+              private eventService: EventService,
+              public overlay: Overlay,
+              public modal: Modal,
+              private trendingService: TrendingService) {
 
-    // On page load, run this to get all events
-    this.getEvents();
-
+              // On page load, run this to get all events
+              this.getEvents();
   }
 
-  // Side bar search, store input data to shared service
+  // Search criteria adjust side bar search - store input data to eventService
   public onSearch(form) {
 
     // user input data processing

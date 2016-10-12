@@ -6,6 +6,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { InteractiveHelperComponent } from './interactive-helper/interactive-helper.component';
 import { CategorySelectComponent } from './interactive-helper/category-select/category-select.component';
 import { EventSelectComponent } from './interactive-helper/event-select/event-select.component';
+
 const APP_ROUTES: Routes = [
   { path: '', component: SearchboxComponent },
   { path: 'searchresults', component: SearchresultsComponent },

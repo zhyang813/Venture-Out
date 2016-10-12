@@ -8,7 +8,6 @@ import { TrendingComponent } from '../trending/trending.component'
   selector: 'app-searchbox',
   templateUrl: './searchbox.component.html',
   styleUrls: ['./searchbox.component.css']
-  // providers: [EventService] // Do not activate this, it creates new instance of the service
 })
 
 export class SearchboxComponent {
@@ -16,11 +15,9 @@ export class SearchboxComponent {
   events: Array<any>;
 
   constructor(private auth: AuthService,
-    private router: Router,
-    private eventService: EventService) {
-
-            // this.frontPageEvents();
-  }
+              private router: Router,
+              private eventService: EventService) {
+  };
 
   // Landing page search event handling
   public onSearch(form) {
@@ -33,8 +30,7 @@ export class SearchboxComponent {
     this.eventService.interest = form.value.interests;
     this.eventService.location = form.value.location;
     this.router.navigate(['/searchresults']);
-
-  }
+  };
 
 
   // Plan for front page recommendation

@@ -36,6 +36,7 @@ export class UserPageComponent {
                 }
               );
 
+              // get user profile image url on page load
               this.userService.getImgUrl().subscribe(
                 data => this.userImgUrl = data
               );
@@ -47,11 +48,10 @@ export class UserPageComponent {
   //   this.interests = this.userService.getRecommendations()
   // }
 
+  // User imgUrl uploading handler
   onSubmit(form) {
     this.userService.imgUrl = form.value.imgUrl;
     this.userImgUrl = form.value.imgUrl;
-    console.log("imgUrl clicked", this.userService.imgUrl);
-    console.log("imgUrl value when clicked", this.userImgUrl);
     this.userService.addImgUrlToDB();
   }
 
