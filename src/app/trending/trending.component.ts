@@ -1,11 +1,6 @@
-<<<<<<< b8906a0aadf5f575ce18daef04b92d4fb257540d
 import { Component } from '@angular/core';
 import { TrendingService } from './trending.service';
 
-=======
-import { Component, OnInit } from '@angular/core';
-import { TrendingService } from './trending.service';
->>>>>>> bug fix
 @Component({
   selector: 'app-trending',
   templateUrl: './trending.component.html',

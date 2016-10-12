@@ -105,7 +105,7 @@ export class SearchresultsComponent {
       .body('<b>Please Log In To Favorite Events!</b>')
       .open();
     } else {
-      this.trendingService.addKeyWordsToDB([event.name])
+      this.trendingService.addKeyWordsToDB([event.name]);
       this.eventService.saveFavorite(event.eventId);
       $('#' + 'fava' + event.eventId).show();
       setTimeout(function() {
