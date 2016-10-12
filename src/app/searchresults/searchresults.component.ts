@@ -41,7 +41,7 @@ export class SearchresultsComponent {
     this.eventService.start = form.value.start ? form.value.start + 'T00:00:00Z' : startDate;
     this.eventService.end = form.value.end ? form.value.end + 'T00:00:00Z' : '9999-12-31T00:00:00Z';
     this.eventService.interest = form.value.interests ? form.value.interests.toLowerCase() : '';
-    this.eventService.location = form.value.location ? form.value.location : '';
+    this.eventService.location = form.value.location ? form.value.location.toLowerCase() : '';
 
     this.getEvents();
   }
