@@ -56,8 +56,6 @@ export class EventSelectComponent {
 
   // when a user likes an event push to titles array
   public onLike(event) {
-    this.titles.push(event.name);
-
     let exist = false;
     this.titles.forEach( (item, idx) => {
       if ( event.name === item ) {
