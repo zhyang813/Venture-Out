@@ -6,7 +6,8 @@ var UserSchema = new mongoose.Schema({
   userId: String,
   zipCode: String,
   interests: [String],
-  favoritedEvents: [String]
+  favoritedEvents: [String],
+  imgUrl: String
 },
 {
   timestamps: true

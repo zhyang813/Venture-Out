@@ -10,6 +10,7 @@ export class UserPageService {
   userId: string;
   zipCode: string;
   interests: Array<string>;
+  imgUrl: string;
 
   constructor(private http: Http) {
       this.userInformation = JSON.parse(localStorage.getItem('profile'));
@@ -26,7 +27,7 @@ export class UserPageService {
     return this.http.get('/api/user/favorites/' + userProfile.user_id).map(response =>
       response.json()
     );
-  }
+  };
   // TODO moves these to interactive-helper compoent service
   public addZipToDB() {
 
@@ -42,7 +43,7 @@ export class UserPageService {
     return this.http.post('/api/user/addZipCode', body, options).subscribe(function(response){
       console.log(response);
     });
-  }
+  };
   public addInterestsToDb(interests) {
 
     let body = JSON.stringify({
@@ -54,7 +55,7 @@ export class UserPageService {
     return this.http.post('/api/user/addInterests', body, options).subscribe(function(response){
       console.log(response);
     });
-  }
+  };
   // public getZipCode() {
   //   return this.http.get(`/api/user/${this.userId}/zipcode`)
   // }
@@ -69,7 +70,7 @@ export class UserPageService {
     return this.http.get(url, options).map(response =>
       response.json()
     );
-  }
+  };
   public getZipAndInterests() {
 
     return Observable.forkJoin(
@@ -77,5 +78,25 @@ export class UserPageService {
       this.http.get(`/api/user/${this.userId}/interests`).map((res: Response) => res.json())
     );
 
+  };
+
+  public addImgUrlToDB() {
+    console.log("addImgUrlToDB happened");
+    let body = JSON.stringify({
+      userId: this.userId,
+      imgUrl: this.imgUrl
+    });
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post('/api/user/addImgUrl', body, options).subscribe(function(response) {
+      console.log(response);
+    });
+  };
+  public getImgUrl() {
+    console.log("getImgUrl happened");
+    let userProfile = JSON.parse(localStorage.getItem('profile'));
+    return this.http.get('/api/user/getImgUrl/' + userProfile.user_id).map(response =>
+      response.json()
+    );
   };
 }
