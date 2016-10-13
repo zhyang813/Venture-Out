@@ -43,12 +43,11 @@ module.exports = {
 
   // returns promise for chaining, does not take requests or send responses
   getLocationFromZipPromise: function(zipCode) {
-    return (
-      services.geocoder.geocode(zipCode)
-      .then(function(result){
+    return (services.geocoder.geocode(zipCode)
+      .then(function(result) {
         var country;
         var city = result[0].city.split(' ').join('_');
-        if(result[0].country === 'United States'){
+        if(result[0].country === 'United States') {
           country = 'America'
         }
         return {
@@ -89,8 +88,8 @@ module.exports = {
     var zipCode = req.params.zip;
 
     // use promises in a chain
-    this.getLocationFromZipPromise(zipCode)
-    .then(this.getEventsPromise)
+    module.exports.getLocationFromZipPromise(zipCode)
+    .then(module.exports.getEventsPromise)
     .then(function(result) {
       res.json(result)
     })
@@ -118,7 +117,7 @@ module.exports = {
         function(outerCallback) {
         // async map will getEvents based on every interest in the interests array
           async.map(interests, function(interest, callback) {
-            that.getEventsPromise(locationData, interest, 4)
+            module.exports.getEventsPromise(locationData, interest, 4)
             .then(function(result) {
               callback(null, result)
             })
@@ -147,7 +146,7 @@ module.exports = {
     }
 
     // use promises in a chain
-    this.getLocationFromZipPromise(zipCode)
+    module.exports.getLocationFromZipPromise(zipCode)
     .then(getMultipleEvents)
 
   }
