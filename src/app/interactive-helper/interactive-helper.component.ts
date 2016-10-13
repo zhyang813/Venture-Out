@@ -40,7 +40,7 @@ export class InteractiveHelperComponent implements OnInit {
           Validators.minLength(5)
         ]
       )
-    })
+    });
   };
 
   // when the user submits the form by hitting enter we will set
