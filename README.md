@@ -1,7 +1,5 @@
 # Venture Out
 
-> VentureOut
-
 ## Team
 
   - __Product Owner__: Hoon Bae
