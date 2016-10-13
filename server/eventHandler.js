@@ -103,6 +103,8 @@ module.exports = {
     var zipCode = req.params.zip;
     var that = this;
 
+    // This function is called after getLocationFromZipPromise
+    // and provides locationData as an argument
     getMultipleEvents = function(locationData) {
 
       var events = [];
@@ -144,11 +146,9 @@ module.exports = {
         }
       )
     }
-
     // use promises in a chain
     module.exports.getLocationFromZipPromise(zipCode)
     .then(getMultipleEvents)
-
   }
 
 }

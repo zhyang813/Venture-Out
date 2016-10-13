@@ -10,8 +10,9 @@ export class TrendingComponent {
   trendingWords: Array<string>;
 
   constructor(private trendingService: TrendingService) {
-     this.getTrendingKeyWordsOnInit();
+    this.getTrendingKeyWordsOnInit();
   };
+
   // when the components loads make a request to the server to get an
   // array of trending keywords
   private getTrendingKeyWordsOnInit() {

@@ -5,8 +5,8 @@ var mongoose = require('mongoose');
 var db = mongoose.connection;
 
 module.exports = {
-  addKeyWordsToDB: function(req, res) {
 
+  addKeyWordsToDB: function(req, res) {
     // req.body will hold an array of titles
     // will use a regex and split each title into words
     // a query will be made on each word and increment or add to the document
@@ -21,8 +21,9 @@ module.exports = {
         callback();
       })
     })
-
+    res.json('words added')
   },
+
   // query to get 20 words with the highest counts
   getKeyWordsFromDB: function(req, res) {
     keyWord.where().sort('-count').limit(20)
@@ -30,4 +31,5 @@ module.exports = {
       res.json(result)
     })
   }
+
 }

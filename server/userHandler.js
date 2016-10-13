@@ -7,8 +7,8 @@ var db = mongoose.connection;
 
 module.exports = {
 
+  // add new user to user collection
   addUser: function(req, res) {
-    console.log('Add User Called');
     User.findOne({'userId': req.body.userId}, function(error, user){
       if(error){
         console.error(error);
@@ -17,7 +17,7 @@ module.exports = {
           if(error){
             console.error(error);
           } else {
-            // console.log('User Successfully Created!', user)
+            console.log('User Successfully Created!', user)
             res.json(user);
           }
         })
@@ -27,6 +27,8 @@ module.exports = {
       }
     })
   },
+
+  // get user in user collection
   findUser: function(req, res) {
     console.log('Find User Called');
     User.findOne({'userId': req.params.id}, function(error, user){
@@ -38,6 +40,8 @@ module.exports = {
       }
     })
   },
+
+  // add an event to users favorite field in user collection
   addFavorite: function(req, res) {
     console.log('Add Favorite Called');
     console.log('****', req.body);
@@ -47,6 +51,8 @@ module.exports = {
     );
     res.status(200).send('Successfully updated user');
   },
+
+  // get users favorites in user collection
   getFavorites: function(req, res) {
     console.log('Get Favorites Called');
     User.findOne({'userId': req.params.id}, function(error, user){
@@ -63,10 +69,11 @@ module.exports = {
       }
     })
   },
+
   // adds users zipcode to the user collection
   addZipCode: function(req, res) {
     db.collections.users.findOneAndUpdate(
-      {userId: req.body.userId},
+      { userId: req.body.userId },
       {
         $set: { zipCode:req.body.zipCode }
       }
@@ -76,10 +83,11 @@ module.exports = {
       res.json(err)
     })
   },
+
   // add users interests to the user collection
   addInterests: function(req, res) {
     db.collections.users.findOneAndUpdate(
-      {userId: req.body.userId},
+      { userId: req.body.userId },
       {
         $addToSet: { interests: { $each: req.body.interests } }
       }
@@ -89,10 +97,11 @@ module.exports = {
       res.json(err)
     })
   },
+
   // add profile image link to user document in user collection
   addImgUrl: function(req, res) {
     db.collections.users.findOneAndUpdate(
-      {userId: req.body.userId},
+      { userId: req.body.userId },
       {
         $set: { imgUrl: req.body.imgUrl }
       }
@@ -102,12 +111,13 @@ module.exports = {
       res.json(err)
     })
   },
+
   // get profile image link from user document in user collection
   getImgUrl: function(req, res) {
     console.log('Get ImgUrl Called');
     console.log("this is getImgUrl reqeust", req.params.id);
     db.collections.users.findOne(
-      {userId: req.params.id} // get use params
+      { userId: req.params.id } // get use params
     ).then(function(result) {
       console.log("this is getImgUrl result", result);
       res.json(result.imgUrl)
@@ -115,21 +125,22 @@ module.exports = {
       res.json(err)
     })
   },
+
   // grab the users zipcode from users collection
   getUserZipcode: function(req, res) {
-    console.log
     db.collections.users.findOne(
-      {userId: req.params.id}
+      { userId: req.params.id }
     ).then(function(result) {
       res.json(result.zipCode)
     }).catch(function(err) {
       res.json(err)
     })
   },
+
   // grab the users interests from users collection
   getUserInterests: function(req, res) {
     db.collections.users.findOne(
-      {userId: req.params.id}
+      { userId: req.params.id }
     ).then(function(result) {
       res.json(result.interests)
     }).catch(function(err) {
