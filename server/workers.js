@@ -17,8 +17,6 @@ module.exports = {
 
       var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=o8BUqiVck0XjtbRwN6tUjVsSFSjB22Fo&size=30&countryCode=US&startDateTime='+futureDate+'T00:00:00Z';
 
-
-
       Request.get(url).then(function(response) {
         response.body._embedded.events.forEach(function(event) {
 

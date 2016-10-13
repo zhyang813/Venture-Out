@@ -18,7 +18,6 @@ module.exports = {
 
   // Find a specific event using eventId
   findEventById: function(eventId, callback) {
-
     Event.findOne({'eventId': eventId}, function(err, event){
       // console.log('event found?', event);
       if (err) {
@@ -65,7 +64,6 @@ module.exports = {
     var city = locationData.city.split('_').join(' ');
 
     if(!genre) {
-
       return Event.where('address.city').eq(city).sort('createdAt').limit(20)
 
     } else {
@@ -83,6 +81,7 @@ module.exports = {
 
   // Use this method to get events by zip requires the zipcode in req params
   getEventsByZip: function(req, res) {
+
     // ignore for now may be used later
     // var numberOfEvents = Number.parseInt.call(this, req.params.amount)
     var zipCode = req.params.zip;
@@ -106,7 +105,6 @@ module.exports = {
     // This function is called after getLocationFromZipPromise
     // and provides locationData as an argument
     getMultipleEvents = function(locationData) {
-
       var events = [];
 
       // JSON is stringified in the request. slice off start/end quotations
@@ -114,9 +112,11 @@ module.exports = {
 
       // this runs async functions in order
       async.waterfall([
+
         // waterfall takes in an array of async operations and runs them in async order the second arguement is a function that runs when every async function is ran
         // outerCallback is for async.waterfall to know when a function has finished running
         function(outerCallback) {
+
         // async map will getEvents based on every interest in the interests array
           async.map(interests, function(interest, callback) {
             module.exports.getEventsPromise(locationData, interest, 4)
@@ -127,6 +127,7 @@ module.exports = {
               res.json(err)
             });
           }, function(err, result) {
+
             // signals the current async function is done running
             outerCallback(err, result)
           })
@@ -135,6 +136,7 @@ module.exports = {
         // run this function after all async functions have ran
         function(err, result) {
           console.log('prmoise chain successful')
+
         // flatten arrays into one array
         result = result.reduce(function(store, next) {
           next.forEach(function(element) {

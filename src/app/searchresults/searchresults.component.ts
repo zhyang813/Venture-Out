@@ -25,8 +25,8 @@ export class SearchresultsComponent {
               public modal: Modal,
               private trendingService: TrendingService) {
 
-              // On page load, run this to get all events
-              this.getEvents();
+    // On page load, run this to get all events
+    this.getEvents();
   }
 
   // Search criteria adjust side bar search - store input data to eventService
@@ -93,7 +93,6 @@ export class SearchresultsComponent {
           console.log('Get all events complete', this.events.length);
         }
       });
-
   }
 
   // For handling saving favorite events, checking if user is authenticated, if not, dialog box pop up
@@ -122,7 +121,6 @@ export class SearchresultsComponent {
     // console.log('onclickprice', event.eventId);
     $('#' + event._id).hide();
     $('#' + event.eventId).toggle();
-
   }
 
   // JQuery for handling address button click
@@ -130,7 +128,6 @@ export class SearchresultsComponent {
 
     $('#' + event.eventId).hide();
     $('#' + event._id).toggle();
-
   }
 
 }

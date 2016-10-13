@@ -17,18 +17,20 @@ import { UserPageService } from '../user-page/user-page.service';
 })
 
 export class InteractiveHelperComponent implements OnInit {
+
   // store all form data as an myForm object
   myForm: FormGroup;
+
   // this variable is used to see if the zipcode is valid
   isValid: Boolean = true;
 
-  constructor(
-    private http: Http,
-    private router: Router,
-    private userService: UserPageService
+  constructor( private http: Http,
+               private router: Router,
+               private userService: UserPageService
   ) {}
 
   ngOnInit() {
+
     // when the component is initialized a new form object is created
     // location references the location input where the user will type in
     // their zipcode

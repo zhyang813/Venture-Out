@@ -15,6 +15,7 @@ declare var $: any;
   templateUrl: './event-select.component.html',
   styleUrls: ['./event-select.component.css']
 })
+
 export class EventSelectComponent {
   events: any;
   favorites: Array<string>;
@@ -28,9 +29,10 @@ export class EventSelectComponent {
 
     this.grabEvents();
     this.titles = [];
+
     // TODO: add these events to user favorites
     this.favorites = [];
-  }
+  };
 
   // grab events by zip to populate page on initilization
   public grabEvents() {
@@ -38,7 +40,7 @@ export class EventSelectComponent {
     .subscribe(result => {
       this.events = result.json();
     });
-  }
+  };
 
   // when a user likes an event push to titles array, JQuery handling event highlight on selected events
   public onLike(event) {
@@ -56,12 +58,12 @@ export class EventSelectComponent {
       this.titles.push(event.name);
       $('#' + 'eve' + event.eventId).css('border-style', 'groove');
     }
-  }
+  };
 
   // when user goes to the next page send titles to database using trending service function
   public goToNextPage() {
     this.trendingService.addKeyWordsToDB(this.titles);
     this.router.navigate(['/']);
-  }
+  };
 
 }

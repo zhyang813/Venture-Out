@@ -14,6 +14,7 @@ declare var $: any;
   templateUrl: './category-select.component.html',
   styleUrls: ['./category-select.component.css']
 })
+
 export class CategorySelectComponent {
   categories: Array<any>;
   liked: Array<string>;
@@ -46,6 +47,7 @@ export class CategorySelectComponent {
         this.liked.splice(idx, 1);
       }
     });
+
     if (exist) {
       $('#' + 'gen' + event).css('border-style', 'none');
     } else {
@@ -60,7 +62,5 @@ export class CategorySelectComponent {
     this.userService.addInterestsToDb(this.liked);
     this.router.navigate(['event-select']);
   }
-
-
 
 }

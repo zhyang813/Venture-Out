@@ -14,7 +14,6 @@ var Event = require('./eventModel');
 describe ('', function() {
 
   beforeEach(function(done) {
-
     Event.remove({'eventId': 'LOL_ITS_TEST'}).exec();
     User.remove({'name': 'Henry'}).exec();
     done();
@@ -22,7 +21,6 @@ describe ('', function() {
   });
 
   describe('Event creation: ', function() {
-
     it('Successful add an event', function(done) {
       Event.create({'eventId': 'LOL_ITS_TEST'}, function(err, event) {
         expect(event.eventId).to.equal('LOL_ITS_TEST');
@@ -41,11 +39,7 @@ describe ('', function() {
 
   });
 
-
-
-
   describe('Event searching: ', function() {
-
     it('Successful get all events using model method', function(done) {
       Event.create({'eventId': 'LOL_ITS_TEST'}, function(err, event) {
         Event.find({}, function(err, events) {
@@ -69,7 +63,6 @@ describe ('', function() {
   });
 
   describe('User creation: ', function() {
-
     it('Successful add an user using model method', function(done) {
       User.create({'name': 'Henry'}, function(err, user) {
         expect(user.name).to.equal('Henry');
@@ -95,5 +88,4 @@ describe ('', function() {
     });
 
   });
-
 });

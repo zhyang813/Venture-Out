@@ -12,6 +12,7 @@ describe('Component: CategorySelect', () => {
   class RouterStub {
     navigate(url: Array<string>) { return url; }
   }
+
   // Aysnc Before Each to Compile Component with HTML Template and CSS
   beforeEach( async( () => {
     TestBed.configureTestingModule({
