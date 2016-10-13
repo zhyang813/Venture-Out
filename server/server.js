@@ -108,7 +108,6 @@ app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname,'index.html'));
 });
 
-
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -123,15 +122,15 @@ app.listen(port);
 
 console.log("Server is listening on port " + port);
 
-// Ticket Master data fetcher
-
+// Ticket Master Data Fetcher
+// to grab events once, uncomment and run this file
 // worker.fetchTM();
 new cron('0 0 0 * * *', function() {3
   console.log('TM cron job running');
   worker.fetchTM();
 }, null, true, 'America/Los_Angeles');
 
-// EventBrite data fetcher
+// EventBrite Data Fetcher
 // to grab events once, uncomment setTimeout and run this file
 // setTimeout(worker.fetchEB, 30000);
 new cron('0 0 2 * * *', function() {

@@ -6,6 +6,7 @@ import { TrendingService } from './trending.service';
   templateUrl: './trending.component.html',
   styleUrls: ['./trending.component.css']
 })
+
 export class TrendingComponent {
   trendingWords: Array<string>;
 

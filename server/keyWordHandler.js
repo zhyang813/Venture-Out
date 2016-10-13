@@ -21,7 +21,10 @@ module.exports = {
         callback();
       })
     })
+<<<<<<< 11d310775bacf68fcd05358d44eee89fcea8247f
     res.json('words added')
+=======
+>>>>>>> Polished code style
   },
 
   // query to get 20 words with the highest counts

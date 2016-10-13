@@ -31,12 +31,14 @@ export class AuthService {
       // Fetch profile information
       this.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
+
           // Handle error
           alert(error);
           return;
         }
         console.log(profile);
         localStorage.setItem('profile', JSON.stringify(profile));
+
         // Use Profile info to create a new user of they do not already exist
         this.userProfile = profile;
         let body = JSON.stringify({

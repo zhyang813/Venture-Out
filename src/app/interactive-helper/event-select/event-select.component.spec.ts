@@ -32,17 +32,12 @@ describe('Component: EventSelect', () => {
       // comp.onLike('---events--- here');
       // expect(comp.keyWords.indexOf(['event', 2])).toBe;
       // [['event', 2],['title', 1], ['here', 2], ['123', 1],['@', 1], [place, 0],['---events---']]
-
     });
-
   });
 
   describe('goToNextPage Method', () => {
     it('should add terms to array when next button is clicked', () => {
-
-
     });
-
   });
 });
 

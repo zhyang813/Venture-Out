@@ -13,13 +13,12 @@ export class UserPageService {
   imgUrl: string;
 
   constructor(private http: Http) {
-      this.userInformation = JSON.parse(localStorage.getItem('profile'));
+    this.userInformation = JSON.parse(localStorage.getItem('profile'));
 
-      if (this.userInformation) {
-        this.userProfile = JSON.parse(localStorage.getItem('profile'));
-        this.userId = this.userProfile.user_id;
-      }
-
+    if (this.userInformation) {
+      this.userProfile = JSON.parse(localStorage.getItem('profile'));
+      this.userId = this.userProfile.user_id;
+    }
   }
 
   public getFavorites() {
@@ -31,7 +30,6 @@ export class UserPageService {
 
   // TODO moves these to interactive-helper compoent service
   public addZipToDB() {
-
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
     this.userId = this.userProfile.user_id;
 
@@ -47,7 +45,6 @@ export class UserPageService {
   };
 
   public addInterestsToDb(interests) {
-
     let body = JSON.stringify({
       userId: this.userId,
       interests: interests
@@ -76,12 +73,10 @@ export class UserPageService {
   };
 
   public getZipAndInterests() {
-
     return Observable.forkJoin(
       this.http.get(`/api/user/${this.userId}/zipcode`).map((res: Response) => res.json()),
       this.http.get(`/api/user/${this.userId}/interests`).map((res: Response) => res.json())
     );
-
   };
 
   public addImgUrlToDB() {

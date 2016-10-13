@@ -14,7 +14,6 @@ const APP_ROUTES: Routes = [
   { path: 'helper', component: InteractiveHelperComponent },
   { path: 'category', component: CategorySelectComponent },
   { path: 'event-select', component: EventSelectComponent }
-
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

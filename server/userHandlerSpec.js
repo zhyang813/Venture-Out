@@ -16,7 +16,6 @@ var userHandler = require('./userHandler');
 describe ('', function() {
 
   beforeEach(function(done) {
-
     // Event.remove({'eventId': 'LOL_ITS_TEST'}).exec();
     User.create({'userId': 'Henry'}, function(err, user) {
       expect(user.userId).to.equal('Henry');
@@ -31,7 +30,6 @@ describe ('', function() {
       });
 
     })
-
   });
 
   afterEach(function(done) {
@@ -39,12 +37,10 @@ describe ('', function() {
     User.remove({'userId': 'Henry'}).exec();
     User.remove({'userId': 'David'}).exec();
     done();
-
   });
 
 
   describe('Methods for User: ', function() {
-
     it('Successfully add users zipcode', function(done) {
       var req = {
         body: {
@@ -89,8 +85,8 @@ describe ('', function() {
       }
 
       userHandler.getUserZipcode(req, res)
-
     });
+
     it('Successfully get users interests', function(done) {
       var req = {
         body: {
@@ -103,12 +99,8 @@ describe ('', function() {
           done();
         }
       }
-
       userHandler.getUserInterests(req, res)
-
     });
 
   });
-
-
 });
