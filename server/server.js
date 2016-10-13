@@ -9,12 +9,9 @@ var eventHandler = require('./eventHandler');
 var userHandler = require('./userHandler');
 var keyWordHandler = require('./keyWordHandler')
 var cron = require('cron').CronJob;
+
 // set Promise provider to bluebird
 mongoose.Promise = require('bluebird');
-// q
-mongoose.Promise = require('q').Promise;
-
-
 
 // start express
 var app = express();
@@ -24,7 +21,6 @@ var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/ventureout';
 
 // connect db
 mongoose.connect(mongoURI);
-
 
 // set middleware
 // use morgan
@@ -47,26 +43,22 @@ app.use(express.static(__dirname));
 app.get('/api/events', eventHandler.getAllEvents);
 
 // get all events by zipcode
-app.get('/api/events/zipcode/:zip', function(req, res) {
-  eventHandler.getEventsByZip(req, res)
-});
+app.get('/api/events/zipcode/:zip', eventHandler.getEventsByZip);
 
 // get events by zipcode and interests from events collection
-app.get('/api/user/zipcode/:zip/interests/:name', function(req, res) {
-  eventHandler.getEventsByCategoriesAndZip(req, res);
-})
+app.get('/api/user/zipcode/:zip/interests/:name', eventHandler.getEventsByCategoriesAndZip);
+
 
 // ======== Key Word Routes ========
 
 // get all words from keyword collection
-app.get('/api/keywords/', function(req, res) {
-  keyWordHandler.getKeyWordsFromDB(req, res)
-})
+app.get('/api/keywords/', keyWordHandler.getKeyWordsFromDB);
 
 // add words to keyword collection
-app.post('/api/keywords/', function(req, res) {
-  keyWordHandler.addKeyWordsToDB(req, res)
-})
+app.post('/api/keywords/', keyWordHandler.addKeyWordsToDB);
+
+
+// ======== User Routes =========
 
 /*
 req.body template for POST
@@ -79,58 +71,36 @@ req.body template for POST
 }
 */
 
-// ======== User Routes =========
-
 // add user to user collection
-app.post('/api/users', function(req, res) {
-  userHandler.addUser(req, res);
-});
+app.post('/api/users', userHandler.addUser);
 
 // id === user_id from auth0
 // find user from user collection
-app.get('/api/user/:id', function(req, res) {
-  userHandler.findUser(req, res);
-});
+app.get('/api/user/:id', userHandler.findUser);
 
 // req.body should look like { userId: *'user_id' from auth*, favoritedEvent: *string of favorited event info* }
-app.put('/api/user', function(req, res) {
-  userHandler.addFavorite(req, res);
-});
+app.put('/api/user', userHandler.addFavorite);
 
 // get user favorites events from user collection
-app.get('/api/user/favorites/:id', function(req, res){
-  userHandler.getFavorites(req, res);
-});
+app.get('/api/user/favorites/:id', userHandler.getFavorites);
 
 // add zip code to a user in user collection
-app.post('/api/user/addZipCode', function(req, res){
-  userHandler.addZipCode(req, res);
-});
+app.post('/api/user/addZipCode', userHandler.addZipCode);
 
 // add interests to a user in user collection
-app.post('/api/user/addInterests', function(req, res){
-  userHandler.addInterests(req, res);
-});
+app.post('/api/user/addInterests', userHandler.addInterests);
 
 // get users zipcode from user collection
-app.get('/api/user/:id/zipcode', function(req, res) {
-  userHandler.getUserZipcode(req, res);
-})
+app.get('/api/user/:id/zipcode', userHandler.getUserZipcode);
 
 // get user interests from user collection
-app.get('/api/user/:id/interests', function(req, res) {
-  userHandler.getUserInterests(req, res);
-})
+app.get('/api/user/:id/interests', userHandler.getUserInterests);
 
 // add image url to user in user collection
-app.post('/api/user/addImgUrl', function(req, res){
-  userHandler.addImgUrl(req, res);
-});
+app.post('/api/user/addImgUrl', userHandler.addImgUrl);
 
 // get image url from user in user collection
-app.get('/api/user/getImgUrl/:id', function(req, res) {
-  userHandler.getImgUrl(req, res)
-});
+app.get('/api/user/getImgUrl/:id', userHandler.getImgUrl);
 
 
 // route all unspecified paths to home
@@ -162,6 +132,7 @@ new cron('0 0 0 * * *', function() {3
 }, null, true, 'America/Los_Angeles');
 
 // EventBrite data fetcher
+// to grab events once, uncomment setTimeout and run this file
 // setTimeout(worker.fetchEB, 30000);
 new cron('0 0 2 * * *', function() {
   console.log('EB cron job running');
