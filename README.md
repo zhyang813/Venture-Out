@@ -1,6 +1,4 @@
-# Project Name
-
-> VentureOut
+# Venture Out
 
 ## Team
 
